@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "pragmaticfox-site",
+  "compatibility_date": "2026-08-24",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public"
+  },
+  "routes": [
+    {
+      "pattern": "pragmaticfox.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.pragmaticfox.com",
+      "custom_domain": true
+    }
+  ]
+}

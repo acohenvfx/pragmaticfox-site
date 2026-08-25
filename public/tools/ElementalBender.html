@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elemental Bender — Pragmatic Fox</title>
+<meta name="description" content="12 tools that handle the repetitive editorial and VFX tasks you deal with every day, right inside Avid Media Composer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field-0: #0a111d;
+  --field-1: #0c1422;
+  --panel-1: #101a28;
+  --panel-solid: #122031;
+  --line: rgba(120, 148, 180, 0.16);
+  --line-strong: rgba(120, 148, 180, 0.28);
+
+  --ink: #eef5fb;
+  --ink-2: #d5e0ec;
+  --muted: #8aa4bf;
+  --muted-2: #6f89a7;
+  --faint: #5b7793;
+
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --bad: #fb7185;
+
+  --brand: oklch(0.78 0.15 78);
+
+  --r-card: 22px;
+  --r-panel: 18px;
+  --r-ctrl: 12px;
+  --r-pill: 999px;
+
+  --shadow-card: 0 18px 50px -28px rgba(0, 0, 0, 0.8);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  background: #080e18;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(80% 50% at 15% 0%, rgba(60, 80, 140, 0.18) 0%, transparent 55%),
+    radial-gradient(60% 50% at 90% 10%, rgba(100, 80, 50, 0.14) 0%, transparent 55%),
+    radial-gradient(70% 60% at 50% 100%, rgba(40, 100, 90, 0.12) 0%, transparent 55%),
+    #080e18;
+}
+
+a { color: inherit; text-decoration: none; }
+::selection { background: oklch(0.78 0.15 78 / 0.35); }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* NAV */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  background: rgba(8, 14, 24, 0.72);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-brand b { font-weight: 700; }
+
+.nav-glyph {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--brand);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
+
+/* NAV DROPDOWN */
+.nav-dropdown { position: relative; }
+.nav-tools-control { display: flex; align-items: center; gap: 4px; }
+.nav-tools-link { color: var(--muted); font: inherit; }
+.nav-tools-link:hover, .nav-tools-link.active { color: var(--ink); }
+
+.nav-dropdown-toggle {
+  background: none; border: none;
+  font-family: var(--font-ui); font-size: 0.875rem; font-weight: 500;
+  color: var(--muted); cursor: pointer;
+  display: flex; align-items: center; gap: 4px; padding: 0;
+  transition: color 0.2s;
+}
+.nav-dropdown-toggle:hover { color: var(--ink); }
+.nav-dropdown-toggle.active { color: var(--ink); }
+.nav-dropdown-toggle svg { width: 12px; height: 12px; transition: transform 0.25s; }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 16px); right: 0;
+  min-width: 240px; background: var(--panel-1);
+  border: 1px solid var(--line-strong); border-radius: 12px; padding: 8px;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s; z-index: 200;
+}
+.nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.nav-dropdown-menu a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: 8px; transition: background 0.15s;
+}
+.nav-dropdown-menu a:hover { background: rgba(120, 148, 180, 0.08); }
+
+.tool-dot { width: 10px; height: 10px; border-radius: 4px; flex-shrink: 0; }
+.tool-dot.eb { background: oklch(0.78 0.15 78); }
+.tool-dot.de { background: oklch(0.74 0.14 200); }
+.tool-dot.fa { background: oklch(0.74 0.15 300); }
+.tool-dot.ae { background: oklch(0.72 0.16 155); }
+
+.tool-info-name { font-weight: 600; font-size: 0.85rem; color: var(--ink); display: block; line-height: 1.3; }
+.tool-info-desc { font-size: 0.7rem; color: var(--faint); display: block; line-height: 1.3; margin-top: 2px; }
+
+/* HERO */
+.hero {
+  padding: 160px 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.55 0.12 78 / 0.12), transparent 65%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  background: rgba(120, 148, 180, 0.08);
+  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.hero-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.version-req {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  margin: -10px auto 28px;
+  letter-spacing: 0.01em;
+}
+
+.version-req strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hero-badge { animation: fadeUp 0.6s ease both; }
+.version-req { animation: fadeUp 0.6s 0.05s ease both; }
+.hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
+.hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+.pain-points { animation: fadeUp 0.6s 0.3s ease both; }
+.panel-showcase { animation: riseUp 0.8s 0.5s ease both; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, oklch(0.82 0.14 78), oklch(0.72 0.16 52));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 48px;
+  line-height: 1.65;
+}
+
+/* PAIN POINTS */
+.pain-points {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.pain-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--muted-2);
+}
+
+.pain-point .x-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(251, 113, 133, 0.12);
+  color: var(--bad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* SLIDESHOW */
+.panel-showcase {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.panel-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    0 -20px 80px -20px oklch(0.55 0.12 78 / 0.12),
+    0 40px 100px -30px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+}
+
+.slideshow img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slideshow img.active {
+  opacity: 1;
+  position: relative;
+}
+
+.panel-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #080e18, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.slide-label {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: rgba(8, 14, 24, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 8px 20px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  transition: opacity 0.4s;
+}
+
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--faint);
+  opacity: 0.35;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s, background 0.3s, transform 0.3s;
+}
+
+.slide-dot.active {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.slide-dot[data-group="editorial"].active { background: oklch(0.74 0.13 244); }
+.slide-dot[data-group="vfx"].active { background: oklch(0.74 0.15 52); }
+.slide-dot[data-group="workflow"].active { background: oklch(0.74 0.15 158); }
+
+/* TOOLS SECTION */
+.tools-section {
+  padding: 80px 0 100px;
+  border-top: 1px solid var(--line);
+}
+
+.section-label {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-label span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  text-align: center;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 56px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* GROUP TABS */
+.group-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.group-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.group-tab:hover {
+  border-color: var(--line-strong);
+  color: var(--ink-2);
+}
+
+.group-tab.active { color: var(--ink); }
+
+.group-tab[data-group="editorial"].active {
+  background: oklch(0.74 0.13 244 / 0.14);
+  border-color: oklch(0.74 0.13 244 / 0.4);
+}
+.group-tab[data-group="vfx"].active {
+  background: oklch(0.74 0.15 52 / 0.14);
+  border-color: oklch(0.74 0.15 52 / 0.4);
+}
+.group-tab[data-group="workflow"].active {
+  background: oklch(0.74 0.15 158 / 0.14);
+  border-color: oklch(0.74 0.15 158 / 0.4);
+}
+
+.tab-glyph {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.tab-glyph.g-editorial { background: oklch(0.74 0.13 244); border-radius: 50%; }
+.tab-glyph.g-vfx { background: oklch(0.74 0.15 52); transform: rotate(45deg); border-radius: 2px; }
+.tab-glyph.g-workflow { background: oklch(0.74 0.15 158); border-radius: 2px; }
+
+/* TOOL CARDS */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: var(--panel-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.35s ease, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.tool-card:hover::before { opacity: 1; }
+
+.tool-card[data-group="editorial"]::before { background: oklch(0.74 0.13 244); }
+.tool-card[data-group="vfx"]::before { background: oklch(0.74 0.15 52); }
+.tool-card[data-group="workflow"]::before { background: oklch(0.74 0.15 158); }
+
+.tool-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.tool-card[data-group="editorial"] .tool-name { color: oklch(0.78 0.13 244); }
+.tool-card[data-group="vfx"] .tool-name { color: oklch(0.78 0.15 52); }
+.tool-card[data-group="workflow"] .tool-name { color: oklch(0.78 0.15 158); }
+
+.tool-blurb {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.tool-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.tool-tag[data-group="editorial"] {
+  color: oklch(0.78 0.11 244);
+  background: oklch(0.74 0.13 244 / 0.1);
+}
+.tool-tag[data-group="vfx"] {
+  color: oklch(0.78 0.13 52);
+  background: oklch(0.74 0.15 52 / 0.1);
+}
+.tool-tag[data-group="workflow"] {
+  color: oklch(0.78 0.13 158);
+  background: oklch(0.74 0.15 158 / 0.1);
+}
+
+.tools-group { display: none; }
+.tools-group.active { display: grid; }
+
+/* PREVIEW BUTTON (on video cards) */
+.tool-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: rgba(120, 148, 180, 0.06);
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+.tool-preview-btn:hover {
+  background: rgba(120, 148, 180, 0.14);
+  border-color: rgba(120, 148, 180, 0.45);
+  color: var(--ink-2);
+}
+.tool-preview-btn svg {
+  width: 13px; height: 13px;
+  flex-shrink: 0;
+}
+
+/* VIDEO MODAL */
+.video-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(4, 8, 16, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s;
+}
+.video-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.video-modal {
+  position: relative;
+  width: min(1350px, 75vw);
+  background: var(--panel-solid);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-card);
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9);
+  overflow: hidden;
+  transform: scale(0.94) translateY(16px);
+  transition: transform 0.22s ease;
+}
+.video-modal-overlay.open .video-modal {
+  transform: scale(1) translateY(0);
+}
+.video-modal video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.video-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+}
+.video-modal-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.video-modal-close {
+  background: none;
+  border: none;
+  color: var(--faint);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.video-modal-close:hover {
+  color: var(--ink);
+  background: rgba(120,148,180,0.08);
+}
+
+/* HOVER IMAGE POPUP (unchanged, for static image cards) */
+.tool-preview-popup {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  width: 320px;
+  background: var(--panel-solid);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-panel);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.94) translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.tool-preview-popup.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.tool-preview-popup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.tool-preview-popup img.loaded { opacity: 1; }
+.tool-preview-name {
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  border-top: 1px solid var(--line);
+}
+
+/* ABOUT */
+.about-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  margin-bottom: 14px;
+}
+
+.about-heading {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.about-text {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.about-text + .about-text { margin-top: 14px; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--panel-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ink), var(--muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--faint);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+  margin-top: 60px;
+}
+
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--faint);
+  font-size: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a:hover { color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 130px 0 0; }
+  .pain-points { flex-direction: column; align-items: center; gap: 16px; }
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .about-stats { grid-template-columns: 1fr; }
+}
+
+/* HERO CTA */
+.hero-cta {
+  margin: -24px 0 48px;
+}
+.hero-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  color: #080e18;
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.hero-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+/* PRODUCT NAME */
+.hero-product-name {
+  color: var(--brand);
+  font: 500 .76rem var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s 0.08s ease both;
+}
+.hero-statement {
+  color: var(--ink-2);
+  font: 600 clamp(1.6rem, 3.5vw, 2.45rem)/1.15 var(--font-display);
+  letter-spacing: -.025em;
+  margin: -8px auto 18px;
+  animation: fadeUp .6s .18s ease both;
+}
+.hero-statement .accent {
+  background: linear-gradient(135deg, oklch(0.82 0.14 78), oklch(0.72 0.16 52));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub { margin-bottom: 24px; animation-delay: .26s; }
+.version-req { margin: 0 auto 18px; animation-delay: .34s; }
+.hero-badge { margin-bottom: 40px; animation-delay: .42s; }
+
+/* BETA CTA */
+.beta-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.beta-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  background: var(--panel-1);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-card);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.beta-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 480px; height: 240px;
+  background: radial-gradient(ellipse at top, oklch(0.55 0.12 78 / 0.16), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.beta-inner > * { position: relative; z-index: 1; }
+.beta-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+  background: oklch(0.78 0.15 78 / 0.08);
+  border: 1px solid oklch(0.78 0.15 78 / 0.28);
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: oklch(0.78 0.15 78);
+  margin-bottom: 24px;
+}
+.beta-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.beta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.beta-sub {
+  color: var(--muted); font-size: 0.95rem; line-height: 1.65;
+  max-width: 400px; margin: 0 auto 36px;
+}
+.beta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  color: #080e18;
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.beta-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+.beta-note {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-nav">
+  <div class="container">
+    <a href="../index.html" class="nav-brand">
+      Pragmatic <b>Fox</b>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown" id="toolsDropdown">
+        <span class="nav-tools-control">
+          <a class="nav-tools-link active" href="../index.html">Tools</a>
+          <button class="nav-dropdown-toggle" aria-label="Open tools menu" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+        </span>
+        <div class="nav-dropdown-menu">
+          <a href="ElementalBender.html">
+            <span class="tool-dot eb"></span>
+            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">14 editorial & VFX tools</span></span>
+          </a>
+          <a href="DifferenceEngine.html">
+            <span class="tool-dot de"></span>
+            <span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span>
+          </a>
+          <a href="FlowAgent.html">
+            <span class="tool-dot fa"></span>
+            <span class="tool-info"><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span>
+          </a>
+          <a href="aebridge.html">
+            <span class="tool-dot ae"></span>
+            <span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span>
+          </a>
+        </div>
+      </li>
+      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-product-name">Editorial + VFX workflow</p>
+    <h1>
+      Elemental <span class="accent">Bender.</span>
+    </h1>
+    <p class="hero-statement">Editing inefficiencies <span class="accent">solved.</span></p>
+    <p class="hero-sub">
+      12 tools that live in one Avid extension. They handle a slew of repetitive tasks editorial and VFX editors deal with on a daily basis, giving you more time to focus on the cut.
+    </p>
+    <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later</p>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Avid Media Composer Extension
+    </div>
+
+    <div class="pain-points">
+      <div class="pain-point">
+        <span class="x-mark">&#x2715;</span>
+        Marker edits, one at a time
+      </div>
+      <div class="pain-point">
+        <span class="x-mark">&#x2715;</span>
+        Timecode math in your head
+      </div>
+      <div class="pain-point">
+        <span class="x-mark">&#x2715;</span>
+        Rebuilding bins from scratch
+      </div>
+      <div class="pain-point">
+        <span class="x-mark">&#x2715;</span>
+        Tab-switching to get data out
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="hero-btn">Request beta access →</a>
+    </div>
+
+    <!-- Slideshow -->
+    <div class="panel-showcase">
+      <div class="panel-frame">
+        <div class="slideshow" id="slideshow">
+          <img src="../slides/ElementalBender/ElementalBender_01.png" alt="Sequence To Text" class="active" data-name="Sequence To Text" data-group="editorial">
+          <img src="../slides/ElementalBender/ElementalBender_02.png" alt="Marker Check" data-name="Marker Check" data-group="editorial">
+          <img src="../slides/ElementalBender/ElementalBender_03.png" alt="Marker Forge" data-name="Marker Forge" data-group="editorial">
+          <img src="../slides/ElementalBender/ElementalBender_04.png" alt="EDL List Compare" data-name="EDL List Compare" data-group="editorial">
+          <img src="../slides/ElementalBender/ElementalBender_05.png" alt="Summarize Effects" data-name="Summarize Effects" data-group="vfx">
+          <img src="../slides/ElementalBender/ElementalBender_06.png" alt="Handle Calculator" data-name="Handle Calculator" data-group="vfx">
+          <img src="../slides/ElementalBender/ElementalBender_07.png" alt="SubCap Maker" data-name="SubCap Maker" data-group="vfx">
+          <img src="../slides/ElementalBender/ElementalBender_08.png" alt="SubClip It" data-name="SubClip It" data-group="vfx">
+          <img src="../slides/ElementalBender/ElementalBender_09.png" alt="Project Bin Template" data-name="Project Bin Template" data-group="workflow">
+          <img src="../slides/ElementalBender/ElementalBender_010.png" alt="Sequence Template" data-name="Sequence Template" data-group="workflow">
+          <img src="../slides/ElementalBender/ElementalBender_011.png" alt="Bin/CSV Merge" data-name="Bin/CSV Merge" data-group="workflow">
+          <img src="../slides/ElementalBender/ElementalBender_012.png" alt="Dropin Bender" data-name="Dropin Bender" data-group="workflow">
+        </div>
+        <div class="slide-label" id="slideLabel">Sequence To Text</div>
+      </div>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-label"><span>// the tools</span></div>
+    <h2 class="section-title">What it does</h2>
+    <p class="section-desc">Three groups of tools. One extension. No need to leave Avid.</p>
+
+    <div class="group-tabs">
+      <button class="group-tab active" data-group="editorial" onclick="switchGroup('editorial')">
+        <span class="tab-glyph g-editorial"></span> Editorial
+      </button>
+      <button class="group-tab" data-group="vfx" onclick="switchGroup('vfx')">
+        <span class="tab-glyph g-vfx"></span> VFX
+      </button>
+      <button class="group-tab" data-group="workflow" onclick="switchGroup('workflow')">
+        <span class="tab-glyph g-workflow"></span> Workflow
+      </button>
+    </div>
+
+    <!-- EDITORIAL -->
+    <div class="tools-grid tools-group active" data-group="editorial">
+      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/SeqToTxt.mp4">
+        <div class="tool-name">Sequence To Text</div>
+        <div class="tool-blurb">Parses your sequence into a tab-delimited text file, for easy use in a word processor or Excel. Handy for a quick glance at the cut in text form or when you need a text file for your favorite database.</div>
+        <span class="tool-tag" data-group="editorial">editorial</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/MarkerCheck.mp4">
+        <div class="tool-name">Marker Check</div>
+        <div class="tool-blurb">Compares sequences and reports back what's been removed, added, or modified.</div>
+        <span class="tool-tag" data-group="editorial">editorial</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+      <div class="tool-card" data-group="editorial">
+        <div class="tool-name">Marker Forge</div>
+        <div class="tool-blurb">Change marker color, comment, or increment across a batch of markers all at once instead of changing one marker at a time.</div>
+        <span class="tool-tag" data-group="editorial">editorial</span>
+      </div>
+      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/EdlListCompare.mp4">
+        <div class="tool-name">EDL List Compare</div>
+        <div class="tool-blurb">Compares your EDL against a pasted list, for those times when you're working on a turnover and want to be sure the EDL contains everything on the list.</div>
+        <span class="tool-tag" data-group="editorial">editorial</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+    </div>
+
+    <!-- VFX -->
+    <div class="tools-grid tools-group" data-group="vfx">
+      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/SummarizeEffects.mp4">
+        <div class="tool-name">Summarize Effects</div>
+        <div class="tool-blurb">Analyzes the sequence for any effects on clips, reports what's present, and optionally creates markers with all the effect information and parameters.</div>
+        <span class="tool-tag" data-group="vfx">vfx</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/HandleCalculator.mp4">
+        <div class="tool-name">Handle Calculator</div>
+        <div class="tool-blurb">Takes the guesswork out of how many frames a shot needs. An easy-to-use calculator with all the fields you need to get the right number.</div>
+        <span class="tool-tag" data-group="vfx">vfx</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+      <div class="tool-card" data-group="vfx" data-slides="../slides/ElementalBender/ElementalBender_07.png">
+        <div class="tool-name">SubCap Maker</div>
+        <div class="tool-blurb">Simple way to take your sequence markers and turn them into a subcap-compatible file.</div>
+        <span class="tool-tag" data-group="vfx">vfx</span>
+      </div>
+      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/SubclipIt.mp4">
+        <div class="tool-name">SubClip It</div>
+        <div class="tool-blurb">Batch-creates subclips from markers and renames them from an extensive set of parameters.</div>
+        <span class="tool-tag" data-group="vfx">vfx</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+    </div>
+
+    <!-- WORKFLOW -->
+    <div class="tools-grid tools-group" data-group="workflow">
+      <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_011.png">
+        <div class="tool-name">Bin/CSV Merge</div>
+        <div class="tool-blurb">One part bin mixed with one part CSV equals a tool for when you have data in a CSV you want batch-added to a bin column.</div>
+        <span class="tool-tag" data-group="workflow">workflow</span>
+      </div>
+      <div class="tool-card" data-group="workflow" data-video="../slides/ElementalBender/Demos/videos/ProjectBinTemplate.mp4">
+        <div class="tool-name">Project Bin Template</div>
+        <div class="tool-blurb">Stamp a consistent bin and folder structure into a project from a reusable outline template.</div>
+        <span class="tool-tag" data-group="workflow">workflow</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+      <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_012.png">
+        <div class="tool-name">Dropin Bender</div>
+        <div class="tool-blurb">Easily search for clips and create a new bin of all gathered.</div>
+        <span class="tool-tag" data-group="workflow">workflow</span>
+      </div>
+      <div class="tool-card" data-group="workflow" data-video="../slides/ElementalBender/Demos/videos/SequenceTemplate.mp4">
+        <div class="tool-name">Sequence Template</div>
+        <div class="tool-blurb">Create any sort of sequence you need on your project, including track audio effects and track naming.</div>
+        <span class="tool-tag" data-group="workflow">workflow</span>
+        <button class="tool-preview-btn" onclick="openVideoModal(this)">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BETA -->
+<section class="beta-section">
+  <div class="container">
+    <div class="beta-inner">
+      <div class="beta-badge"><span class="beta-dot"></span> Private Beta</div>
+      <h2 class="beta-heading">Get early access</h2>
+      <p class="beta-sub">Elemental Bender is currently in private beta. Drop me a line and I'll get you set up.</p>
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="beta-btn">Request access →</a>
+      <p class="beta-note">No subscription required. Just a reply with download instructions.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 Pragmatic Fox. All rights reserved.</span>
+    <ul class="footer-links">
+    </ul>
+  </div>
+</footer>
+
+<!-- HOVER IMAGE POPUP -->
+<div class="tool-preview-popup" id="toolPreviewPopup">
+  <img id="toolPreviewImg" alt="">
+  <div class="tool-preview-name" id="toolPreviewName"></div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal-overlay" id="videoModalOverlay" onclick="handleModalClick(event)">
+  <div class="video-modal" id="videoModal">
+    <video id="modalVideo" muted playsinline loop controls></video>
+    <div class="video-modal-footer">
+      <span class="video-modal-title" id="modalTitle"></span>
+      <button class="video-modal-close" onclick="closeVideoModal()">
+        <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('#slideshow img');
+  const label = document.getElementById('slideLabel');
+  const dotsContainer = document.getElementById('slideDots');
+  let current = 0;
+  let timer;
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.dataset.group = slide.dataset.group;
+    dot.setAttribute('aria-label', slide.dataset.name);
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.slide-dot');
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    label.textContent = slides[current].dataset.name;
+    resetTimer();
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 1750);
+  }
+
+  resetTimer();
+})();
+
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('toolsDropdown');
+  if (!dd.contains(e.target)) dd.classList.remove('open');
+});
+
+function switchGroup(group) {
+  document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.group-tab[data-group="' + group + '"]').classList.add('active');
+  document.querySelectorAll('.tools-group').forEach(g => g.classList.remove('active'));
+  document.querySelector('.tools-group[data-group="' + group + '"]').classList.add('active');
+}
+
+// ── Hover image popup (static screenshot cards) ─────────────────
+(function() {
+  const popup = document.getElementById('toolPreviewPopup');
+  const img   = document.getElementById('toolPreviewImg');
+  const label = document.getElementById('toolPreviewName');
+  let cycleTimer = null, srcs = [], cycleIdx = 0;
+
+  function showSlide(i) {
+    img.classList.remove('loaded');
+    img.src = srcs[i];
+    img.onload = () => img.classList.add('loaded');
+  }
+  function startCycle() {
+    if (srcs.length <= 1) return;
+    cycleTimer = setInterval(() => { cycleIdx = (cycleIdx + 1) % srcs.length; showSlide(cycleIdx); }, 900);
+  }
+  function stopCycle() { clearInterval(cycleTimer); cycleTimer = null; }
+  function position(e) {
+    const pw = 320, ph = popup.offsetHeight || 240, vw = window.innerWidth, vh = window.innerHeight;
+    let left = e.clientX + 24, top = e.clientY - ph / 2;
+    if (left + pw > vw - 16) left = e.clientX - pw - 24;
+    if (top < 16) top = 16;
+    if (top + ph > vh - 16) top = vh - ph - 16;
+    popup.style.left = left + 'px';
+    popup.style.top  = top  + 'px';
+  }
+  document.querySelectorAll('.tool-card[data-slides]').forEach(card => {
+    card.addEventListener('mouseenter', e => {
+      srcs = card.dataset.slides.split(',').map(s => s.trim()); cycleIdx = 0;
+      label.textContent = card.querySelector('.tool-name').textContent;
+      showSlide(0); position(e); popup.classList.add('visible'); startCycle();
+    });
+    card.addEventListener('mousemove', position);
+    card.addEventListener('mouseleave', () => { popup.classList.remove('visible'); stopCycle(); });
+  });
+})();
+
+// ── Video modal (click) ──────────────────────────────────────────
+const modalOverlay = document.getElementById('videoModalOverlay');
+const modalVideo   = document.getElementById('modalVideo');
+const modalTitle   = document.getElementById('modalTitle');
+
+function openVideoModal(btn) {
+  const card = btn.closest('.tool-card[data-video]');
+  modalVideo.src = card.dataset.video;
+  modalTitle.textContent = card.querySelector('.tool-name').textContent;
+  modalOverlay.classList.add('open');
+  modalVideo.play().catch(() => {});
+}
+
+function closeVideoModal() {
+  modalOverlay.classList.remove('open');
+  modalVideo.pause();
+  modalVideo.src = '';
+}
+
+function handleModalClick(e) {
+  if (e.target === modalOverlay) closeVideoModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeVideoModal();
+});
+</script>
+</body>
+</html>
