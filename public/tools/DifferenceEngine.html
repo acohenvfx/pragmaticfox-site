@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Difference Engine — Pragmatic Fox</title>
 <meta name="description" content="Compare source and record sequences in Avid Media Composer. Detect moved objects, scaling, repositioning, rotation, color changes, and more.">
+<meta name="theme-color" content="#f2c94c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragmatic Fox">
+<meta property="og:title" content="Difference Engine — Pragmatic Fox">
+<meta property="og:description" content="Compare source and record sequences in Avid Media Composer and see changes before they become problems.">
+<meta property="og:url" content="https://pragmaticfox.com/tools/DifferenceEngine">
+<meta property="og:image" content="https://pragmaticfox.com/slides/DifferenceEngine/DifferenceEngine_01.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pragmaticfox.com/tools/DifferenceEngine">
+<link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -608,42 +618,41 @@ a { color: inherit; text-decoration: none; }
   animation: fadeUp 0.6s 0.08s ease both;
 }
 </style>
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260903-responsive-nav2">
 </head>
-<body>
+<body class="product-page product-difference">
 
 <!-- NAV -->
 <header class="site-nav">
   <div class="container">
-    <a href="../index.html" class="nav-brand">
-      Pragmatic <b>Fox</b>
+    <a href="../" class="nav-brand">
+      <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
+      <span>Pragmatic <b>Fox</b></span>
     </a>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
+      <li><a href="../">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
-        <button class="nav-dropdown-toggle active" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
-          Tools
+        <a class="nav-products-link" href="../products/">Products</a>
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
           <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
         </button>
         <div class="nav-dropdown-menu">
-          <a href="ElementalBender.html">
+          <a href="ElementalBender">
             <span class="tool-dot eb"></span>
-            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">14 editorial & VFX tools</span></span>
+            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial & VFX suite</span></span>
           </a>
-          <a href="DifferenceEngine.html">
+          <a href="DifferenceEngine">
             <span class="tool-dot de"></span>
             <span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span>
           </a>
-          <a href="FlowAgent.html">
-            <span class="tool-dot fa"></span>
-            <span class="tool-info"><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span>
-          </a>
-          <a href="aebridge.html">
+          <a href="aebridge">
             <span class="tool-dot ae"></span>
             <span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span>
           </a>
         </div>
       </li>
-      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -651,42 +660,25 @@ a { color: inherit; text-decoration: none; }
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <p class="hero-product-name">Difference Engine</p>
+    <p class="hero-product-name">Source + record comparison</p>
+    <h1>
+      Difference <span class="accent">Engine.</span>
+    </h1>
+    <p class="hero-statement">Spot every <span class="accent">change.</span></p>
+    <p class="hero-sub">
+      Compares your source and record streams frame by frame — or sweeps entire sequences at once. Detects moved or missing objects, effects, scaling, repositioning, rotation, and color changes so nothing slips through.
+    </p>
+    <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later</p>
     <div class="hero-badge">
       <span class="dot"></span>
       Avid Media Composer Extension
     </div>
-    <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later</p>
-    <h1>
-      See what<br>
-      <span class="accent">changed.</span>
-    </h1>
-    <p class="hero-sub">
-      Compares your source and record streams frame by frame — or sweeps entire sequences at once. Detects moved or missing objects, scaling, repositioning, rotation, and color changes so nothing slips through.
-    </p>
 
-    <!-- Slideshow -->
-    <div class="panel-showcase">
-      <div class="panel-frame">
-        <div class="slideshow" id="slideshow">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_01.png" alt="Capture" class="active" data-name="Capture">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_02.png" alt="Full Color Result" data-name="Full Color Result">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_03.png" alt="White Matte" data-name="White Matte">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_04.png" alt="Red Overlay" data-name="Red Overlay">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_05.png" alt="Blue Overlay" data-name="Blue Overlay">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_06.png" alt="Analysis" data-name="Analysis">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_07.png" alt="Sequence Sweep" data-name="Sequence Sweep">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_09.png" alt="Sweep Results" data-name="Sweep Results">
-        </div>
-      </div>
-      <div class="slide-label" id="slideLabel">Capture</div>
-      <div class="slideshow-controls">
-        <div class="slide-dots" id="slideDots"></div>
-        <button class="preview-btn" onclick="openVideoModal()">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
+    <!-- TOOLS -->
+    <div class="product-feature-heading">
+      <div class="section-label"><span>// Tools</span></div>
+      <h2 class="section-title">What It Does</h2>
+      <p class="section-desc">See where each comparison mode fits into the edit.</p>
     </div>
 
     <div class="features">
@@ -695,37 +687,73 @@ a { color: inherit; text-decoration: none; }
         <div class="feature-desc">Full Color, White Matte, Red Overlay, or Blue Overlay — pick the view that makes changes jump out.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-name">Sequence Sweep</div>
-        <div class="feature-desc">Compare two entire sequences at once and get a shot-by-shot change report, exportable as CSV or PDF.</div>
-      </div>
-      <div class="feature-card">
         <div class="feature-name">Match Confidence</div>
         <div class="feature-desc">Pixel Difference and Match Confidence gauges tell you instantly whether two shots actually match.</div>
       </div>
+      <div class="feature-card">
+        <div class="feature-name">Sequence Sweep</div>
+        <div class="feature-desc">Compare two entire sequences at once and get a shot-by-shot change report, exportable as CSV or PDF.</div>
+      </div>
     </div>
+
+    <div class="hero-cta">
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=Difference%20Engine%20Beta%20Access" class="hero-btn">Request beta access</a>
+    </div>
+
+    <!-- Slideshow -->
+    <div class="panel-showcase">
+      <div class="panel-frame">
+        <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
+        <div class="slideshow" id="slideshow">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_01.png" alt="Capture" class="active" data-name="Capture" decoding="async" fetchpriority="high">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_02.png" alt="Full Color Result" data-name="Full Color Result" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_03.png" alt="White Matte" data-name="White Matte" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_04.png" alt="Red Overlay" data-name="Red Overlay" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_05.png" alt="Blue Overlay" data-name="Blue Overlay" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_06.png" alt="Analysis" data-name="Analysis" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_07.png" alt="Sequence Sweep" data-name="Sequence Sweep" loading="lazy" decoding="async">
+          <img src="../slides/DifferenceEngine/DifferenceEngine_09.png" alt="Sweep Results" data-name="Sweep Results" loading="lazy" decoding="async">
+        </div>
+        <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
+      </div>
+      <div class="slide-label" id="slideLabel">Capture</div>
+      <div class="slideshow-controls">
+        <div class="slide-dots" id="slideDots"></div>
+        <button class="preview-btn" type="button" onclick="openVideoModal()">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+          Preview
+        </button>
+      </div>
+    </div>
+
+
   </div>
 </section>
 
-<!-- BETA -->
-<section class="beta-section">
-  <div class="container">
-    <div class="beta-inner">
-      <div class="beta-badge"><span class="beta-dot"></span> Private Beta</div>
-      <h2 class="beta-heading">Get early access</h2>
-      <p class="beta-sub">Difference Engine is currently in private beta. Drop me a line and I'll get you set up.</p>
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=Difference%20Engine%20Beta%20Access" class="beta-btn">Request access →</a>
-      <p class="beta-note">No subscription required. Just a reply with download instructions.</p>
+<!-- WORKFLOW CTA -->
+<section class="pf-final product-final" aria-labelledby="difference-contact-title">
+  <h2 id="difference-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+  <a href="../contact/">Get in touch</a>
+</section>
+
+<!-- IMAGE MODAL -->
+<div class="image-modal-overlay" id="imageModalOverlay" aria-hidden="true" onclick="handleImageModalClick(event)">
+  <div class="image-modal" role="dialog" aria-modal="true" aria-labelledby="imageModalTitle">
+    <img id="imageModalImg" alt="">
+    <div class="image-modal-footer">
+      <span class="image-modal-title" id="imageModalTitle"></span>
+      <button class="image-modal-close" type="button" onclick="closeImageModal()">Close</button>
     </div>
   </div>
-</section>
+</div>
 
 <!-- VIDEO MODAL -->
-<div class="video-modal-overlay" id="videoModalOverlay" onclick="handleModalClick(event)">
+<div class="video-modal-overlay" id="videoModalOverlay" aria-hidden="true" onclick="handleModalClick(event)">
   <div class="video-modal">
     <video id="modalVideo" muted playsinline loop controls></video>
     <div class="video-modal-footer">
       <span class="video-modal-title">Difference Engine — Preview</span>
-      <button class="video-modal-close" onclick="closeVideoModal()">
+      <button class="video-modal-close" type="button" onclick="closeVideoModal()">
         <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
         Close
       </button>
@@ -750,7 +778,18 @@ a { color: inherit; text-decoration: none; }
   let current = 0;
 
   slides.forEach((slide, i) => {
+    slide.tabIndex = i === 0 ? 0 : -1;
+    slide.setAttribute('role', 'button');
+    slide.setAttribute('aria-label', 'Open ' + (slide.dataset.name || slide.alt || 'slide') + ' image');
+    slide.addEventListener('click', () => openImageModal(slide));
+    slide.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openImageModal(slide);
+      }
+    });
     const dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
     dot.setAttribute('aria-label', slide.dataset.name);
     dot.addEventListener('click', () => goTo(i));
@@ -758,21 +797,36 @@ a { color: inherit; text-decoration: none; }
   });
 
   const dots = dotsContainer.querySelectorAll('.slide-dot');
+  const previousButton = document.querySelector('.slide-arrow-prev');
+  const nextButton = document.querySelector('.slide-arrow-next');
 
   function goTo(index) {
+    slides[current].tabIndex = -1;
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = index;
     slides[current].classList.add('active');
+    slides[current].tabIndex = 0;
     dots[current].classList.add('active');
     label.textContent = slides[current].dataset.name;
   }
 
-  let timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+  let timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+
+  previousButton.addEventListener('click', () => {
+    goTo((current - 1 + slides.length) % slides.length);
+    clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+  });
+  nextButton.addEventListener('click', () => {
+    goTo((current + 1) % slides.length);
+    clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+  });
 
   dotsContainer.addEventListener('click', () => {
     clearInterval(timer);
-    timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
   });
 })();
 
@@ -785,7 +839,7 @@ const modalOverlay = document.getElementById('videoModalOverlay');
 const modalVideo   = document.getElementById('modalVideo');
 
 function openVideoModal() {
-  modalVideo.src = '../slides/DifferenceEngine/Demo/DifferenceEngine_Demo_260723.mp4';
+  modalVideo.src = 'https://media.pragmaticfox.com/slides/DifferenceEngine/Demo/DifferenceEngine_Demo_260723.mp4';
   modalOverlay.classList.add('open');
   modalVideo.play().catch(() => {});
 }
@@ -800,9 +854,40 @@ function handleModalClick(e) {
   if (e.target === modalOverlay) closeVideoModal();
 }
 
+const imageModalOverlay = document.getElementById('imageModalOverlay');
+const imageModalImg = document.getElementById('imageModalImg');
+const imageModalTitle = document.getElementById('imageModalTitle');
+
+function openImageModal(image) {
+  if (!imageModalOverlay || !image) return;
+  imageModalImg.src = image.currentSrc || image.src;
+  imageModalImg.alt = image.alt || '';
+  imageModalTitle.textContent = image.dataset.name || image.alt || 'Image preview';
+  imageModalOverlay.setAttribute('aria-hidden', 'false');
+  imageModalOverlay.classList.add('open');
+  document.body.classList.add('image-modal-open');
+}
+
+function closeImageModal() {
+  if (!imageModalOverlay) return;
+  imageModalOverlay.classList.remove('open');
+  imageModalOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('image-modal-open');
+  imageModalImg.removeAttribute('src');
+  imageModalTitle.textContent = '';
+}
+
+function handleImageModalClick(event) {
+  if (event.target === imageModalOverlay) closeImageModal();
+}
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeVideoModal();
+  if (e.key === 'Escape') {
+    closeVideoModal();
+    closeImageModal();
+  }
 });
 </script>
+<script src="../scripts/pragmatic.js"></script>
 </body>
 </html>

@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flow Agent — Pragmatic Fox</title>
 <meta name="description" content="A node-based workflow panel for Avid Media Composer. Link tasks together and cut down on repetitive work.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f2c94c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragmatic Fox">
+<meta property="og:title" content="Flow Agent — Pragmatic Fox">
+<meta property="og:description" content="A node-based workflow panel for Avid Media Composer. Link tasks together and cut down on repetitive work.">
+<meta property="og:url" content="https://pragmaticfox.com/tools/FlowAgent.html">
+<meta property="og:image" content="https://pragmaticfox.com/slides/FlowAgent/FlowAgent_01.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pragmaticfox.com/tools/FlowAgent.html">
+<link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -515,34 +526,31 @@ a { color: inherit; text-decoration: none; }
   animation: fadeUp 0.6s 0.08s ease both;
 }
 </style>
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260903-responsive-nav2">
 </head>
-<body>
+<body class="product-page product-flow">
 
 <!-- NAV -->
 <header class="site-nav">
   <div class="container">
     <a href="../index.html" class="nav-brand">
-      Pragmatic <b>Fox</b>
+      <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
+      <span>Pragmatic <b>Fox</b></span>
     </a>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
-        <button class="nav-dropdown-toggle active" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
-          Tools
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
           <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
         </button>
         <div class="nav-dropdown-menu">
           <a href="ElementalBender.html">
             <span class="tool-dot eb"></span>
-            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">14 editorial & VFX tools</span></span>
+            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span>
           </a>
           <a href="DifferenceEngine.html">
             <span class="tool-dot de"></span>
             <span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span>
-          </a>
-          <a href="FlowAgent.html">
-            <span class="tool-dot fa"></span>
-            <span class="tool-info"><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span>
           </a>
           <a href="aebridge.html">
             <span class="tool-dot ae"></span>
@@ -550,7 +558,8 @@ a { color: inherit; text-decoration: none; }
           </a>
         </div>
       </li>
-      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -575,10 +584,12 @@ a { color: inherit; text-decoration: none; }
     <!-- Slideshow -->
     <div class="panel-showcase">
       <div class="panel-frame">
+        <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
         <div class="slideshow" id="slideshow">
-          <img src="../slides/FlowAgent/FlowAgent_01.png" alt="Guided Workflows" class="active" data-name="Guided Workflows">
-          <img src="../slides/FlowAgent/FlowAgent_02.png" alt="Node Builder" data-name="Node Builder">
+          <img src="../slides/FlowAgent/FlowAgent_01.png" alt="Guided Workflows" class="active" data-name="Guided Workflows" decoding="async" fetchpriority="high">
+          <img src="../slides/FlowAgent/FlowAgent_02.png" alt="Node Builder" data-name="Node Builder" loading="lazy" decoding="async">
         </div>
+        <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
         <div class="slide-label" id="slideLabel">Guided Workflows</div>
       </div>
       <div class="slide-dots" id="slideDots"></div>
@@ -609,7 +620,7 @@ a { color: inherit; text-decoration: none; }
       <h2 class="beta-heading">Get early access</h2>
       <p class="beta-sub">Flow Agent is currently in private beta. Drop me a line and I'll get you set up.</p>
       <a href="mailto:andrewcoheneditor@gmail.com?subject=Flow%20Agent%20Beta%20Access" class="beta-btn">Request access →</a>
-      <p class="beta-note">No subscription required. Just a reply with download instructions.</p>
+      <p class="beta-note">No subscription required. Simply send an email request and a download link will be sent.</p>
     </div>
   </div>
 </section>
@@ -632,6 +643,7 @@ a { color: inherit; text-decoration: none; }
 
   slides.forEach((slide, i) => {
     const dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
     dot.setAttribute('aria-label', slide.dataset.name);
     dot.addEventListener('click', () => goTo(i));
@@ -639,6 +651,8 @@ a { color: inherit; text-decoration: none; }
   });
 
   const dots = dotsContainer.querySelectorAll('.slide-dot');
+  const previousButton = document.querySelector('.slide-arrow-prev');
+  const nextButton = document.querySelector('.slide-arrow-next');
 
   function goTo(index) {
     slides[current].classList.remove('active');
@@ -648,6 +662,9 @@ a { color: inherit; text-decoration: none; }
     dots[current].classList.add('active');
     label.textContent = slides[current].dataset.name;
   }
+
+  previousButton.addEventListener('click', () => goTo((current - 1 + slides.length) % slides.length));
+  nextButton.addEventListener('click', () => goTo((current + 1) % slides.length));
 })();
 
 document.addEventListener('click', function(e) {
@@ -655,5 +672,6 @@ document.addEventListener('click', function(e) {
   if (!dd.contains(e.target)) dd.classList.remove('open');
 });
 </script>
+<script src="../scripts/pragmatic.js"></script>
 </body>
 </html>

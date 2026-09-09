@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AE Bridge — Pragmatic Fox</title>
 <meta name="description" content="A focused Avid Media Composer and After Effects round-trip workflow from Pragmatic Fox.">
+<meta name="theme-color" content="#f2c94c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragmatic Fox">
+<meta property="og:title" content="AE Bridge — Pragmatic Fox">
+<meta property="og:description" content="A focused Avid Media Composer and After Effects round-trip workflow from Pragmatic Fox.">
+<meta property="og:url" content="https://pragmaticfox.com/tools/aebridge">
+<meta property="og:image" content="https://pragmaticfox.com/slides/AeBridge/AEBridge_01.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pragmaticfox.com/tools/aebridge">
+<link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -116,28 +126,27 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
 @media (max-width: 760px) { .site-nav .container { height: 58px; } .nav-links { gap: 14px; font-size: .78rem; } .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; } .hero { padding-top: 112px; } .feature-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .showcase-footer { align-items: flex-start; flex-direction: column; } .video-modal-overlay { padding: 12px; } }
 </style>
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260904-aebridge-surface">
 </head>
-<body>
+<body class="product-page product-aebridge">
 <header class="site-nav">
   <div class="container">
-    <a href="../index.html" class="nav-brand">Pragmatic <b>Fox</b></a>
+    <a href="../" class="nav-brand"><img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true"><span>Pragmatic <b>Fox</b></span></a>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
+      <li><a href="../">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
-        <span class="nav-tools-control">
-          <a class="nav-tools-link active" href="../index.html">Tools</a>
-          <button class="nav-dropdown-toggle" type="button" aria-label="Open tools menu" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
+        <a class="nav-products-link" href="../products/">Products</a>
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 1 1 .02-1.06Z" clip-rule="evenodd"/></svg>
-          </button>
-        </span>
+        </button>
         <div class="nav-dropdown-menu">
-          <a href="ElementalBender.html"><span class="tool-dot eb"></span><span><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">14 editorial &amp; VFX tools</span></span></a>
-          <a href="DifferenceEngine.html"><span class="tool-dot de"></span><span><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
-          <a href="FlowAgent.html"><span class="tool-dot fa"></span><span><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span></a>
-          <a href="aebridge.html"><span class="tool-dot ae"></span><span><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+          <a href="ElementalBender"><span class="tool-dot eb"></span><span><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+          <a href="DifferenceEngine"><span class="tool-dot de"></span><span><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+          <a href="aebridge"><span class="tool-dot ae"></span><span><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
         </div>
       </li>
-      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -146,17 +155,17 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
   <section class="hero">
     <div class="hero-inner">
       <p class="eyebrow">Avid ↔ After Effects workflow</p>
-      <h1>AE <span>Bridge.</span></h1>
-      <p class="hero-statement">A cleaner handoff, <span>both ways.</span></p>
+      <h1>AE<br><span>Bridge.</span></h1>
+      <p class="hero-statement">Round trip, <span>without the mess.</span></p>
       <p class="lead">One-click round-trip plate creation and distribution between Avid Media Composer and After Effects for comps. Keep the edit moving while the finishing work stays focused.</p>
-      <p class="version-req">Requires <strong>Avid Media Composer</strong> and <strong>Adobe After Effects</strong></p>
-      <span class="badge"><i></i>In development</span>
+      <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later and <strong>Adobe After Effects</strong></p>
+      <span class="badge"><i></i>Avid Media Composer Extension</span>
     </div>
   </section>
 
   <section class="panel-showcase" aria-label="AE Bridge panel preview">
     <div class="panel-frame">
-      <img src="../slides/AeBridge/AEBridge_01.png" alt="AE Bridge panel showing current shot, plate stack, renaming, settings, and shots">
+      <img src="../slides/AeBridge/AEBridge_01.png" alt="AE Bridge panel showing current shot, plate stack, renaming, settings, and shots" data-name="AE Bridge panel" tabindex="0" role="button" aria-label="Open AE Bridge panel image" decoding="async" fetchpriority="high">
     </div>
     <div class="showcase-footer">
       <span class="showcase-label">AE Bridge panel</span>
@@ -167,25 +176,44 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
     </div>
   </section>
 
-  <section class="feature-grid" aria-label="AE Bridge features">
-    <article class="feature"><h2>Send with context</h2><p>Start from the selected Avid clip and carry the timing information needed to build a focused After Effects comp.</p></article>
-    <article class="feature"><h2>Work in a focused comp</h2><p>Open the right After Effects job without digging through folders or rebuilding the handoff by hand.</p></article>
-    <article class="feature"><h2>Bring it back cleanly</h2><p>Return the finished element to the edit with a clear, repeatable handoff for editorial and VFX teams.</p></article>
+
+  <section class="product-feature-section" aria-label="AE Bridge tools">
+    <div class="product-feature-heading">
+      <div class="section-label"><span>// Tools</span></div>
+      <h2 class="section-title">What It Does</h2>
+      <p class="section-desc">A focused handoff from Avid to After Effects and back.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature"><h2>Send with context</h2><p>Start from the selected Avid clip and carry the timing information needed to build a focused After Effects comp.</p></article>
+      <article class="feature"><h2>Work in a focused comp</h2><p>Open the right After Effects job without digging through folders or rebuilding the handoff by hand.</p></article>
+      <article class="feature"><h2>Bring it back cleanly</h2><p>Return the finished element to the edit with a clear, repeatable handoff for editorial and VFX teams.</p></article>
+    </div>
   </section>
 
-  <section class="beta-section">
-    <div class="beta-inner">
-      <div class="beta-badge"><span class="beta-dot"></span>Private Beta</div>
-      <h2 class="beta-heading">Get early access</h2>
-      <p class="beta-sub">AE Bridge is currently in private beta. Drop me a line and I'll get you set up.</p>
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=AE%20Bridge%20Beta%20Access" class="beta-btn">Request beta access →</a>
-      <p class="beta-note">No subscription required. Just a reply with download instructions.</p>
-    </div>
+  <div class="hero-cta">
+    <a href="mailto:andrewcoheneditor@gmail.com?subject=AE%20Bridge%20Beta%20Access" class="hero-btn">Request beta access</a>
+  </div>
+
+
+  <section class="pf-final product-final" aria-labelledby="aebridge-contact-title">
+    <h2 id="aebridge-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+    <a href="../contact/">Get in touch</a>
   </section>
 </main>
 
+<!-- IMAGE MODAL -->
+<div class="image-modal-overlay" id="imageModalOverlay" aria-hidden="true" onclick="handleImageModalClick(event)">
+  <div class="image-modal" role="dialog" aria-modal="true" aria-labelledby="imageModalTitle">
+    <img id="imageModalImg" alt="">
+    <div class="image-modal-footer">
+      <span class="image-modal-title" id="imageModalTitle"></span>
+      <button class="image-modal-close" type="button" onclick="closeImageModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <footer>© 2026 Pragmatic Fox. All rights reserved.</footer>
-<div class="video-modal-overlay" id="videoModalOverlay" onclick="handleModalClick(event)">
+<div class="video-modal-overlay" id="videoModalOverlay" aria-hidden="true" onclick="handleModalClick(event)">
   <div class="video-modal" role="dialog" aria-modal="true" aria-label="AE Bridge preview">
     <video id="modalVideo" muted playsinline loop controls></video>
     <div class="video-modal-footer">
@@ -202,9 +230,20 @@ document.addEventListener('click', (event) => {
 
 const modalOverlay = document.getElementById('videoModalOverlay');
 const modalVideo = document.getElementById('modalVideo');
+const panelImage = document.querySelector('.panel-showcase .panel-frame > img');
+if (panelImage) {
+  panelImage.addEventListener('click', () => openImageModal(panelImage));
+  panelImage.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openImageModal(panelImage);
+    }
+  });
+}
+
 
 function openVideoModal() {
-  modalVideo.src = '../slides/AeBridge/Demo/AEBridge_demo_260810.mp4';
+  modalVideo.src = 'https://media.pragmaticfox.com/slides/AeBridge/Demo/AEBridge_demo_260810.mp4';
   modalOverlay.classList.add('open');
   modalVideo.play().catch(() => {});
 }
@@ -219,9 +258,40 @@ function handleModalClick(event) {
   if (event.target === modalOverlay) closeVideoModal();
 }
 
+const imageModalOverlay = document.getElementById('imageModalOverlay');
+const imageModalImg = document.getElementById('imageModalImg');
+const imageModalTitle = document.getElementById('imageModalTitle');
+
+function openImageModal(image) {
+  if (!imageModalOverlay || !image) return;
+  imageModalImg.src = image.currentSrc || image.src;
+  imageModalImg.alt = image.alt || '';
+  imageModalTitle.textContent = image.dataset.name || image.alt || 'Image preview';
+  imageModalOverlay.setAttribute('aria-hidden', 'false');
+  imageModalOverlay.classList.add('open');
+  document.body.classList.add('image-modal-open');
+}
+
+function closeImageModal() {
+  if (!imageModalOverlay) return;
+  imageModalOverlay.classList.remove('open');
+  imageModalOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('image-modal-open');
+  imageModalImg.removeAttribute('src');
+  imageModalTitle.textContent = '';
+}
+
+function handleImageModalClick(event) {
+  if (event.target === imageModalOverlay) closeImageModal();
+}
+
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeVideoModal();
+  if (event.key === 'Escape') {
+    closeVideoModal();
+    closeImageModal();
+  }
 });
 </script>
+<script src="../scripts/pragmatic.js"></script>
 </body>
 </html>

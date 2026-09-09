@@ -1,0 +1,7 @@
+**/*.mp4
+**/*.orig
+**/*.rej
+**/.DS_Store
+home-sketch/**
+tools/FlowAgent.html
+slides/FlowAgent/**

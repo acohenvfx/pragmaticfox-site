@@ -1,521 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pragmatic Fox — Tools for Editors</title>
-<meta name="description" content="Avid Media Composer panels built to remove the repetitive stuff from your edit day.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --field-0: #0a111d;
-  --field-1: #0c1422;
-  --panel-1: #101a28;
-  --panel-solid: #122031;
-  --line: rgba(120, 148, 180, 0.16);
-  --line-strong: rgba(120, 148, 180, 0.28);
-
-  --ink: #eef5fb;
-  --ink-2: #d5e0ec;
-  --muted: #8aa4bf;
-  --muted-2: #6f89a7;
-  --faint: #5b7793;
-
-  --brand: oklch(0.78 0.15 78);
-
-  --r-card: 22px;
-  --r-panel: 18px;
-  --r-ctrl: 12px;
-  --r-pill: 999px;
-
-  --shadow-card: 0 18px 50px -28px rgba(0, 0, 0, 0.8);
-
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-ui: 'Manrope', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
-
-  --eb-accent: oklch(0.78 0.15 78);
-  --de-accent: oklch(0.74 0.14 200);
-  --fa-accent: oklch(0.74 0.15 300);
-  --ae-accent: oklch(0.72 0.16 155);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-behavior: smooth;
-  background: #080e18;
-  color: var(--ink);
-  font-family: var(--font-ui);
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(80% 50% at 15% 0%, rgba(60, 80, 140, 0.18) 0%, transparent 55%),
-    radial-gradient(60% 50% at 90% 10%, rgba(100, 80, 50, 0.14) 0%, transparent 55%),
-    radial-gradient(70% 60% at 50% 100%, rgba(40, 100, 90, 0.12) 0%, transparent 55%),
-    #080e18;
-}
-
-a { color: inherit; text-decoration: none; }
-::selection { background: oklch(0.78 0.15 78 / 0.35); }
-
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* NAV */
-.site-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
-  background: rgba(8, 14, 24, 0.72);
-  border-bottom: 1px solid var(--line);
-}
-
-.site-nav .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-
-.nav-brand {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-brand b { font-weight: 700; }
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.nav-links a:hover { color: var(--ink); }
-.nav-links a.active { color: var(--ink); }
-
-/* NAV DROPDOWN */
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown-toggle {
-  background: none;
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0;
-  transition: color 0.2s;
-}
-
-.nav-dropdown-toggle:hover { color: var(--ink); }
-.nav-dropdown-toggle.active { color: var(--ink); }
-
-.nav-dropdown-toggle svg {
-  width: 12px;
-  height: 12px;
-  transition: transform 0.25s;
-}
-
-.nav-dropdown.open .nav-dropdown-toggle svg {
-  transform: rotate(180deg);
-}
-
-.nav-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  min-width: 240px;
-  background: var(--panel-1);
-  border: 1px solid var(--line-strong);
-  border-radius: 12px;
-  padding: 8px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  z-index: 200;
-}
-
-.nav-dropdown.open .nav-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.nav-dropdown-menu a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-
-.nav-dropdown-menu a:hover {
-  background: rgba(120, 148, 180, 0.08);
-}
-
-.tool-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.tool-dot.eb { background: oklch(0.78 0.15 78); }
-.tool-dot.de { background: oklch(0.74 0.14 200); }
-.tool-dot.fa { background: oklch(0.74 0.15 300); }
-.tool-dot.ae { background: oklch(0.72 0.16 155); }
-
-.tool-info-name {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--ink);
-  display: block;
-  line-height: 1.3;
-}
-
-.tool-info-desc {
-  font-size: 0.7rem;
-  color: var(--faint);
-  display: block;
-  line-height: 1.3;
-  margin-top: 2px;
-}
-
-/* PAGE HEADER */
-.page-header {
-  padding: 150px 0 64px;
-  text-align: center;
-}
-
-.page-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--faint);
-  margin-bottom: 16px;
-}
-
-.page-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 14px;
-}
-
-.page-sub {
-  color: var(--muted);
-  max-width: 520px;
-  margin: 0 auto;
-  line-height: 1.65;
-  font-size: 1rem;
-}
-
-/* PRODUCT CARDS */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 28px;
-  padding-bottom: 100px;
-}
-
-.product-card {
-  background: var(--panel-1);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  padding: 36px 32px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  transition: opacity 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card);
-}
-
-.product-card.eb::before { background: var(--eb-accent); }
-.product-card.de::before { background: var(--de-accent); }
-.product-card.fa::before { background: var(--fa-accent); }
-.product-card.ae::before { background: var(--ae-accent); }
-
-.product-glyph {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-}
-
-.product-card.eb .product-glyph { background: var(--eb-accent); }
-.product-card.de .product-glyph { background: var(--de-accent); }
-.product-card.fa .product-glyph { background: var(--fa-accent); }
-.product-card.ae .product-glyph { background: var(--ae-accent); }
-
-.product-name {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  margin-bottom: 8px;
-}
-
-.product-card.eb .product-name { color: var(--eb-accent); }
-.product-card.de .product-name { color: var(--de-accent); }
-.product-card.fa .product-name { color: var(--fa-accent); }
-.product-card.ae .product-name { color: var(--ae-accent); }
-
-.product-type {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--faint);
-  margin-bottom: 16px;
-}
-
-.product-desc {
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  flex: 1;
-}
-
-.product-version {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--faint);
-  margin-top: 14px;
-  letter-spacing: 0.01em;
-}
-
-.product-version strong {
-  color: var(--muted-2);
-  font-weight: 600;
-}
-
-.product-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 24px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: gap 0.2s;
-}
-
-.product-card.eb .product-link { color: var(--eb-accent); }
-.product-card.de .product-link { color: var(--de-accent); }
-.product-card.fa .product-link { color: var(--fa-accent); }
-.product-card.ae .product-link { color: var(--ae-accent); }
-
-.product-link:hover { gap: 10px; }
-
-.product-link svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* FOOTER */
-.site-footer {
-  border-top: 1px solid var(--line);
-  padding: 32px 0;
-}
-
-.site-footer .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--faint);
-  font-size: 0.8rem;
-}
-
-.footer-links {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-}
-
-.footer-links a:hover { color: var(--muted); }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .products-grid { grid-template-columns: 1fr; }
-}
-
-/* ENTRANCE */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.page-header { animation: fadeUp 0.6s ease both; }
-.product-card:nth-child(1) { animation: fadeUp 0.6s 0.15s ease both; }
-.product-card:nth-child(2) { animation: fadeUp 0.6s 0.25s ease both; }
-.product-card:nth-child(3) { animation: fadeUp 0.6s 0.35s ease both; }
-.product-card:nth-child(4) { animation: fadeUp 0.6s 0.45s ease both; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pragmatic Fox — Home</title>
+  <meta name="description" content="Pragmatic Fox makes clever, practical workflow tools for editors and VFX teams.">
+  <meta name="theme-color" content="#f2c94c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pragmatic Fox">
+  <meta property="og:title" content="Pragmatic Fox — Workflow tools for post production">
+  <meta property="og:description" content="Practical tools for the work behind the picture. Less time on repetitive tasks, more time for the work itself.">
+  <meta property="og:url" content="https://pragmaticfox.com/">
+  <meta property="og:image" content="https://pragmaticfox.com/assets/logo-fox-no-bg.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://pragmaticfox.com/">
+  <link rel="icon" type="image/png" href="assets/pf-mark-nav.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/pragmatic.css?v=20260903-responsive-nav2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pragmatic Fox",
+    "url": "https://pragmaticfox.com/",
+    "logo": "https://pragmaticfox.com/assets/logo-fox-no-bg.png",
+    "founder": { "@type": "Person", "name": "Andrew Cohen" }
+  }
+  </script>
 </head>
-<body>
-
-<!-- NAV -->
-<header class="site-nav">
-  <div class="container">
-    <a href="/" class="nav-brand">
-      Pragmatic <b>Fox</b>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li class="nav-dropdown" id="toolsDropdown">
-        <button class="nav-dropdown-toggle active" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
-          Tools
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
-        </button>
-        <div class="nav-dropdown-menu">
-          <a href="tools/ElementalBender.html">
-            <span class="tool-dot eb"></span>
-            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">13 Editorial & VFX tools</span></span>
-          </a>
-          <a href="tools/DifferenceEngine.html">
-            <span class="tool-dot de"></span>
-            <span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Sequence difference detection & comparison</span></span>
-          </a>
-          <a href="tools/FlowAgent.html">
-            <span class="tool-dot fa"></span>
-            <span class="tool-info"><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span>
-          </a>
-          <a href="tools/aebridge.html">
-            <span class="tool-dot ae"></span>
-            <span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span>
-          </a>
-        </div>
-      </li>
-      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
-    </ul>
-  </div>
-</header>
-
-<!-- HEADER -->
-<div class="page-header">
-  <div class="container">
-    <div class="page-label">// tools</div>
-    <h1 class="page-title">Avid Extensions</h1>
-    <p class="page-sub">Extensions built to handle the things you shouldn't have to do by hand.</p>
-  </div>
-</div>
-
-<!-- PRODUCT CARDS -->
-<section>
-  <div class="container">
-    <div class="products-grid">
-
-      <a href="tools/ElementalBender.html" class="product-card eb">
-        <div class="product-glyph"></div>
-        <div class="product-name">Elemental Bender</div>
-        <div class="product-type">Avid Media Composer Panel</div>
-        <div class="product-desc">13 tools across editorial, VFX, and workflow. They handle a slew of repetitive tasks editors deal with on a daily basis, giving you more time to focus on the cut.</div>
-        <div class="product-version">Requires <strong>Avid Media Composer 2024.12.3+</strong></div>
-        <span class="product-link">
-          Learn more
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.69l-2.72-2.72a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-        </span>
+<body class="editorial-home">
+  <header class="pf-nav">
+    <div class="pf-nav-inner">
+      <a class="pf-brand" href="./" aria-label="Pragmatic Fox home">
+        <img class="pf-nav-mark" src="assets/pf-mark-nav.png" alt="" aria-hidden="true">
+        <span>Pragmatic <strong>Fox</strong></span>
       </a>
-
-      <a href="tools/DifferenceEngine.html" class="product-card de">
-        <div class="product-glyph"></div>
-        <div class="product-name">Difference Engine</div>
-        <div class="product-type">Avid Media Composer Panel</div>
-        <div class="product-desc">Compares your source and record window streams. Detects objects moved or missing, scaling, repositioning, rotation, and color changes between frames.</div>
-        <div class="product-version">Requires <strong>Avid Media Composer 2024.12.3+</strong></div>
-        <span class="product-link">
-          Learn more
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.69l-2.72-2.72a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-        </span>
-      </a>
-
-      <a href="tools/FlowAgent.html" class="product-card fa">
-        <div class="product-glyph"></div>
-        <div class="product-name">Flow Agent</div>
-        <div class="product-type">Avid Media Composer Panel</div>
-        <div class="product-desc">A node-based workflow panel. Link multiple tasks together, saving time and reducing the number of repetitive tasks done.</div>
-        <div class="product-version">Core: <strong>2023.12+</strong> · Full catalog: <strong>2025.12.1+</strong></div>
-        <span class="product-link">
-          Learn more
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.69l-2.72-2.72a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-        </span>
-      </a>
-
-      <a href="tools/aebridge.html" class="product-card ae">
-        <div class="product-glyph"></div>
-        <div class="product-name">AE Bridge</div>
-        <div class="product-type">Avid ↔ After Effects workflow</div>
-        <div class="product-desc">Send a selected Avid clip to After Effects, work with a focused temporary comp, and bring the result back into the edit.</div>
-        <div class="product-version">In development</div>
-        <span class="product-link">
-          Learn more
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.69l-2.72-2.72a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.06-1.06l2.72-2.72H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-        </span>
-      </a>
-
+      <nav aria-label="Primary navigation">
+        <ul class="pf-nav-links">
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li class="nav-dropdown" id="toolsDropdown">
+            <a class="nav-products-link" href="products/">Products</a>
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25-4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg></button>
+            <div class="nav-dropdown-menu">
+              <a href="tools/ElementalBender"><span class="tool-dot eb"></span><span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+              <a href="tools/DifferenceEngine"><span class="tool-dot de"></span><span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+              <a href="tools/aebridge"><span class="tool-dot ae"></span><span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+            </div>
+          </li>
+          <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
+  <main class="editorial-home-shell">
+    <section class="editorial-brand-panel" aria-labelledby="brand-title">
+      <p class="editorial-brand-kicker">// Workflow tools for Post Production</p>
+      <h1 class="editorial-brand-name" id="brand-title">Pragmatic <span>Fox</span></h1>
+      <p class="editorial-brand-title">Small tools.<strong> Big results.</strong></p>
+      <div class="editorial-brand-rule" aria-hidden="true"></div>
+      <p class="editorial-brand-copy">Tools for the work behind the picture. Less time on repetitive tasks, more time for the work itself.</p>
+    </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container">
-    <span>&copy; 2026 Pragmatic Fox. All rights reserved.</span>
-    <ul class="footer-links">
-    </ul>
-  </div>
-</footer>
+    <section class="editorial-products" id="products" aria-labelledby="products-title">
+      <header class="editorial-products-head">
+        <p id="products-title">// Products / 03</p>
+        <span>Explore the products</span>
+      </header>
 
-<script>
-document.addEventListener('click', function(e) {
-  var dd = document.getElementById('toolsDropdown');
-  if (!dd.contains(e.target)) dd.classList.remove('open');
-});
-</script>
+      <div class="editorial-list">
+        <a class="editorial-product editorial-eb" href="tools/ElementalBender">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">01</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>Elemental<br>Bender</h2>
+            <p>Editorial + VFX suite</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/ElementalBender/ElementalBender_01.png" alt="" decoding="async" fetchpriority="high">
+          </div>
+        </a>
+
+        <a class="editorial-product editorial-de" href="tools/DifferenceEngine">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">02</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>Difference<br>Engine</h2>
+            <p>Source vs. record comparison</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/DifferenceEngine/DifferenceEngine_01.png" alt="" loading="lazy" decoding="async">
+          </div>
+        </a>
+
+        <a class="editorial-product editorial-ae" href="tools/aebridge">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">03</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>AE<br>Bridge</h2>
+            <p>Avid + After Effects round-trip</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/AeBridge/AEBridge_01.png" alt="" loading="lazy" decoding="async">
+          </div>
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+  <section class="pf-final" aria-labelledby="homepage-contact-title">
+    <h2 id="homepage-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+    <a href="contact/">Get in touch</a>
+  </section>
+  <footer class="pf-footer">© 2026 Pragmatic Fox. All rights reserved.</footer>
+  <script src="scripts/pragmatic.js"></script>
 </body>
 </html>

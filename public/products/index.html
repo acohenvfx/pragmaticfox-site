@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products — Pragmatic Fox</title>
+  <meta name="description" content="Pragmatic Fox workflow tools for post-production teams.">
+  <meta name="theme-color" content="#f2c94c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pragmatic Fox">
+  <meta property="og:title" content="Products — Pragmatic Fox">
+  <meta property="og:description" content="Practical Avid tools for cutting, comparing, and moving work between applications.">
+  <meta property="og:url" content="https://pragmaticfox.com/products/">
+  <meta property="og:image" content="https://pragmaticfox.com/assets/logo-fox-no-bg.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://pragmaticfox.com/products/">
+  <link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260903-responsive-nav2">
+</head>
+<body class="products-index-page">
+  <header class="pf-nav">
+    <div class="pf-nav-inner">
+      <a class="pf-brand" href="../" aria-label="Pragmatic Fox home">
+        <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
+        <span>Pragmatic <strong>Fox</strong></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="pf-nav-links">
+          <li><a href="../">Home</a></li>
+          <li class="nav-dropdown" id="toolsDropdown">
+            <a class="nav-products-link" href="./" aria-current="page">Products</a>
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))"><span aria-hidden="true">Products</span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 1 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25-4.5a.75.75 0 1 1 .02-1.06Z" clip-rule="evenodd"/></svg></button>
+            <div class="nav-dropdown-menu">
+              <a href="../tools/ElementalBender"><span class="tool-dot eb"></span><span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+              <a href="../tools/DifferenceEngine"><span class="tool-dot de"></span><span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+              <a href="../tools/aebridge"><span class="tool-dot ae"></span><span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+            </div>
+          </li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="products-index-main">
+    <section class="products-index-intro" aria-labelledby="products-index-title">
+      <p class="products-index-kicker">// Workflow tools for post production</p>
+      <h1 id="products-index-title">Products for the <span>edit room.</span></h1>
+      <p>Practical Avid tools for cutting, comparing, and moving work between applications.</p>
+    </section>
+
+    <section class="products-index-products" aria-labelledby="products-list-title">
+      <header class="editorial-products-head">
+        <p id="products-list-title">// Products / 03</p>
+        <span>Choose a workflow</span>
+      </header>
+      <div class="products-index-list">
+        <a class="products-index-row editorial-eb" href="../tools/ElementalBender">
+          <div class="products-index-copy">
+            <span class="products-index-index">01</span>
+            <span class="products-index-kicker-small">Editorial + VFX workflow</span>
+            <h2>Elemental <span>Bender.</span></h2>
+            <p>A growing suite of tools in one extension—cutting out repetitive work so you can focus on what matters most.</p>
+            <span class="products-index-link">View product <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="products-index-media"><img src="../slides/ElementalBender/ElementalBender_01.png" alt="Elemental Bender Avid panel" decoding="async" fetchpriority="high"></div>
+        </a>
+
+        <a class="products-index-row editorial-de" href="../tools/DifferenceEngine">
+          <div class="products-index-copy">
+            <span class="products-index-index">02</span>
+            <span class="products-index-kicker-small">Source + record comparison</span>
+            <h2>Difference <span>Engine.</span></h2>
+            <p>Compare sequences visually and via data so moved, missing, or changed elements do not slip through.</p>
+            <span class="products-index-link">View product <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="products-index-media"><img src="../slides/DifferenceEngine/DifferenceEngine_01.png" alt="Difference Engine Avid panel" loading="lazy" decoding="async"></div>
+        </a>
+
+        <a class="products-index-row editorial-ae" href="../tools/aebridge">
+          <div class="products-index-copy">
+            <span class="products-index-index">03</span>
+            <span class="products-index-kicker-small">Avid + After Effects workflow</span>
+            <h2>AE <span>Bridge.</span></h2>
+            <p>Round-trip plates between Avid and After Effects without losing the context of the edit.</p>
+            <span class="products-index-link">View product <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="products-index-media"><img src="../slides/AeBridge/AEBridge_01.png" alt="AE Bridge panel" loading="lazy" decoding="async"></div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <section class="pf-final" aria-labelledby="products-contact-title">
+    <h2 id="products-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+    <a href="../contact/">Get in touch</a>
+  </section>
+  <footer class="pf-footer">© 2026 Pragmatic Fox. All rights reserved.</footer>
+  <script src="../scripts/pragmatic.js"></script>
+</body>
+</html>

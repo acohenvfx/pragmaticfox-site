@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elemental Bender — Pragmatic Fox</title>
-<meta name="description" content="12 tools that handle the repetitive editorial and VFX tasks you deal with every day, right inside Avid Media Composer.">
+<meta name="description" content="A growing suite of tools that cuts repetitive editorial and VFX work out of the edit, right inside Avid Media Composer.">
+<meta name="theme-color" content="#f2c94c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragmatic Fox">
+<meta property="og:title" content="Elemental Bender — Pragmatic Fox">
+<meta property="og:description" content="A growing suite of tools that cuts repetitive editorial and VFX work out of the edit, right inside Avid Media Composer.">
+<meta property="og:url" content="https://pragmaticfox.com/tools/ElementalBender">
+<meta property="og:image" content="https://pragmaticfox.com/slides/ElementalBender/ElementalBender_01.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pragmaticfox.com/tools/ElementalBender">
+<link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -925,44 +935,41 @@ a { color: inherit; text-decoration: none; }
   color: var(--faint);
 }
 </style>
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260903-responsive-nav2">
 </head>
-<body>
+<body class="product-page product-elemental">
 
 <!-- NAV -->
 <header class="site-nav">
   <div class="container">
-    <a href="../index.html" class="nav-brand">
-      Pragmatic <b>Fox</b>
+      <a href="../" class="nav-brand">
+      <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
+      <span>Pragmatic <b>Fox</b></span>
     </a>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
+      <li><a href="../">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
-        <span class="nav-tools-control">
-          <a class="nav-tools-link active" href="../index.html">Tools</a>
-          <button class="nav-dropdown-toggle" aria-label="Open tools menu" onclick="document.getElementById('toolsDropdown').classList.toggle('open')">
+        <a class="nav-products-link" href="../products/">Products</a>
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
           <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
-          </button>
-        </span>
+        </button>
         <div class="nav-dropdown-menu">
-          <a href="ElementalBender.html">
+          <a href="ElementalBender">
             <span class="tool-dot eb"></span>
-            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">14 editorial & VFX tools</span></span>
+            <span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial & VFX suite</span></span>
           </a>
-          <a href="DifferenceEngine.html">
+          <a href="DifferenceEngine">
             <span class="tool-dot de"></span>
             <span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span>
           </a>
-          <a href="FlowAgent.html">
-            <span class="tool-dot fa"></span>
-            <span class="tool-info"><span class="tool-info-name">Flow Agent</span><span class="tool-info-desc">Node-based workflow</span></span>
-          </a>
-          <a href="aebridge.html">
+          <a href="aebridge">
             <span class="tool-dot ae"></span>
             <span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span>
           </a>
         </div>
       </li>
-      <li><a href="mailto:andrewcoheneditor@gmail.com">Contact</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -976,7 +983,7 @@ a { color: inherit; text-decoration: none; }
     </h1>
     <p class="hero-statement">Editing inefficiencies <span class="accent">solved.</span></p>
     <p class="hero-sub">
-      12 tools that live in one Avid extension. They handle a slew of repetitive tasks editorial and VFX editors deal with on a daily basis, giving you more time to focus on the cut.
+      A growing suite of tools in one extension — cutting out the repetitive, inefficient work so you can spend more time cutting and focusing on what matters most.
     </p>
     <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later</p>
     <div class="hero-badge">
@@ -984,46 +991,155 @@ a { color: inherit; text-decoration: none; }
       Avid Media Composer Extension
     </div>
 
-    <div class="pain-points">
-      <div class="pain-point">
-        <span class="x-mark">&#x2715;</span>
-        Marker edits, one at a time
+    <!-- TOOLS -->
+    <section class="tools-section" id="tools">
+      <div class="container">
+        <div class="section-label"><span>// Tools</span></div>
+        <h2 class="section-title">What It Does</h2>
+        <p class="section-desc">Three groups of tools. One extension. No need to leave Avid.</p>
+
+        <div class="group-tabs">
+          <button class="group-tab active" type="button" data-group="editorial" onclick="switchGroup('editorial')">
+            <span class="tab-glyph g-editorial"></span> Editorial
+          </button>
+          <button class="group-tab" type="button" data-group="vfx" onclick="switchGroup('vfx')">
+            <span class="tab-glyph g-vfx"></span> VFX
+          </button>
+          <button class="group-tab" type="button" data-group="workflow" onclick="switchGroup('workflow')">
+            <span class="tab-glyph g-workflow"></span> Workflow
+          </button>
+        </div>
+
+        <!-- EDITORIAL -->
+        <div class="tools-grid tools-group active" data-group="editorial">
+          <div class="tool-card" data-group="editorial" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/SeqToTxt.mp4">
+            <div class="tool-name">Sequence To Text</div>
+            <div class="tool-blurb">Parses your sequence into a tab-delimited text file, for easy use in a word processor or Excel. Handy for a quick glance at the cut in text form or when you need a text file for your favorite database.</div>
+            <span class="tool-tag" data-group="editorial">editorial</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+          <div class="tool-card" data-group="editorial" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/MarkerCheck.mp4">
+            <div class="tool-name">Marker Check</div>
+            <div class="tool-blurb">Compares sequences and reports back what's been removed, added, or modified.</div>
+            <span class="tool-tag" data-group="editorial">editorial</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+          <div class="tool-card" data-group="editorial">
+            <div class="tool-name">Marker Forge</div>
+            <div class="tool-blurb">Change marker color, comment, or increment across a batch of markers all at once instead of changing one marker at a time.</div>
+            <span class="tool-tag" data-group="editorial">editorial</span>
+          </div>
+          <div class="tool-card" data-group="editorial" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/EdlListCompare.mp4">
+            <div class="tool-name">EDL List Compare</div>
+            <div class="tool-blurb">Compares your EDL against a pasted list, for those times when you're working on a turnover and want to be sure the EDL contains everything on the list.</div>
+            <span class="tool-tag" data-group="editorial">editorial</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+        </div>
+
+        <!-- VFX -->
+        <div class="tools-grid tools-group" data-group="vfx">
+          <div class="tool-card" data-group="vfx" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/SummarizeEffects.mp4">
+            <div class="tool-name">Summarize Effects</div>
+            <div class="tool-blurb">Analyzes the sequence for any effects on clips, reports what's present, and optionally creates markers with all the effect information and parameters.</div>
+            <span class="tool-tag" data-group="vfx">vfx</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+          <div class="tool-card" data-group="vfx" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/HandleCalculator.mp4">
+            <div class="tool-name">Handle Calculator</div>
+            <div class="tool-blurb">Takes the guesswork out of how many frames a shot needs. An easy-to-use calculator with all the fields you need to get the right number.</div>
+            <span class="tool-tag" data-group="vfx">vfx</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+          <div class="tool-card" data-group="vfx" data-slides="../slides/ElementalBender/ElementalBender_07.png">
+            <div class="tool-name">SubCap Maker</div>
+            <div class="tool-blurb">Simple way to take your sequence markers and turn them into a subcap-compatible file.</div>
+            <span class="tool-tag" data-group="vfx">vfx</span>
+          </div>
+          <div class="tool-card" data-group="vfx" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/SubclipIt.mp4">
+            <div class="tool-name">SubClip It</div>
+            <div class="tool-blurb">Batch-creates subclips from markers and renames them from an extensive set of parameters.</div>
+            <span class="tool-tag" data-group="vfx">vfx</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+        </div>
+
+        <!-- WORKFLOW -->
+        <div class="tools-grid tools-group" data-group="workflow">
+          <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_011.png">
+            <div class="tool-name">Bin/CSV Merge</div>
+            <div class="tool-blurb">One part bin mixed with one part CSV equals a tool for when you have data in a CSV you want batch-added to a bin column.</div>
+            <span class="tool-tag" data-group="workflow">workflow</span>
+          </div>
+          <div class="tool-card" data-group="workflow" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/ProjectBinTemplate.mp4">
+            <div class="tool-name">Project Bin Template</div>
+            <div class="tool-blurb">Stamp a consistent bin and folder structure into a project from a reusable outline template.</div>
+            <span class="tool-tag" data-group="workflow">workflow</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+          <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_012.png">
+            <div class="tool-name">Dropin Bender</div>
+            <div class="tool-blurb">Easily search for clips and create a new bin of all gathered.</div>
+            <span class="tool-tag" data-group="workflow">workflow</span>
+          </div>
+          <div class="tool-card" data-group="workflow" data-video="https://media.pragmaticfox.com/slides/ElementalBender/Demos/videos/SequenceTemplate.mp4">
+            <div class="tool-name">Sequence Template</div>
+            <div class="tool-blurb">Create any sort of sequence you need on your project, including track audio effects and track naming.</div>
+            <span class="tool-tag" data-group="workflow">workflow</span>
+            <button class="tool-preview-btn" type="button" onclick="openVideoModal(this)">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
+              Preview
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="pain-point">
-        <span class="x-mark">&#x2715;</span>
-        Timecode math in your head
-      </div>
-      <div class="pain-point">
-        <span class="x-mark">&#x2715;</span>
-        Rebuilding bins from scratch
-      </div>
-      <div class="pain-point">
-        <span class="x-mark">&#x2715;</span>
-        Tab-switching to get data out
-      </div>
-    </div>
+    </section>
+
 
     <div class="hero-cta">
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="hero-btn">Request beta access →</a>
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="hero-btn">Request beta access</a>
     </div>
 
     <!-- Slideshow -->
     <div class="panel-showcase">
       <div class="panel-frame">
+        <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
         <div class="slideshow" id="slideshow">
-          <img src="../slides/ElementalBender/ElementalBender_01.png" alt="Sequence To Text" class="active" data-name="Sequence To Text" data-group="editorial">
-          <img src="../slides/ElementalBender/ElementalBender_02.png" alt="Marker Check" data-name="Marker Check" data-group="editorial">
-          <img src="../slides/ElementalBender/ElementalBender_03.png" alt="Marker Forge" data-name="Marker Forge" data-group="editorial">
-          <img src="../slides/ElementalBender/ElementalBender_04.png" alt="EDL List Compare" data-name="EDL List Compare" data-group="editorial">
-          <img src="../slides/ElementalBender/ElementalBender_05.png" alt="Summarize Effects" data-name="Summarize Effects" data-group="vfx">
-          <img src="../slides/ElementalBender/ElementalBender_06.png" alt="Handle Calculator" data-name="Handle Calculator" data-group="vfx">
-          <img src="../slides/ElementalBender/ElementalBender_07.png" alt="SubCap Maker" data-name="SubCap Maker" data-group="vfx">
-          <img src="../slides/ElementalBender/ElementalBender_08.png" alt="SubClip It" data-name="SubClip It" data-group="vfx">
-          <img src="../slides/ElementalBender/ElementalBender_09.png" alt="Project Bin Template" data-name="Project Bin Template" data-group="workflow">
-          <img src="../slides/ElementalBender/ElementalBender_010.png" alt="Sequence Template" data-name="Sequence Template" data-group="workflow">
-          <img src="../slides/ElementalBender/ElementalBender_011.png" alt="Bin/CSV Merge" data-name="Bin/CSV Merge" data-group="workflow">
-          <img src="../slides/ElementalBender/ElementalBender_012.png" alt="Dropin Bender" data-name="Dropin Bender" data-group="workflow">
+          <img src="../slides/ElementalBender/ElementalBender_01.png" alt="Sequence To Text" class="active" data-name="Sequence To Text" data-group="editorial" decoding="async" fetchpriority="high">
+          <img src="../slides/ElementalBender/ElementalBender_02.png" alt="Marker Check" data-name="Marker Check" data-group="editorial" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_03.png" alt="Marker Forge" data-name="Marker Forge" data-group="editorial" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_04.png" alt="EDL List Compare" data-name="EDL List Compare" data-group="editorial" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_05.png" alt="Summarize Effects" data-name="Summarize Effects" data-group="vfx" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_06.png" alt="Handle Calculator" data-name="Handle Calculator" data-group="vfx" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_07.png" alt="SubCap Maker" data-name="SubCap Maker" data-group="vfx" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_08.png" alt="SubClip It" data-name="SubClip It" data-group="vfx" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_09.png" alt="Project Bin Template" data-name="Project Bin Template" data-group="workflow" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_010.png" alt="Sequence Template" data-name="Sequence Template" data-group="workflow" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_011.png" alt="Bin/CSV Merge" data-name="Bin/CSV Merge" data-group="workflow" loading="lazy" decoding="async">
+          <img src="../slides/ElementalBender/ElementalBender_012.png" alt="Dropin Bender" data-name="Dropin Bender" data-group="workflow" loading="lazy" decoding="async">
         </div>
+        <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
         <div class="slide-label" id="slideLabel">Sequence To Text</div>
       </div>
       <div class="slide-dots" id="slideDots"></div>
@@ -1031,142 +1147,10 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- TOOLS -->
-<section class="tools-section" id="tools">
-  <div class="container">
-    <div class="section-label"><span>// the tools</span></div>
-    <h2 class="section-title">What it does</h2>
-    <p class="section-desc">Three groups of tools. One extension. No need to leave Avid.</p>
-
-    <div class="group-tabs">
-      <button class="group-tab active" data-group="editorial" onclick="switchGroup('editorial')">
-        <span class="tab-glyph g-editorial"></span> Editorial
-      </button>
-      <button class="group-tab" data-group="vfx" onclick="switchGroup('vfx')">
-        <span class="tab-glyph g-vfx"></span> VFX
-      </button>
-      <button class="group-tab" data-group="workflow" onclick="switchGroup('workflow')">
-        <span class="tab-glyph g-workflow"></span> Workflow
-      </button>
-    </div>
-
-    <!-- EDITORIAL -->
-    <div class="tools-grid tools-group active" data-group="editorial">
-      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/SeqToTxt.mp4">
-        <div class="tool-name">Sequence To Text</div>
-        <div class="tool-blurb">Parses your sequence into a tab-delimited text file, for easy use in a word processor or Excel. Handy for a quick glance at the cut in text form or when you need a text file for your favorite database.</div>
-        <span class="tool-tag" data-group="editorial">editorial</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/MarkerCheck.mp4">
-        <div class="tool-name">Marker Check</div>
-        <div class="tool-blurb">Compares sequences and reports back what's been removed, added, or modified.</div>
-        <span class="tool-tag" data-group="editorial">editorial</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-      <div class="tool-card" data-group="editorial">
-        <div class="tool-name">Marker Forge</div>
-        <div class="tool-blurb">Change marker color, comment, or increment across a batch of markers all at once instead of changing one marker at a time.</div>
-        <span class="tool-tag" data-group="editorial">editorial</span>
-      </div>
-      <div class="tool-card" data-group="editorial" data-video="../slides/ElementalBender/Demos/videos/EdlListCompare.mp4">
-        <div class="tool-name">EDL List Compare</div>
-        <div class="tool-blurb">Compares your EDL against a pasted list, for those times when you're working on a turnover and want to be sure the EDL contains everything on the list.</div>
-        <span class="tool-tag" data-group="editorial">editorial</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-    </div>
-
-    <!-- VFX -->
-    <div class="tools-grid tools-group" data-group="vfx">
-      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/SummarizeEffects.mp4">
-        <div class="tool-name">Summarize Effects</div>
-        <div class="tool-blurb">Analyzes the sequence for any effects on clips, reports what's present, and optionally creates markers with all the effect information and parameters.</div>
-        <span class="tool-tag" data-group="vfx">vfx</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/HandleCalculator.mp4">
-        <div class="tool-name">Handle Calculator</div>
-        <div class="tool-blurb">Takes the guesswork out of how many frames a shot needs. An easy-to-use calculator with all the fields you need to get the right number.</div>
-        <span class="tool-tag" data-group="vfx">vfx</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-      <div class="tool-card" data-group="vfx" data-slides="../slides/ElementalBender/ElementalBender_07.png">
-        <div class="tool-name">SubCap Maker</div>
-        <div class="tool-blurb">Simple way to take your sequence markers and turn them into a subcap-compatible file.</div>
-        <span class="tool-tag" data-group="vfx">vfx</span>
-      </div>
-      <div class="tool-card" data-group="vfx" data-video="../slides/ElementalBender/Demos/videos/SubclipIt.mp4">
-        <div class="tool-name">SubClip It</div>
-        <div class="tool-blurb">Batch-creates subclips from markers and renames them from an extensive set of parameters.</div>
-        <span class="tool-tag" data-group="vfx">vfx</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-    </div>
-
-    <!-- WORKFLOW -->
-    <div class="tools-grid tools-group" data-group="workflow">
-      <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_011.png">
-        <div class="tool-name">Bin/CSV Merge</div>
-        <div class="tool-blurb">One part bin mixed with one part CSV equals a tool for when you have data in a CSV you want batch-added to a bin column.</div>
-        <span class="tool-tag" data-group="workflow">workflow</span>
-      </div>
-      <div class="tool-card" data-group="workflow" data-video="../slides/ElementalBender/Demos/videos/ProjectBinTemplate.mp4">
-        <div class="tool-name">Project Bin Template</div>
-        <div class="tool-blurb">Stamp a consistent bin and folder structure into a project from a reusable outline template.</div>
-        <span class="tool-tag" data-group="workflow">workflow</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-      <div class="tool-card" data-group="workflow" data-slides="../slides/ElementalBender/ElementalBender_012.png">
-        <div class="tool-name">Dropin Bender</div>
-        <div class="tool-blurb">Easily search for clips and create a new bin of all gathered.</div>
-        <span class="tool-tag" data-group="workflow">workflow</span>
-      </div>
-      <div class="tool-card" data-group="workflow" data-video="../slides/ElementalBender/Demos/videos/SequenceTemplate.mp4">
-        <div class="tool-name">Sequence Template</div>
-        <div class="tool-blurb">Create any sort of sequence you need on your project, including track audio effects and track naming.</div>
-        <span class="tool-tag" data-group="workflow">workflow</span>
-        <button class="tool-preview-btn" onclick="openVideoModal(this)">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BETA -->
-<section class="beta-section">
-  <div class="container">
-    <div class="beta-inner">
-      <div class="beta-badge"><span class="beta-dot"></span> Private Beta</div>
-      <h2 class="beta-heading">Get early access</h2>
-      <p class="beta-sub">Elemental Bender is currently in private beta. Drop me a line and I'll get you set up.</p>
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="beta-btn">Request access →</a>
-      <p class="beta-note">No subscription required. Just a reply with download instructions.</p>
-    </div>
-  </div>
+<!-- WORKFLOW CTA -->
+<section class="pf-final product-final" aria-labelledby="elemental-contact-title">
+  <h2 id="elemental-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+  <a href="../contact/">Get in touch</a>
 </section>
 
 
@@ -1186,13 +1170,24 @@ a { color: inherit; text-decoration: none; }
   <div class="tool-preview-name" id="toolPreviewName"></div>
 </div>
 
+<!-- IMAGE MODAL -->
+<div class="image-modal-overlay" id="imageModalOverlay" aria-hidden="true" onclick="handleImageModalClick(event)">
+  <div class="image-modal" role="dialog" aria-modal="true" aria-labelledby="imageModalTitle">
+    <img id="imageModalImg" alt="">
+    <div class="image-modal-footer">
+      <span class="image-modal-title" id="imageModalTitle"></span>
+      <button class="image-modal-close" type="button" onclick="closeImageModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- VIDEO MODAL -->
-<div class="video-modal-overlay" id="videoModalOverlay" onclick="handleModalClick(event)">
+<div class="video-modal-overlay" id="videoModalOverlay" aria-hidden="true" onclick="handleModalClick(event)">
   <div class="video-modal" id="videoModal">
     <video id="modalVideo" muted playsinline loop controls></video>
     <div class="video-modal-footer">
       <span class="video-modal-title" id="modalTitle"></span>
-      <button class="video-modal-close" onclick="closeVideoModal()">
+      <button class="video-modal-close" type="button" onclick="closeVideoModal()">
         <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
         Close
       </button>
@@ -1209,7 +1204,18 @@ a { color: inherit; text-decoration: none; }
   let timer;
 
   slides.forEach((slide, i) => {
+    slide.tabIndex = i === 0 ? 0 : -1;
+    slide.setAttribute('role', 'button');
+    slide.setAttribute('aria-label', 'Open ' + (slide.dataset.name || slide.alt || 'slide') + ' image');
+    slide.addEventListener('click', () => openImageModal(slide));
+    slide.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openImageModal(slide);
+      }
+    });
     const dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
     dot.dataset.group = slide.dataset.group;
     dot.setAttribute('aria-label', slide.dataset.name);
@@ -1218,12 +1224,16 @@ a { color: inherit; text-decoration: none; }
   });
 
   const dots = dotsContainer.querySelectorAll('.slide-dot');
+  const previousButton = document.querySelector('.slide-arrow-prev');
+  const nextButton = document.querySelector('.slide-arrow-next');
 
   function goTo(index) {
+    slides[current].tabIndex = -1;
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = index;
     slides[current].classList.add('active');
+    slides[current].tabIndex = 0;
     dots[current].classList.add('active');
     label.textContent = slides[current].dataset.name;
     resetTimer();
@@ -1233,9 +1243,12 @@ a { color: inherit; text-decoration: none; }
     goTo((current + 1) % slides.length);
   }
 
+  previousButton.addEventListener('click', () => goTo((current - 1 + slides.length) % slides.length));
+  nextButton.addEventListener('click', next);
+
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(next, 1750);
+    timer = setInterval(next, 2625);
   }
 
   resetTimer();
@@ -1292,14 +1305,39 @@ function switchGroup(group) {
 
 // ── Video modal (click) ──────────────────────────────────────────
 const modalOverlay = document.getElementById('videoModalOverlay');
+const videoModal   = document.getElementById('videoModal');
 const modalVideo   = document.getElementById('modalVideo');
 const modalTitle   = document.getElementById('modalTitle');
+const modalFooter  = videoModal ? videoModal.querySelector('.video-modal-footer') : null;
+
+function fitVideoModal() {
+  if (!videoModal || !modalVideo.videoWidth || !modalVideo.videoHeight) return;
+
+  const gutter = Math.max(24, Math.min(48, window.innerWidth * 0.04));
+  const footerHeight = modalFooter ? modalFooter.getBoundingClientRect().height : 62;
+  const maxWidth = Math.max(240, window.innerWidth - gutter * 2);
+  const maxHeight = Math.max(240, window.innerHeight - footerHeight - gutter * 2);
+  const aspect = modalVideo.videoWidth / modalVideo.videoHeight;
+  const width = Math.floor(Math.min(1350, maxWidth, maxHeight * aspect));
+  if (width <= 0) return;
+
+  videoModal.style.width = width + 'px';
+  modalVideo.style.width = width + 'px';
+  modalVideo.style.height = Math.floor(width / aspect) + 'px';
+}
+
+modalVideo.addEventListener('loadedmetadata', fitVideoModal);
+window.addEventListener('resize', fitVideoModal);
 
 function openVideoModal(btn) {
   const card = btn.closest('.tool-card[data-video]');
+  videoModal.style.removeProperty('width');
+  modalVideo.style.removeProperty('width');
+  modalVideo.style.removeProperty('height');
   modalVideo.src = card.dataset.video;
   modalTitle.textContent = card.querySelector('.tool-name').textContent;
   modalOverlay.classList.add('open');
+  fitVideoModal();
   modalVideo.play().catch(() => {});
 }
 
@@ -1307,15 +1345,49 @@ function closeVideoModal() {
   modalOverlay.classList.remove('open');
   modalVideo.pause();
   modalVideo.src = '';
+  videoModal.style.removeProperty('width');
+  modalVideo.style.removeProperty('width');
+  modalVideo.style.removeProperty('height');
 }
 
 function handleModalClick(e) {
   if (e.target === modalOverlay) closeVideoModal();
 }
 
+const imageModalOverlay = document.getElementById('imageModalOverlay');
+const imageModalImg = document.getElementById('imageModalImg');
+const imageModalTitle = document.getElementById('imageModalTitle');
+
+function openImageModal(image) {
+  if (!imageModalOverlay || !image) return;
+  imageModalImg.src = image.currentSrc || image.src;
+  imageModalImg.alt = image.alt || '';
+  imageModalTitle.textContent = image.dataset.name || image.alt || 'Image preview';
+  imageModalOverlay.setAttribute('aria-hidden', 'false');
+  imageModalOverlay.classList.add('open');
+  document.body.classList.add('image-modal-open');
+}
+
+function closeImageModal() {
+  if (!imageModalOverlay) return;
+  imageModalOverlay.classList.remove('open');
+  imageModalOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('image-modal-open');
+  imageModalImg.removeAttribute('src');
+  imageModalTitle.textContent = '';
+}
+
+function handleImageModalClick(event) {
+  if (event.target === imageModalOverlay) closeImageModal();
+}
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeVideoModal();
+  if (e.key === 'Escape') {
+    closeVideoModal();
+    closeImageModal();
+  }
 });
 </script>
+<script src="../scripts/pragmatic.js"></script>
 </body>
 </html>
