@@ -935,7 +935,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--faint);
 }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260912-mobile-layout3">
+<link rel="stylesheet" href="../styles/pragmatic.css?v=20260912-mobile-layout3">
 </head>
 <body class="product-page product-elemental">
 
@@ -970,6 +970,8 @@ a { color: inherit; text-decoration: none; }
       </li>
       <li><a href="../about/">About</a></li>
       <li><a href="../contact/">Contact</a></li>
+      <li data-cart-link><a href="../cart/">Cart <span data-cart-count class="cart-count" hidden></span></a></li>
+      <li><a href="../account/">Account</a></li>
     </ul>
   </div>
 </header>
@@ -1117,8 +1119,32 @@ a { color: inherit; text-decoration: none; }
     </section>
 
 
-    <div class="hero-cta">
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=Elemental%20Bender%20Beta%20Access" class="hero-btn">Request beta access</a>
+    <div class="hero-cta subscription-picker">
+      <div class="subscription-dropdown" data-subscription-dropdown>
+        <button
+          type="button"
+          class="hero-btn subscription-dropdown-trigger"
+          data-billing-dropdown-toggle
+          aria-expanded="false"
+          aria-controls="elementalBenderBillingMenu"
+        >
+          <span>Subscribe</span>
+          <span class="subscription-dropdown-caret" aria-hidden="true"></span>
+        </button>
+        <div
+          id="elementalBenderBillingMenu"
+          class="subscription-dropdown-menu"
+          data-billing-dropdown-menu
+          hidden
+        >
+          <a href="../cart/" class="subscription-dropdown-option" data-add-to-cart="elemental_bender" data-billing-interval="month">
+            <span>Monthly</span><span>$29.99 / month</span>
+          </a>
+          <a href="../cart/" class="subscription-dropdown-option" data-add-to-cart="elemental_bender" data-billing-interval="year">
+            <span>Annual</span><span>$299.99 / year</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Slideshow -->
@@ -1388,6 +1414,7 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
+<script src="../cart.js?v=20260912-single-subscribe-dropdown"></script>
 <script src="../scripts/pragmatic.js"></script>
 </body>
 </html>

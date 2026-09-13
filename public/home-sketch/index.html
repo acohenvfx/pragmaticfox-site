@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pragmatic Fox — Sketch</title>
+  <meta name="description" content="Pragmatic Fox makes clever, practical workflow tools for editors and VFX teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sketch.css?v=20260827-button-palette">
+</head>
+<body>
+  <main class="sketch-home">
+    <section class="sketch-lockup" aria-labelledby="sketch-title">
+      <h1 class="sketch-name" id="sketch-title">Pragmatic <span>Fox</span></h1>
+
+      <div class="sketch-actions">
+      <div class="products-dropdown" id="productsDropdown">
+        <button class="products-toggle" type="button" aria-expanded="false" aria-controls="productsMenu">
+          Products
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 1.06l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="products-menu" id="productsMenu" role="menu">
+          <a href="../tools/ElementalBender.html" role="menuitem">
+            <span class="tool-dot eb" aria-hidden="true"></span>
+            <span class="tool-info"><strong>Elemental Bender</strong><small>Editorial &amp; VFX suite</small></span>
+          </a>
+          <a href="../tools/DifferenceEngine.html" role="menuitem">
+            <span class="tool-dot de" aria-hidden="true"></span>
+            <span class="tool-info"><strong>Difference Engine</strong><small>Source vs. record comparison</small></span>
+          </a>
+          <a href="../tools/aebridge.html" role="menuitem">
+            <span class="tool-dot ae" aria-hidden="true"></span>
+            <span class="tool-info"><strong>AE Bridge</strong><small>Avid and After Effects round-trip</small></span>
+          </a>
+        </div>
+      </div>
+      </div>
+
+      <nav class="sketch-links" aria-label="Secondary navigation">
+        <a href="../about/">About</a>
+        <a class="contact-button" href="mailto:andrewcoheneditor@gmail.com">Contact</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="sketch-footer">© 2026 Pragmatic Fox. All rights reserved.</footer>
+
+  <script>
+    (() => {
+      const dropdown = document.getElementById('productsDropdown');
+      const toggle = dropdown.querySelector('.products-toggle');
+      const close = () => {
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      };
+      toggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+    })();
+  </script>
+</body>
+</html>

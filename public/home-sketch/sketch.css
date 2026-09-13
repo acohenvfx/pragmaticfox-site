@@ -1,0 +1,316 @@
+:root {
+  --sketch-field: #080e18;
+  --sketch-field-soft: #0d1624;
+  --sketch-ink: #eef5fb;
+  --sketch-muted: #8aa4bf;
+  --sketch-faint: #5b7793;
+  --sketch-line: rgba(120, 148, 180, .18);
+  --sketch-line-strong: rgba(120, 148, 180, .3);
+  --sketch-brand: oklch(0.78 0.15 78);
+  --sketch-font-display: "Space Grotesk", system-ui, sans-serif;
+  --sketch-font-ui: "Manrope", system-ui, sans-serif;
+  --sketch-font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  min-height: 100%;
+  background: var(--sketch-field);
+  color: var(--sketch-ink);
+  font-family: var(--sketch-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  min-height: 100svh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(68% 58% at 50% 42%, rgba(52, 77, 122, .17), transparent 68%),
+    radial-gradient(38% 32% at 18% 84%, rgba(242, 201, 76, .05), transparent 75%),
+    var(--sketch-field);
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: color-mix(in srgb, var(--sketch-brand) 40%, transparent); }
+
+@keyframes sketch-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.sketch-home {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 44px 24px 80px;
+}
+.sketch-lockup {
+  width: min(520px, 100%);
+  text-align: center;
+  animation: sketch-fade-up .65s ease both;
+}
+.sketch-name {
+  margin: 0;
+  font: 700 clamp(2.2rem, 6vw, 3.25rem)/1 "Space Grotesk", sans-serif;
+  letter-spacing: -.045em;
+}
+.sketch-name span { color: var(--sketch-brand); }
+.sketch-title {
+  margin: 15px 0 38px;
+  color: var(--sketch-muted);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.45;
+  font-weight: 500;
+}
+.sketch-title span:last-child { color: var(--sketch-ink); }
+.products-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.products-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 28px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--sketch-brand);
+  color: #0a1018;
+  font: 700 .94rem var(--sketch-font-ui);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.products-toggle:hover,
+.products-toggle:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px -5px oklch(0.78 0.15 78 / .56);
+  outline: none;
+}
+.products-toggle svg {
+  width: 14px;
+  height: 14px;
+  transition: transform .22s ease;
+}
+.products-dropdown.open .products-toggle svg { transform: rotate(180deg); }
+.products-menu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 11px);
+  left: 50%;
+  width: min(310px, calc(100vw - 40px));
+  padding: 8px;
+  border: 1px solid var(--sketch-line-strong);
+  border-radius: 12px;
+  background: rgba(13, 22, 36, .96);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .32);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.products-dropdown.open .products-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.products-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 13px;
+  border-radius: 8px;
+  text-align: left;
+  transition: background .15s ease;
+}
+.products-menu a:hover,
+.products-menu a:focus-visible {
+  background: rgba(120, 148, 180, .1);
+  outline: none;
+}
+.tool-dot {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 4px;
+}
+.tool-dot.eb { background: oklch(0.78 0.15 78); }
+.tool-dot.de { background: oklch(0.74 0.14 200); }
+.tool-dot.ae { background: oklch(0.72 0.16 155); }
+.tool-info { display: grid; gap: 3px; }
+.tool-info strong {
+  color: var(--sketch-ink);
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.tool-info small {
+  color: var(--sketch-faint);
+  font-size: .7rem;
+  line-height: 1.25;
+}
+.sketch-links {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  color: var(--sketch-faint);
+  font-size: .8rem;
+}
+.sketch-links a {
+  color: var(--sketch-muted);
+  border-bottom: 1px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+.sketch-links a:hover,
+.sketch-links a:focus-visible {
+  color: var(--sketch-ink);
+  border-color: var(--sketch-line-strong);
+  outline: none;
+}
+.sketch-footer {
+  padding: 16px 24px;
+  color: var(--sketch-faint);
+  text-align: center;
+  font-size: .72rem;
+}
+@media (max-width: 520px) {
+  .sketch-home { padding-inline: 18px; }
+  .sketch-links { flex-direction: column; gap: 8px; }
+  .sketch-links span { display: none; }
+  .sketch-title { margin-bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+/* Orange fox direction */
+/* Text-only wordmark */
+.sketch-name {
+  margin: 0 0 30px;
+  font: 600 clamp(2.15rem, 6vw, 3.15rem)/1 "Space Grotesk", sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.sketch-name span { color: var(--sketch-brand); }
+@media (max-width: 520px) {
+  .sketch-name {
+    font-size: clamp(1.65rem, 9vw, 2.4rem);
+    letter-spacing: .1em;
+  }
+}
+/* Bottom Contact placement */
+html,
+body {
+  background: var(--sketch-orange) !important;
+}
+.sketch-links {
+  gap: 18px;
+}
+.sketch-links .contact-button {
+  color: var(--sketch-ink);
+  border-bottom: 0;
+  margin-left: 2px;
+}
+.sketch-links .contact-button:hover,
+.sketch-links .contact-button:focus-visible {
+  color: var(--sketch-ink);
+  border-color: rgba(23, 19, 16, .34);
+}
+@media (max-width: 520px) {
+  .sketch-links .contact-button {
+    margin: 4px 0 0;
+  }
+}
+/* Dark sketch direction */
+:root {
+  --sketch-orange: #dc6f2b;
+  --sketch-orange-dark: #a94712;
+}
+
+html,
+body {
+  background: var(--sketch-field) !important;
+}
+body {
+  background:
+    radial-gradient(68% 58% at 50% 42%, rgba(52, 77, 122, .17), transparent 68%),
+    radial-gradient(38% 32% at 18% 84%, rgba(242, 201, 76, .05), transparent 75%),
+    var(--sketch-field) !important;
+}
+.sketch-links a {
+  color: var(--sketch-muted);
+}
+.sketch-links a:hover,
+.sketch-links a:focus-visible {
+  color: var(--sketch-ink);
+  border-color: var(--sketch-line-strong);
+}
+.sketch-links .contact-button {
+  background: var(--sketch-orange);
+  color: #171310;
+  border-color: rgba(242, 201, 76, .45);
+}
+.sketch-links .contact-button:hover,
+.sketch-links .contact-button:focus-visible {
+  background: var(--sketch-orange-dark);
+  color: var(--sketch-ink);
+}
+.sketch-footer {
+  color: var(--sketch-faint);
+}
+/* Warm orange homepage field */
+html {
+  background: #d65a16 !important;
+}
+body {
+  color: #171310 !important;
+  background:
+    radial-gradient(72% 76% at 82% 10%, rgba(255, 193, 94, .58), transparent 68%),
+    radial-gradient(52% 64% at 8% 82%, rgba(159, 57, 7, .42), transparent 72%),
+    linear-gradient(135deg, #9f3907 0%, #d65a16 46%, #ef9240 100%) !important;
+}
+.sketch-title {
+  color: rgba(23, 19, 16, .72);
+}
+.sketch-title span:last-child {
+  color: #171310;
+}
+.sketch-links,
+.sketch-links a {
+  color: rgba(23, 19, 16, .72);
+}
+.sketch-links a:hover,
+.sketch-links a:focus-visible {
+  color: #171310;
+  border-color: rgba(23, 19, 16, .42);
+}
+.sketch-links .contact-button {
+  background: #171310;
+  color: #f2c94c;
+  border-color: #171310;
+}
+.sketch-links .contact-button:hover,
+.sketch-links .contact-button:focus-visible {
+  background: #2a211c;
+  color: #f7d86c;
+}
+.sketch-footer {
+  color: rgba(23, 19, 16, .56);
+}
+.products-menu .tool-info strong {
+  color: var(--sketch-ink);
+}
+.products-menu .tool-info small {
+  color: var(--sketch-faint);
+}
+
+/* Reference CTA palette */
+.sketch-links .contact-button {
+  background: #daa83c !important;
+  color: #1a202c !important;
+  border-color: #1a202c !important;
+}
+.sketch-links .contact-button:hover,
+.sketch-links .contact-button:focus-visible {
+  background: #c79732 !important;
+  color: #1a202c !important;
+}

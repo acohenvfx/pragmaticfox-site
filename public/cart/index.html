@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart — Pragmatic Fox</title>
+<meta name="description" content="Review Pragmatic Fox products before secure billing.">
+<meta name="theme-color" content="#f2c94c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field-0: #0a111d;
+  --panel: rgba(16, 26, 40, .84);
+  --line: rgba(120, 148, 180, .18);
+  --line-strong: rgba(120, 148, 180, .32);
+  --ink: #eef5fb;
+  --ink-2: #d5e0ec;
+  --muted: #8aa4bf;
+  --faint: #607b98;
+  --brand: oklch(.78 .15 78);
+  --cyan: oklch(.74 .14 200);
+  --ok: #34d399;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #080e18; color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; background: radial-gradient(65% 55% at 12% 0%, rgba(60, 80, 140, .18), transparent 58%), radial-gradient(60% 50% at 90% 5%, rgba(50, 120, 130, .12), transparent 58%), #080e18; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.site-nav { position: fixed; inset: 0 0 auto; z-index: 10; background: rgba(8, 14, 24, .76); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px) saturate(1.4); }
+.site-nav .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-brand { font: 600 1.15rem var(--font-display); }
+.nav-brand b { font-weight: 700; }
+.nav-links { display: flex; gap: 26px; list-style: none; color: var(--muted); font-size: .85rem; font-weight: 600; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.cart-shell { max-width: 960px; margin: 0 auto; padding: 132px 24px 72px; }
+.eyebrow { color: var(--brand); font: 500 .76rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.02em; }
+h1 { max-width: 620px; font-size: clamp(2.7rem, 6vw, 4.5rem); line-height: 1.02; }
+h1 span { color: var(--cyan); }
+.intro { max-width: 600px; color: var(--muted); line-height: 1.65; margin-top: 18px; }
+.cart-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 18px; margin-top: 38px; align-items: start; }
+.panel { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 18px; padding: clamp(22px, 4vw, 34px); box-shadow: 0 24px 80px -46px rgba(0, 0, 0, .85); }
+.panel h2 { font-size: 1.45rem; }
+.panel-copy { color: var(--muted); line-height: 1.55; font-size: .88rem; margin-top: 8px; }
+.cart-list { display: grid; gap: 10px; margin-top: 24px; }
+.cart-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.cart-row:last-child { border-bottom: 0; }
+.cart-name { color: var(--ink-2); font-weight: 700; }
+.cart-detail { color: var(--faint); font-size: .78rem; margin-top: 4px; }
+.billing-choice { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.billing-choice button { border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--muted); padding: 6px 10px; font-size: .72rem; }
+.billing-choice button.selected { border-color: var(--brand); background: rgba(245, 201, 91, .12); color: var(--ink-2); }
+.cart-price { color: var(--ink); font: 600 .84rem var(--font-mono); white-space: nowrap; }
+.cart-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; align-items: center; }
+.remove-button { border: 0; background: transparent; color: var(--muted); font-size: .76rem; padding: 6px 0; }
+.remove-button:hover { color: var(--ink); text-decoration: underline; }
+.summary { display: grid; gap: 13px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+.summary-row { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .84rem; }
+.summary-row strong { color: var(--ink-2); font-weight: 600; }
+.summary-row.total { padding-top: 8px; border-top: 1px solid var(--line); color: var(--ink-2); }
+.summary-row.total strong { color: var(--brand); font: 600 .96rem var(--font-mono); }
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.button { display: inline-flex; justify-content: center; align-items: center; border: 1px solid transparent; border-radius: 11px; padding: 11px 16px; font-size: .84rem; font-weight: 800; transition: transform .2s, opacity .2s, background .2s, border-color .2s; }
+.button:hover { transform: translateY(-2px); }
+.button.primary { background: var(--brand); color: #0a1018; }
+.button.secondary { background: transparent; border-color: var(--line-strong); color: var(--ink-2); }
+.button.secondary:hover { background: rgba(120, 148, 180, .08); border-color: var(--muted); }
+.empty { color: var(--faint); line-height: 1.6; padding: 18px 0 8px; }
+.empty .button { margin-top: 18px; }
+.multi-note { color: var(--muted); font-size: .78rem; line-height: 1.55; margin-top: 18px; }
+.fine-print { color: var(--faint); font-size: .75rem; line-height: 1.6; margin-top: 24px; }
+footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28px 24px 34px; }
+[hidden] { display: none !important; }
+@media (max-width: 760px) {
+  .site-nav .container { height: 58px; }
+  .nav-links { gap: 14px; font-size: .78rem; }
+  .nav-links li:nth-child(2) { display: none; }
+  .cart-shell { padding-top: 108px; }
+  .cart-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .cart-row { display: block; }
+  .cart-actions { justify-content: flex-start; margin-top: 10px; }
+}
+</style>
+<link rel="stylesheet" href="../styles/pragmatic.css?v=20260912-mobile-layout3">
+<link rel="stylesheet" href="../styles/commerce.css?v=20260911-route-consistency3">
+</head>
+<body class="commerce-page">
+<header class="pf-nav">
+  <div class="pf-nav-inner">
+    <a class="pf-brand" href="../" aria-label="Pragmatic Fox home"><img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true"><span>Pragmatic <strong>Fox</strong></span></a>
+    <nav aria-label="Primary navigation">
+    <ul class="pf-nav-links">
+      <li><a href="../">Home</a></li>
+      <li class="nav-dropdown" id="toolsDropdown">
+        <a class="nav-products-link" href="../products/">Products</a>
+          <button class="nav-dropdown-toggle" type="button" aria-label="Open products menu" onclick="document.getElementById('toolsDropdown').classList.toggle('open')"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 1 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25-4.5a.75.75 0 0 1 1.08 0l-4.25 4.5a.75.75 0 1 1 .02-1.06Z" clip-rule="evenodd"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="../tools/ElementalBender"><span class="tool-dot eb"></span><span><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+          <a href="../tools/DifferenceEngine"><span class="tool-dot de"></span><span><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+          <a href="../tools/aebridge"><span class="tool-dot ae"></span><span><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+        </div>
+      </li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
+      <li data-cart-link><a href="./" aria-current="page">Cart <span data-cart-count class="cart-count" hidden></span></a></li>
+      <li><a href="../account/">Account</a></li>
+    </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="cart-shell">
+  <p class="eyebrow">Pragmatic Fox products</p>
+  <h1>Your <span>cart.</span></h1>
+  <p class="intro">Review your tools before continuing to secure billing. Choose monthly or annual billing for each subscription. Each includes a 14-day trial when eligible.</p>
+
+  <div class="cart-grid">
+    <section class="panel" aria-labelledby="cart-heading">
+      <h2 id="cart-heading">Selected tools</h2>
+        <p class="panel-copy">Subscriptions are saved in this browser while you shop. Billing details are entered securely at Stripe.</p>
+      <div class="cart-list" id="cartList"></div>
+      <div class="button-row">
+        <button class="button secondary" id="clearCart" type="button">Clear cart</button>
+      </div>
+    </section>
+
+    <aside class="panel" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Summary</h2>
+      <div class="summary">
+        <div class="summary-row"><span>Due today</span><strong>$0.00</strong></div>
+        <div class="summary-row"><span>Trial</span><strong>14 days</strong></div>
+        <div class="summary-row total"><span>After trial</span><strong id="cartTotal">$0</strong></div>
+      </div>
+      <a class="button primary" id="checkoutButton" href="../checkout/" hidden>Continue to checkout</a>
+      <p class="multi-note" id="multiNote" hidden>Each tool has its own subscription. Choose Checkout beside a product to start its secure billing session.</p>
+      <p class="fine-print">Stripe collects billing details and payment information on its secure checkout page. This site does not handle card numbers.</p>
+    </aside>
+  </div>
+</main>
+
+<footer>© 2026 Pragmatic Fox. All rights reserved.</footer>
+
+<script src="../cart.js"></script>
+<script>
+(() => {
+  const cart = window.AC_CART
+  const list = document.querySelector('#cartList')
+  const total = document.querySelector('#cartTotal')
+  const checkout = document.querySelector('#checkoutButton')
+  const multiNote = document.querySelector('#multiNote')
+
+  function checkoutUrl(item) {
+    return `../checkout/?product=${encodeURIComponent(item.productId)}&interval=${encodeURIComponent(item.interval)}`
+  }
+
+  function render() {
+    const items = cart.read()
+    list.replaceChildren()
+    if (!items.length) {
+      const empty = document.createElement('p')
+      empty.className = 'empty'
+      empty.textContent = 'Your cart is empty.'
+      const browse = document.createElement('a')
+      browse.className = 'button primary'
+      browse.href = '../products/'
+      browse.textContent = 'Browse products'
+      empty.append(document.createElement('br'), browse)
+      list.append(empty)
+    } else {
+      for (const item of items) {
+        const product = cart.products[item.productId]
+        const row = document.createElement('div')
+        row.className = 'cart-row'
+        const copy = document.createElement('div')
+        const name = document.createElement('div')
+        name.className = 'cart-name'
+        name.textContent = product.name
+        const detail = document.createElement('div')
+        detail.className = 'cart-detail'
+        detail.textContent = item.interval === 'year' ? '14-day trial · annual subscription' : '14-day trial · monthly subscription'
+        copy.append(name, detail)
+        const billingChoice = document.createElement('div')
+        billingChoice.className = 'billing-choice'
+        for (const interval of ['month', 'year']) {
+          const option = document.createElement('button')
+          option.type = 'button'
+          option.className = item.interval === interval ? 'selected' : ''
+          option.textContent = interval === 'year' ? `$${product.prices.year} / year` : `$${product.prices.month} / month`
+          option.onclick = () => cart.setInterval(item.productId, interval)
+          billingChoice.append(option)
+        }
+        copy.append(billingChoice)
+        const actions = document.createElement('div')
+        actions.className = 'cart-actions'
+        const price = document.createElement('span')
+        price.className = 'cart-price'
+        price.textContent = item.interval === 'year' ? `$${product.prices.year} / year` : `$${product.prices.month} / month`
+        const billing = document.createElement('a')
+        billing.className = 'button secondary'
+        billing.href = checkoutUrl(item)
+        billing.textContent = 'Checkout'
+        const remove = document.createElement('button')
+        remove.className = 'remove-button'
+        remove.type = 'button'
+        remove.textContent = 'Remove'
+        remove.onclick = () => cart.remove(item.productId)
+        actions.append(price, billing, remove)
+        row.append(copy, actions)
+        list.append(row)
+      }
+    }
+
+    const monthly = items.filter((item) => item.interval === 'month').reduce((sum, item) => sum + cart.price(item.productId, 'month'), 0)
+    const annual = items.filter((item) => item.interval === 'year').reduce((sum, item) => sum + cart.price(item.productId, 'year'), 0)
+    const summary = []
+    if (monthly) summary.push(`$${monthly} / month`)
+    if (annual) summary.push(`$${annual} / year`)
+    total.textContent = summary.join(' + ') || '$0'
+    checkout.hidden = items.length !== 1
+    if (items.length === 1) checkout.href = checkoutUrl(items[0])
+    multiNote.hidden = items.length < 2
+  }
+
+  document.querySelector('#clearCart').onclick = () => cart.clear()
+  window.addEventListener('ac-cart-change', render)
+  render()
+})()
+</script>
+<script src="../scripts/pragmatic.js"></script>
+</body>
+</html>

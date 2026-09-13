@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' https://media.pragmaticfox.com; connect-src 'self' https://api.web3forms.com; object-src 'none'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com; frame-src https://post-tools-95000.firebaseapp.com https://accounts.google.com; media-src 'self' https://media.pragmaticfox.com; connect-src 'self' https://api.web3forms.com https://*.googleapis.com https://*.firebaseio.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com; object-src 'none'
 
 /styles/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800

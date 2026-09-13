@@ -5,30 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pragmatic Fox — Home</title>
   <meta name="description" content="Pragmatic Fox makes clever, practical workflow tools for editors and VFX teams.">
-  <meta name="theme-color" content="#f2c94c">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Pragmatic Fox">
-  <meta property="og:title" content="Pragmatic Fox — Workflow tools for post production">
-  <meta property="og:description" content="Practical tools for the work behind the picture. Less time on repetitive tasks, more time for the work itself.">
-  <meta property="og:url" content="https://pragmaticfox.com/">
-  <meta property="og:image" content="https://pragmaticfox.com/assets/logo-fox-no-bg.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://pragmaticfox.com/">
-  <link rel="icon" type="image/png" href="assets/pf-mark-nav.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/pragmatic.css?v=20260912-mobile-layout3">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Pragmatic Fox",
-    "url": "https://pragmaticfox.com/",
-    "logo": "https://pragmaticfox.com/assets/logo-fox-no-bg.png",
-    "founder": { "@type": "Person", "name": "Andrew Cohen" }
-  }
-  </script>
+<link rel="stylesheet" href="styles/pragmatic.css?v=20260912-mobile-layout3">
 </head>
 <body class="editorial-home">
   <header class="pf-nav">
@@ -42,22 +22,26 @@
           <li><a href="./" aria-current="page">Home</a></li>
           <li class="nav-dropdown" id="toolsDropdown">
             <a class="nav-products-link" href="products/">Products</a>
-            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25-4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg></button>
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75 1 1 1 1.06.02L10 11.168l3.71-3.938a.75 1 1 1 1.08 1.04l-4.25 4.5a.75 1 1 1 1.08 1.04l-4.25 4.5a.75 1 1 1 1.08 1.04Z" clip-rule="evenodd"/></svg></button>
             <div class="nav-dropdown-menu">
-              <a href="tools/ElementalBender"><span class="tool-dot eb"></span><span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
-              <a href="tools/DifferenceEngine"><span class="tool-dot de"></span><span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
-              <a href="tools/aebridge"><span class="tool-dot ae"></span><span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+              <a href="tools/ElementalBender.html"><span class="tool-dot eb"></span><span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+              <a href="tools/DifferenceEngine.html"><span class="tool-dot de"></span><span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+              <a href="tools/aebridge.html"><span class="tool-dot ae"></span><span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
             </div>
           </li>
           <li><a href="about/">About</a></li>
           <li><a href="contact/">Contact</a></li>
+          <li><a href="cart/">Cart</a></li>
+          <li><a href="account/">Account</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <main class="editorial-home-shell">
+    <div class="editorial-ghost-number" aria-hidden="true">PF</div>
+
     <section class="editorial-brand-panel" aria-labelledby="brand-title">
-      <p class="editorial-brand-kicker">// Workflow tools for Post Production</p>
+      <p class="editorial-brand-kicker">// Workflow tools for editors</p>
       <h1 class="editorial-brand-name" id="brand-title">Pragmatic <span>Fox</span></h1>
       <p class="editorial-brand-title">Small tools.<strong> Big results.</strong></p>
       <div class="editorial-brand-rule" aria-hidden="true"></div>
@@ -67,11 +51,10 @@
     <section class="editorial-products" id="products" aria-labelledby="products-title">
       <header class="editorial-products-head">
         <p id="products-title">// Products / 03</p>
-        <span>Explore the products</span>
       </header>
 
       <div class="editorial-list">
-        <a class="editorial-product editorial-eb" href="tools/ElementalBender">
+        <a class="editorial-product editorial-eb" href="tools/ElementalBender.html">
           <div class="editorial-product-copy">
             <span class="editorial-index">01</span>
             <span class="editorial-mark" aria-hidden="true"></span>
@@ -79,11 +62,11 @@
             <p>Editorial + VFX suite</p>
           </div>
           <div class="editorial-product-preview" aria-hidden="true">
-            <img src="slides/ElementalBender/ElementalBender_01.png" alt="" decoding="async" fetchpriority="high">
+            <img src="slides/ElementalBender/ElementalBender_01.png" alt="">
           </div>
         </a>
 
-        <a class="editorial-product editorial-de" href="tools/DifferenceEngine">
+        <a class="editorial-product editorial-de" href="tools/DifferenceEngine.html">
           <div class="editorial-product-copy">
             <span class="editorial-index">02</span>
             <span class="editorial-mark" aria-hidden="true"></span>
@@ -91,11 +74,11 @@
             <p>Source vs. record comparison</p>
           </div>
           <div class="editorial-product-preview" aria-hidden="true">
-            <img src="slides/DifferenceEngine/DifferenceEngine_01.png" alt="" loading="lazy" decoding="async">
+            <img src="slides/DifferenceEngine/DifferenceEngine_01.png" alt="">
           </div>
         </a>
 
-        <a class="editorial-product editorial-ae" href="tools/aebridge">
+        <a class="editorial-product editorial-ae" href="tools/aebridge.html">
           <div class="editorial-product-copy">
             <span class="editorial-index">03</span>
             <span class="editorial-mark" aria-hidden="true"></span>
@@ -103,19 +86,19 @@
             <p>Avid + After Effects round-trip</p>
           </div>
           <div class="editorial-product-preview" aria-hidden="true">
-            <img src="slides/AeBridge/AEBridge_01.png" alt="" loading="lazy" decoding="async">
+            <img src="slides/AeBridge/AEBridge_01.png" alt="">
           </div>
         </a>
       </div>
 
+      <p class="editorial-footer">Avid Media Composer tools for the edit room.</p>
     </section>
 
   </main>
   <section class="pf-final" aria-labelledby="homepage-contact-title">
-    <h2 id="homepage-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
+    <h2 id="homepage-contact-title">Have a workflow<br><span>worth improving?</span></h2>
     <a href="contact/">Get in touch</a>
   </section>
   <footer class="pf-footer">© 2026 Pragmatic Fox. All rights reserved.</footer>
-  <script src="scripts/pragmatic.js"></script>
 </body>
 </html>
