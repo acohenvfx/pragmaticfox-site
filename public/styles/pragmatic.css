@@ -1455,6 +1455,47 @@ body.product-page .nav-tools-link {
   }
 }
 
+/* Commerce headers must be indistinguishable from the About header. Keep the
+   text dark on the yellow rail and remove the light divider inherited by the
+   older account/cart templates. */
+body.commerce-page .pf-nav {
+  background: var(--pf-gold) !important;
+  border-bottom: 1px solid rgba(23, 19, 16, .72) !important;
+  box-shadow: none !important;
+}
+body.commerce-page .pf-brand,
+body.commerce-page .pf-brand strong,
+body.commerce-page .pf-nav-links > li > a,
+body.commerce-page .pf-nav .nav-products-link,
+body.commerce-page .pf-nav .nav-dropdown-toggle {
+  color: #171310 !important;
+}
+body.commerce-page .pf-nav-links > li > a:hover,
+body.commerce-page .pf-nav-links > li > a:focus-visible,
+body.commerce-page .pf-nav .nav-products-link:hover,
+body.commerce-page .pf-nav .nav-products-link:focus-visible,
+body.commerce-page .pf-nav .nav-dropdown-toggle:hover,
+body.commerce-page .pf-nav .nav-dropdown-toggle:focus-visible {
+  color: #fffaf0 !important;
+}
+
+/* Contact should begin at the same predictable vertical rhythm as About and
+   the commerce screens instead of being centered in tall viewports. */
+body.contact-page .pf-contact-main {
+  min-height: calc(100svh - 140px) !important;
+  padding-top: clamp(64px, 7vw, 96px) !important;
+  padding-bottom: clamp(68px, 8vw, 104px) !important;
+  align-items: center !important;
+}
+@media (max-width: 760px) {
+  body.contact-page .pf-contact-main {
+    min-height: 0 !important;
+    padding-top: 54px !important;
+    padding-bottom: 76px !important;
+    align-items: start !important;
+  }
+}
+
 /* Final reference-fit adjustments for the first viewport. */
 body.product-page .hero {
   padding: clamp(36px, 5vw, 62px) 0 clamp(54px, 6vw, 76px) !important;
@@ -6133,6 +6174,316 @@ body.pf-error-page {
     flex: 0 0 auto !important;
   }
 }
+
+/* Final reference-fit overrides. These intentionally sit at the end of the
+   cascade so legacy page rules cannot change the shared visual system. */
+body.commerce-page .pf-nav {
+  background: var(--pf-gold) !important;
+  border-bottom: 1px solid rgba(23, 19, 16, .72) !important;
+  box-shadow: none !important;
+}
+body.commerce-page .pf-brand,
+body.commerce-page .pf-brand strong,
+body.commerce-page .pf-nav-links > li > a,
+body.commerce-page .pf-nav .nav-products-link,
+body.commerce-page .pf-nav .nav-dropdown-toggle {
+  color: #171310 !important;
+}
+body.commerce-page .pf-nav-links > li > a:hover,
+body.commerce-page .pf-nav-links > li > a:focus-visible,
+body.commerce-page .pf-nav .nav-products-link:hover,
+body.commerce-page .pf-nav .nav-products-link:focus-visible,
+body.commerce-page .pf-nav .nav-dropdown-toggle:hover,
+body.commerce-page .pf-nav .nav-dropdown-toggle:focus-visible {
+  color: #fffaf0 !important;
+}
+body.contact-page .pf-contact-main {
+  min-height: calc(100svh - 140px) !important;
+  padding-top: clamp(64px, 7vw, 96px) !important;
+  padding-bottom: clamp(68px, 8vw, 104px) !important;
+  align-items: center !important;
+}
+@media (max-width: 760px) {
+  body.contact-page .pf-contact-main {
+    min-height: 0 !important;
+    padding-top: 54px !important;
+    padding-bottom: 76px !important;
+    align-items: start !important;
+  }
+}
+
+/* Final layout lock: shared navigation and page footers use the same rhythm
+   on public, product, and commerce screens. */
+body.editorial-home,
+body.products-index-page,
+body.about-page,
+body.contact-page,
+body.product-page,
+body.commerce-page {
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.editorial-home > header,
+body.products-index-page > header,
+body.about-page > header,
+body.contact-page > header,
+body.product-page > header,
+body.commerce-page > header { flex: 0 0 auto !important; }
+
+body.editorial-home > main,
+body.products-index-page > main,
+body.about-page > main,
+body.contact-page > main,
+body.product-page > main,
+body.commerce-page > main { flex: 1 0 auto !important; }
+
+body.editorial-home > footer,
+body.products-index-page > footer,
+body.about-page > footer,
+body.contact-page > footer,
+body.product-page > footer,
+body.commerce-page > footer,
+body.product-page .site-footer {
+  flex: 0 0 auto !important;
+  margin-top: auto !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Keep header controls in fixed-size flex items so the Products dropdown
+   cannot change the horizontal alignment of the other links. */
+.pf-nav,
+body.product-page .site-nav,
+body.commerce-page .pf-nav {
+  height: 68px !important;
+  min-height: 68px !important;
+}
+.pf-nav-inner,
+body.product-page .site-nav .container,
+body.commerce-page .pf-nav-inner {
+  height: 100% !important;
+  min-height: 68px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.pf-nav-links,
+body.product-page .nav-links,
+body.commerce-page .pf-nav-links {
+  align-items: center !important;
+  gap: 28px !important;
+}
+.pf-nav-links > li,
+body.product-page .nav-links > li,
+body.commerce-page .pf-nav-links > li {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.pf-nav-links > li > a,
+.pf-nav .nav-products-link,
+.pf-nav .nav-dropdown-toggle,
+body.product-page .nav-links > li > a,
+body.product-page .nav-products-link,
+body.product-page .nav-dropdown-toggle,
+body.commerce-page .pf-nav-links > li > a,
+body.commerce-page .pf-nav .nav-products-link,
+body.commerce-page .pf-nav .nav-dropdown-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 20px !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+}
+
+/* The Products index should meet the yellow header cleanly, without the
+   legacy light rule that reads as a second bar. */
+body.products-index-page .pf-nav { border-bottom: 0 !important; }
+body.products-index-page .products-index-main { border-top: 0 !important; }
+
+/* Subscription choices replace the ambiguous Add to cart action while using
+   the existing cart interval/pricing model. */
+body.product-page .hero-cta.subscription-choices {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+body.product-page .subscription-choices .hero-btn {
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+body.product-page .subscription-choices .hero-btn-secondary {
+  background: transparent !important;
+  color: var(--pf-paper-2, #f7f1e9) !important;
+  border-color: rgba(247, 241, 233, .46) !important;
+  box-shadow: none !important;
+}
+body.product-page .subscription-choices .hero-btn-secondary::after { display: none !important; }
+
+/* Compact monthly/annual selection with one clear purchase action. */
+body.product-page .hero-cta.subscription-picker {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+}
+body.product-page .subscription-picker .subscription-plan {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 58px !important;
+  padding: 0 38px 0 18px !important;
+  border: 2px solid var(--pf-button-gold, #daa83c) !important;
+  background: #171514 !important;
+  color: #fffaf0 !important;
+  box-shadow: 6px 6px 0 var(--pf-orange, #d65a16) !important;
+  font: 700 .72rem/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body.product-page .subscription-picker .subscription-plan select {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: min(58vw, 260px) !important;
+  width: auto !important;
+  min-height: 40px !important;
+  padding: 0 2px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  appearance: none !important;
+  background: transparent !important;
+  color: #fffaf0 !important;
+  font: 600 .88rem/1.2 "Manrope", sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer !important;
+}
+body.product-page .subscription-picker .subscription-plan option {
+  background: #171514 !important;
+  color: #fffaf0 !important;
+}
+body.product-page .subscription-picker .subscription-plan i {
+  position: absolute !important;
+  right: 17px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-right: 2px solid var(--pf-button-gold, #daa83c) !important;
+  border-bottom: 2px solid var(--pf-button-gold, #daa83c) !important;
+  transform: translateY(-70%) rotate(45deg) !important;
+  pointer-events: none !important;
+}
+body.product-page .subscription-picker .hero-btn { margin: 0 !important; white-space: nowrap !important; }
+
+@media (max-width: 760px) {
+  .pf-nav,
+  body.product-page .site-nav,
+  body.commerce-page .pf-nav {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+  .pf-nav-inner,
+  body.product-page .site-nav .container,
+  body.commerce-page .pf-nav-inner { min-height: 60px !important; }
+  .pf-nav-links,
+  body.product-page .nav-links,
+  body.commerce-page .pf-nav-links { gap: 12px !important; }
+  body.product-page .hero-cta.subscription-choices {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  body.product-page .hero-cta.subscription-picker {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    max-width: 360px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  body.product-page .subscription-picker .subscription-plan,
+  body.product-page .subscription-picker .hero-btn { width: 100% !important; }
+  body.product-page .subscription-picker .subscription-plan select {
+    max-width: none !important;
+    width: auto !important;
+  }
+}
+
+/* Copyright should sit directly on the shared page field. Older page layers
+   used a separate dark footer panel, which read like a border or extra bar. */
+.pf-footer,
+body.product-page > footer,
+body.product-page .site-footer,
+body.commerce-page > footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Use one CSS-drawn caret everywhere. This prevents SVG/path variants from
+   changing the Products control's visual weight between templates. */
+.pf-nav .nav-dropdown-toggle svg,
+body.product-page .nav-dropdown-toggle svg,
+body.commerce-page .pf-nav .nav-dropdown-toggle svg {
+  display: none !important;
+}
+.pf-nav .nav-dropdown-toggle::after,
+body.product-page .nav-dropdown-toggle::after,
+body.commerce-page .pf-nav .nav-dropdown-toggle::after {
+  width: 6px !important;
+  height: 6px !important;
+  display: block !important;
+  flex: 0 0 6px !important;
+  border-right: 1.5px solid currentColor !important;
+  border-bottom: 1.5px solid currentColor !important;
+  content: "" !important;
+  transform: rotate(45deg) translate(-1px, -1px) !important;
+}
+
+/* Shared chrome seed. Use pixels here because the product templates have a
+   different root font size; rems made their nav labels grow. */
+.pf-nav-links > li > a,
+body.product-page .nav-links > li > a,
+body.commerce-page .pf-nav-links > li > a,
+.pf-nav .nav-products-link,
+body.product-page .nav-products-link,
+body.commerce-page .pf-nav .nav-products-link {
+  font: 700 14.08px/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+.pf-nav,
+body.product-page .site-nav,
+body.commerce-page .pf-nav {
+  border-bottom: 0 !important;
+}
+
+/* Shared route fallback for older page layers. */
+body.editorial-home .pf-nav {
+  border-bottom: 0 !important;
+}
+body.about-page .pf-footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body.editorial-home .editorial-contact,
+body.about-page .pf-final a,
+body.products-index-page .pf-final a,
+body.product-page .pf-final a,
+body.product-page .beta-btn,
+body.contact-page .pf-contact-submit,
+body.commerce-page .button.primary {
+  background: var(--pf-button-gold, #daa83c) !important;
+  color: var(--pf-button-ink, #1a202c) !important;
+  border-color: var(--pf-button-ink, #1a202c) !important;
+}
+
 /* Mobile layout pass: use a two-row navigation with generous touch targets,
    then let page content flow vertically instead of compressing desktop rails. */
 @media (max-width: 760px) {
@@ -6635,6 +6986,365 @@ body.pf-error-page {
     transition-duration: .01ms !important;
   }
 }
+
+/* One Subscribe control opens the billing choices across its full hit area. */
+body.product-page .hero-cta.subscription-picker {
+  justify-content: center !important;
+  gap: 0 !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
+body.product-page .subscription-dropdown {
+  position: relative !important;
+  display: inline-block !important;
+  width: min(100%, 330px) !important;
+  z-index: 20 !important;
+}
+body.product-page .subscription-dropdown-trigger {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 58px !important;
+  justify-content: space-between !important;
+  cursor: pointer !important;
+  text-align: left !important;
+}
+body.product-page .subscription-dropdown-trigger::after {
+  display: none !important;
+  content: none !important;
+}
+.subscription-dropdown-caret {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pf-ink, #171310);
+}
+.subscription-dropdown-caret::after {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--pf-yellow, #f1c945);
+  border-bottom: 2px solid var(--pf-yellow, #f1c945);
+  content: "";
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .18s ease;
+}
+.subscription-dropdown.is-open .subscription-dropdown-caret::after {
+  transform: translateY(2px) rotate(225deg);
+}
+.subscription-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 3px;
+  padding: 6px;
+  border: 2px solid var(--pf-ink, #171310);
+  background: #171514;
+  box-shadow: 6px 6px 0 var(--pf-orange, #d65a16);
+  z-index: 60;
+}
+.subscription-dropdown-menu[hidden] {
+  display: none !important;
+}
+.subscription-dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 11px;
+  color: #fffaf0;
+  font: 650 .78rem/1.35 "Manrope", sans-serif;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+.subscription-dropdown-option:hover,
+.subscription-dropdown-option:focus-visible {
+  outline: none;
+  background: var(--pf-yellow, #f1c945);
+  color: var(--pf-ink, #171310);
+}
+@media (max-width: 760px) {
+  body.product-page .subscription-dropdown {
+    width: 100% !important;
+  }
+}
+
+/* Navigation height contract: the homepage and inner templates use the same
+   yellow rail, so changing route never changes the page's top rhythm. */
+body.editorial-home .pf-nav,
+body.product-page .site-nav,
+body.commerce-page .pf-nav {
+  height: 68px !important;
+  min-height: 68px !important;
+}
+body.editorial-home .pf-nav-inner,
+body.product-page .site-nav .container,
+body.commerce-page .pf-nav-inner {
+  height: 68px !important;
+  min-height: 68px !important;
+}
+@media (max-width: 760px) {
+  body.editorial-home .pf-nav,
+  body.product-page .site-nav,
+  body.commerce-page .pf-nav {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+  body.editorial-home .pf-nav-inner,
+  body.product-page .site-nav .container,
+  body.commerce-page .pf-nav-inner {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+}
+
+/* Subscription choices are equal actions: monthly and annual use the same
+   gold ticket treatment so neither option reads as secondary. */
+body.product-page .subscription-choices .hero-btn,
+body.product-page .subscription-choices .hero-btn-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  min-height: 58px !important;
+  padding: 13px 15px 13px 21px !important;
+  background: var(--pf-button-gold, #daa83c) !important;
+  color: var(--pf-button-ink, #1a202c) !important;
+  border: 2px solid var(--pf-button-ink, #1a202c) !important;
+  border-radius: 0 !important;
+  box-shadow: 8px 8px 0 var(--pf-orange) !important;
+  font: 750 .78rem/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  transform: rotate(-1deg) !important;
+}
+body.product-page .subscription-choices .hero-btn::after,
+body.product-page .subscription-choices .hero-btn-secondary::after {
+  content: "↗" !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: grid !important;
+  place-items: center !important;
+  background: var(--pf-button-ink, #1a202c) !important;
+  color: var(--pf-button-gold, #daa83c) !important;
+  border-radius: 50% !important;
+  font-size: 1rem !important;
+  transition: transform .18s ease !important;
+}
+body.product-page .subscription-choices .hero-btn:hover,
+body.product-page .subscription-choices .hero-btn:focus-visible,
+body.product-page .subscription-choices .hero-btn-secondary:hover,
+body.product-page .subscription-choices .hero-btn-secondary:focus-visible {
+  background: #c79732 !important;
+  color: var(--pf-button-ink, #1a202c) !important;
+  border-color: var(--pf-button-ink, #1a202c) !important;
+  box-shadow: 11px 11px 0 var(--pf-orange) !important;
+  transform: translate(-3px, -3px) rotate(.5deg) !important;
+}
+body.product-page .subscription-choices .hero-btn:hover::after,
+body.product-page .subscription-choices .hero-btn:focus-visible::after,
+body.product-page .subscription-choices .hero-btn-secondary:hover::after,
+body.product-page .subscription-choices .hero-btn-secondary:focus-visible::after {
+  transform: rotate(12deg) translate(1px, -1px) !important;
+}
+
+/* Final contrast lock: every yellow action uses the same readable ink. */
+.pf-final a,
+body.editorial-home .editorial-contact,
+body.product-page .hero-btn,
+body.product-page .beta-btn,
+body.product-aebridge .beta-btn,
+body.contact-page .pf-contact-submit,
+body.commerce-page .button.primary {
+  color: #171310 !important;
+}
+
+/* Keep the Products label at the same scale as the rest of the shared nav. */
+.pf-nav .nav-products-link,
+body.product-page .nav-products-link,
+body.commerce-page .pf-nav .nav-products-link {
+  font: 700 .78rem/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+/* Final shared chrome normalization. Keep every header on the same measured
+   rail and make the Products caret a fixed-size icon, so page-specific button
+   labels cannot change the nav height or push the links around. */
+.pf-nav,
+body.product-page .site-nav,
+body.commerce-page .pf-nav {
+  box-sizing: border-box !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  border-bottom: 0 !important;
+}
+.pf-nav-inner,
+body.product-page .site-nav .container,
+body.commerce-page .pf-nav-inner {
+  box-sizing: border-box !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.pf-nav-links,
+body.product-page .nav-links,
+body.commerce-page .pf-nav-links {
+  align-items: center !important;
+  gap: 28px !important;
+}
+.pf-nav-links > li,
+body.product-page .nav-links > li,
+body.commerce-page .pf-nav-links > li {
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.pf-nav .nav-products-link,
+body.product-page .nav-products-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 20px !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+}
+.pf-nav .nav-dropdown-toggle,
+body.product-page .nav-dropdown-toggle,
+body.commerce-page .pf-nav .nav-dropdown-toggle {
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  flex: 0 0 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  transform: none !important;
+}
+.pf-nav .nav-dropdown-toggle svg,
+body.product-page .nav-dropdown-toggle svg,
+body.commerce-page .pf-nav .nav-dropdown-toggle svg {
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  display: block !important;
+  flex: 0 0 12px !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* The About page uses a small inline label marker, not a full-height rail. */
+body.about-page .pf-about-story::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Copyright is a single, quiet line on the page field—not a second footer
+   panel or a light divider. */
+.pf-footer,
+body.product-page > footer,
+body.product-page .site-footer,
+body.commerce-page > footer {
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+  color: rgba(244, 239, 229, .58) !important;
+}
+
+@media (max-width: 760px) {
+  .pf-nav,
+  body.product-page .site-nav,
+  body.commerce-page .pf-nav {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+  .pf-nav-inner,
+  body.product-page .site-nav .container,
+  body.commerce-page .pf-nav-inner {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+  .pf-nav-links,
+  body.product-page .nav-links,
+  body.commerce-page .pf-nav-links { gap: 12px !important; }
+}
+
+/* Keep the caret override last so legacy SVG rules cannot reintroduce a
+   template-specific arrow or change its dimensions. */
+.pf-nav .nav-dropdown-toggle svg,
+body.product-page .nav-dropdown-toggle svg,
+body.commerce-page .pf-nav .nav-dropdown-toggle svg {
+  display: none !important;
+}
+.pf-nav .nav-dropdown-toggle::after,
+body.product-page .nav-dropdown-toggle::after,
+body.commerce-page .pf-nav .nav-dropdown-toggle::after {
+  width: 6px !important;
+  height: 6px !important;
+  display: block !important;
+  flex: 0 0 6px !important;
+  border-right: 1.5px solid currentColor !important;
+  border-bottom: 1.5px solid currentColor !important;
+  content: "" !important;
+  transform: rotate(45deg) translate(-1px, -1px) !important;
+}
+
+/* Final cross-route chrome contract. Use pixels here because the product
+   templates have a different root font size; rems made their nav labels grow. */
+.pf-nav-links > li > a,
+body.product-page .nav-links > li > a,
+body.commerce-page .pf-nav-links > li > a,
+.pf-nav .nav-products-link,
+body.product-page .nav-products-link,
+body.commerce-page .pf-nav .nav-products-link {
+  font: 700 14.08px/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+.pf-nav,
+body.product-page .site-nav,
+body.commerce-page .pf-nav {
+  border-bottom: 0 !important;
+}
+
+/* Route-specific legacy selectors cannot reintroduce a second header line or
+   a dark footer panel. Keep the same action color on every public route. */
+body.editorial-home .pf-nav {
+  border-bottom: 0 !important;
+}
+body.about-page .pf-footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body.editorial-home .editorial-contact,
+body.editorial-home .pf-final a,
+body.about-page .pf-final a,
+body.products-index-page .pf-final a,
+body.product-page .pf-final a,
+body.product-page .beta-btn,
+body.contact-page .pf-contact-submit,
+body.commerce-page .button.primary {
+  background: var(--pf-button-gold, #daa83c) !important;
+  color: var(--pf-button-ink, #1a202c) !important;
+  border-color: var(--pf-button-ink, #1a202c) !important;
+}
+
 /* Keep the mobile layout contract last, after every legacy route override. */
 @media (max-width: 760px) {
   html, body { max-width: 100%; overflow-x: clip !important; }
