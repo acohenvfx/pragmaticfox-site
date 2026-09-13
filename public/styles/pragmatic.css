@@ -7546,3 +7546,61 @@ body.commerce-page .button.primary {
     letter-spacing: .025em !important;
   }
 }
+
+/* Match the product storytelling sequence on phones: introduction, preview,
+   What It Does, then the beta action. AE Bridge is the mobile reference. */
+@media (max-width: 860px) {
+  html body.product-page.product-elemental > .hero > .container,
+  html body.product-page.product-difference > .hero > .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  html body.product-page.product-elemental > .hero,
+  html body.product-page.product-difference > .hero {
+    padding-bottom: 0 !important;
+  }
+
+  html body.product-page.product-elemental > .hero > .container > .panel-showcase,
+  html body.product-page.product-difference > .hero > .container > .panel-showcase {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 32px 0 0 !important;
+  }
+
+  html body.product-page.product-elemental > .hero > .container > .tools-section {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 34px 0 22px !important;
+  }
+  html body.product-page.product-elemental > .hero > .container > .tools-section > .container {
+    width: 100% !important;
+    max-width: none !important;
+    padding-top: 0 !important;
+  }
+
+  html body.product-page.product-difference > .hero > .container > .product-feature-heading {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 34px 0 20px !important;
+    padding-top: 0 !important;
+  }
+  html body.product-page.product-difference > .hero > .container > .features {
+    order: 3 !important;
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    margin: 0 0 22px !important;
+  }
+
+  html body.product-page.product-elemental > .hero > .container > .hero-cta,
+  html body.product-page.product-difference > .hero > .container > .hero-cta {
+    order: 4 !important;
+    align-self: stretch !important;
+    margin: 24px 0 48px !important;
+    text-align: center !important;
+  }
+}
