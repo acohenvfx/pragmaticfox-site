@@ -6133,3 +6133,706 @@ body.pf-error-page {
     flex: 0 0 auto !important;
   }
 }
+/* Mobile layout pass: use a two-row navigation with generous touch targets,
+   then let page content flow vertically instead of compressing desktop rails. */
+@media (max-width: 760px) {
+  html { scroll-padding-top: 148px; }
+
+  .pf-nav,
+  body.editorial-home .pf-nav,
+  body.about-page .pf-nav,
+  body.contact-page .pf-nav,
+  body.products-index-page .pf-nav,
+  body.product-page .site-nav,
+  html body.commerce-page .pf-nav {
+    position: sticky !important;
+    inset: 0 0 auto !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .pf-nav-inner,
+  body.editorial-home .pf-nav-inner,
+  body.about-page .pf-nav-inner,
+  body.contact-page .pf-nav-inner,
+  body.products-index-page .pf-nav-inner,
+  body.product-page .site-nav .container,
+  html body.commerce-page .pf-nav-inner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: center !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+    gap: 5px !important;
+    width: min(100% - 28px, 680px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 8px 0 !important;
+  }
+
+  .pf-brand,
+  body.product-page .nav-brand {
+    justify-self: start !important;
+    min-height: 28px !important;
+    gap: 7px !important;
+    font-size: .8rem !important;
+    letter-spacing: .1em !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  .pf-nav-inner > nav,
+  body.product-page .site-nav .container > nav {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .pf-nav-links,
+  body.editorial-home .pf-nav-links,
+  body.about-page .pf-nav-links,
+  body.contact-page .pf-nav-links,
+  body.products-index-page .pf-nav-links,
+  body.product-page .nav-links,
+  html body.commerce-page .pf-nav-links {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-content: stretch !important;
+    gap: 2px 4px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .pf-nav-links > li,
+  body.editorial-home .pf-nav-links > li,
+  body.about-page .pf-nav-links > li,
+  body.contact-page .pf-nav-links > li,
+  body.products-index-page .pf-nav-links > li,
+  body.product-page .nav-links > li,
+  html body.commerce-page .pf-nav-links > li {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+  }
+
+  .pf-nav-links > li > a,
+  body.editorial-home .pf-nav-links > li > a,
+  body.about-page .pf-nav-links > li > a,
+  body.contact-page .pf-nav-links > li > a,
+  body.products-index-page .pf-nav-links > li > a,
+  body.product-page .nav-links > li > a,
+  .pf-nav .nav-products-link,
+  body.product-page .nav-products-link,
+  html body.commerce-page .pf-nav-links > li > a,
+  html body.commerce-page .pf-nav .nav-products-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    padding: 0 3px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    letter-spacing: .045em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .pf-nav .nav-dropdown,
+  body.product-page .nav-dropdown,
+  html body.commerce-page .nav-dropdown {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 24px !important;
+    align-items: center !important;
+    justify-content: stretch !important;
+  }
+
+  .pf-nav .nav-dropdown > .nav-products-link,
+  body.product-page .nav-dropdown > .nav-products-link,
+  html body.commerce-page .nav-dropdown > .nav-products-link {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    padding-right: 20px !important;
+  }
+
+  .pf-nav .nav-dropdown-toggle,
+  body.product-page .nav-dropdown-toggle,
+  html body.commerce-page .pf-nav .nav-dropdown-toggle {
+    position: relative !important;
+    z-index: 2 !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .pf-nav .nav-dropdown-menu,
+  body.product-page .nav-dropdown-menu,
+  html body.commerce-page .nav-dropdown-menu {
+    position: fixed !important;
+    top: 148px !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    z-index: 1100 !important;
+  }
+
+  /* Restore the links that legacy mobile rules hid on product templates. */
+  body.product-page .nav-links > li:nth-child(2),
+  body.product-page .nav-links > li:nth-child(3),
+  body.editorial-home .pf-nav-links > li:last-child,
+  body.about-page .pf-nav-links > li:last-child,
+  body.contact-page .pf-nav-links > li:last-child,
+  body.products-index-page .pf-nav-links > li:last-child,
+  html body.commerce-page .pf-nav-links > li:nth-child(2),
+  html body.commerce-page .pf-nav-links > li:nth-child(3) {
+    display: flex !important;
+  }
+
+  .pf-final,
+  body.products-page .pf-final {
+    padding: 38px 18px !important;
+    margin: 0 !important;
+  }
+
+  .pf-final h2,
+  body.products-page .pf-final h2 {
+    width: 100% !important;
+    max-width: 18ch !important;
+    margin: 0 auto !important;
+    font-size: clamp(2rem, 8.8vw, 3rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -.055em !important;
+    text-align: center !important;
+  }
+
+  .pf-final a,
+  body.products-page .pf-final a {
+    min-height: 48px !important;
+    margin-top: 22px !important;
+    padding: 12px 20px !important;
+    font-size: .82rem !important;
+  }
+
+  .pf-footer,
+  body.product-page > footer,
+  body.product-page .site-footer,
+  body.commerce-page > footer {
+    min-height: 60px !important;
+    padding: 18px 16px !important;
+    font-size: .76rem !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+
+  body.editorial-home .editorial-home-shell {
+    display: block !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 26px 18px 8px !important;
+  }
+
+  body.editorial-home .editorial-ghost-number { display: none !important; }
+
+  body.editorial-home .editorial-brand-panel {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  body.editorial-home .editorial-brand-kicker {
+    margin-bottom: 12px !important;
+    font-size: .67rem !important;
+    line-height: 1.45 !important;
+    letter-spacing: .13em !important;
+  }
+
+  body.editorial-home .editorial-brand-name {
+    font-size: clamp(2.6rem, 13vw, 4rem) !important;
+    line-height: .95 !important;
+    letter-spacing: -.075em !important;
+  }
+
+  body.editorial-home .editorial-brand-title {
+    margin-top: 14px !important;
+    font-size: clamp(1.2rem, 5.6vw, 1.7rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  body.editorial-home .editorial-brand-copy {
+    max-width: 34ch !important;
+    margin-top: 16px !important;
+    font-size: .98rem !important;
+    line-height: 1.55 !important;
+  }
+
+  body.editorial-home .editorial-products {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  body.editorial-home .editorial-products-head {
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 0 0 12px !important;
+  }
+
+  body.editorial-home .editorial-products-head p {
+    font-size: .7rem !important;
+    letter-spacing: .12em !important;
+  }
+
+  body.editorial-home .editorial-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  body.editorial-home .editorial-list::before,
+  body.editorial-home .editorial-list::after { display: none !important; }
+
+  body.editorial-home .editorial-product {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: 172px auto !important;
+    flex: initial !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(244, 237, 228, .22) !important;
+    border-radius: 3px !important;
+  }
+
+  body.editorial-home .editorial-product-preview {
+    position: relative !important;
+    inset: auto !important;
+    order: 0 !important;
+    width: 100% !important;
+    height: 172px !important;
+    min-height: 172px !important;
+    opacity: 1 !important;
+  }
+
+  body.editorial-home .editorial-product-preview img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  body.editorial-home .editorial-product-copy {
+    position: relative !important;
+    order: 1 !important;
+    min-height: 0 !important;
+    padding: 22px 16px 20px 48px !important;
+  }
+
+  body.editorial-home .editorial-index { top: 22px !important; left: 16px !important; font-size: .68rem !important; }
+  body.editorial-home .editorial-mark { top: 54px !important; left: 18px !important; width: 6px !important; height: 28px !important; }
+
+  body.editorial-home .editorial-product h1,
+  body.editorial-home .editorial-product h2 {
+    margin: 0 !important;
+    font-size: clamp(2rem, 10.5vw, 2.8rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -.07em !important;
+  }
+
+  body.editorial-home .editorial-product p {
+    margin: 10px 0 0 !important;
+    font-size: .76rem !important;
+    line-height: 1.45 !important;
+    letter-spacing: .07em !important;
+  }
+
+  body.editorial-home .editorial-footer {
+    margin-top: 18px !important;
+    font-size: .66rem !important;
+    line-height: 1.55 !important;
+    letter-spacing: .07em !important;
+  }
+
+  body.editorial-home .pf-final {
+    margin-top: 26px !important;
+    padding: 38px 18px !important;
+  }
+
+  body.products-index-page .products-index-main {
+    min-height: 0 !important;
+    padding: 42px 18px 54px !important;
+  }
+
+  body.products-index-page .products-index-intro { margin-bottom: 34px !important; }
+  body.products-index-page .products-index-kicker { margin-bottom: 14px !important; font-size: .68rem !important; line-height: 1.5 !important; }
+
+  body.products-index-page .products-index-intro h1 {
+    font-size: clamp(2.35rem, 10.5vw, 3.2rem) !important;
+    line-height: .98 !important;
+    letter-spacing: -.07em !important;
+  }
+
+  body.products-index-page .products-index-intro > p:last-child {
+    margin-top: 16px !important;
+    font-size: .98rem !important;
+    line-height: 1.6 !important;
+  }
+
+  body.products-index-page .products-index-products .editorial-products-head { gap: 10px !important; }
+  body.products-index-page .products-index-copy { min-height: 0 !important; padding: 24px 14px 24px 44px !important; }
+  body.products-index-page .products-index-index { top: 25px !important; }
+  body.products-index-page .products-index-kicker-small { margin-bottom: 12px !important; font-size: .68rem !important; line-height: 1.45 !important; }
+  body.products-index-page .products-index-row h2 { margin-bottom: 10px !important; font-size: clamp(1.85rem, 9vw, 2.5rem) !important; line-height: 1 !important; }
+  body.products-index-page .products-index-row p { font-size: .98rem !important; line-height: 1.55 !important; }
+  body.products-index-page .products-index-link { min-height: 44px !important; margin-top: 12px !important; font-size: .75rem !important; }
+  body.products-index-page .products-index-media { min-height: 180px !important; height: 180px !important; }
+
+  body.about-page .pf-about-story {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 22px !important;
+    width: min(100% - 36px, 680px) !important;
+    margin: 0 auto !important;
+    padding: 46px 0 34px !important;
+  }
+
+  body.about-page .pf-about-story-label {
+    position: static !important;
+    align-self: start !important;
+    font-size: .68rem !important;
+    line-height: 1.5 !important;
+    letter-spacing: .14em !important;
+  }
+
+  body.about-page .pf-about-story-copy,
+  body.about-page .pf-about-story-copy > p,
+  body.about-page .pf-about-origin p,
+  body.about-page .pf-about-founder-copy p {
+    font-size: 1rem !important;
+    line-height: 1.72 !important;
+  }
+
+  body.about-page .pf-about-founder { gap: 16px !important; margin-top: 28px !important; }
+  body.about-page .pf-about-founder h2 { font-size: clamp(2rem, 9vw, 2.7rem) !important; line-height: .98 !important; }
+  body.about-page .pf-about-founder-copy { gap: 14px !important; }
+  body.about-page .pf-final { margin-top: 24px !important; }
+
+  body.contact-page .pf-contact-main {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+    width: min(100% - 36px, 560px) !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 42px 0 46px !important;
+  }
+
+  body.contact-page .pf-contact-intro { padding: 0 !important; }
+  body.contact-page .pf-contact-intro h1 {
+    max-width: 100% !important;
+    font-size: clamp(2.1rem, 9.6vw, 3.1rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -.065em !important;
+  }
+  body.contact-page .pf-contact-intro p { margin-top: 16px !important; font-size: 1rem !important; line-height: 1.6 !important; }
+  body.contact-page .pf-contact-form { width: 100% !important; padding: 20px 18px !important; }
+  body.contact-page .pf-contact-field { gap: 8px !important; }
+  body.contact-page .pf-contact-field + .pf-contact-field { margin-top: 16px !important; }
+  body.contact-page .pf-contact-field input { min-height: 48px !important; font-size: 16px !important; }
+  body.contact-page .pf-contact-field textarea { min-height: 150px !important; font-size: 16px !important; }
+  body.contact-page .pf-contact-actions { align-items: stretch !important; flex-direction: column !important; gap: 12px !important; }
+  body.contact-page .pf-contact-submit { min-height: 48px !important; align-self: flex-start !important; }
+
+  body.commerce-page .commerce-shell,
+  body.commerce-page .cart-shell,
+  body.commerce-page .checkout-shell,
+  body.commerce-page .account-shell {
+    width: min(100% - 36px, 680px) !important;
+    margin: 0 auto !important;
+    padding: 42px 0 42px !important;
+  }
+
+  body.commerce-page h1 { font-size: clamp(2.45rem, 10vw, 3.5rem) !important; line-height: .98 !important; }
+  body.commerce-page .intro { margin-top: 14px !important; font-size: 1rem !important; line-height: 1.62 !important; }
+  body.commerce-page .cart-grid,
+  body.commerce-page .checkout-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; margin-top: 26px !important; }
+  body.commerce-page .panel { min-width: 0 !important; padding: 20px 18px !important; border-radius: 12px !important; }
+  body.commerce-page .panel h2 { font-size: 1.3rem !important; }
+  body.commerce-page .panel-copy { font-size: .94rem !important; line-height: 1.58 !important; }
+  body.commerce-page .cart-row { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; padding: 16px 0 !important; }
+  body.commerce-page .cart-price { white-space: normal !important; }
+  body.commerce-page .cart-actions,
+  body.commerce-page .button-row { justify-content: flex-start !important; gap: 10px !important; }
+  body.commerce-page .button { min-height: 44px !important; padding: 11px 15px !important; font-size: .88rem !important; }
+  body.commerce-page .product-option { grid-template-columns: auto minmax(0, 1fr) !important; gap: 10px !important; padding: 12px !important; }
+  body.commerce-page .product-price { grid-column: 2 !important; justify-self: start !important; font-size: .8rem !important; }
+  body.commerce-page .billing-plans { display: grid !important; grid-template-columns: minmax(0,1fr) !important; }
+  body.commerce-page .billing-plan { min-height: 44px !important; font-size: .88rem !important; }
+  body.commerce-page .product-access-header { align-items: flex-start !important; flex-direction: column !important; gap: 6px !important; }
+  body.commerce-page .product-access-actions { gap: 8px !important; }
+  body.commerce-page .product-access-action,
+  body.commerce-page .subscription-action,
+  body.commerce-page .download-action,
+  body.commerce-page .activate-action,
+  body.commerce-page .device-action { min-height: 44px !important; padding: 10px 12px !important; font-size: .82rem !important; }
+  body.commerce-page .subscription-detail-row { align-items: stretch !important; flex-direction: column !important; gap: 8px !important; }
+  body.commerce-page .subscription-detail-action { min-height: 44px !important; }
+  body.commerce-page .data-row { align-items: flex-start !important; gap: 8px !important; font-size: .82rem !important; }
+  body.commerce-page .data-row span { max-width: 58% !important; overflow-wrap: anywhere !important; text-align: right !important; }
+  body.commerce-page .signed-in-email,
+  body.commerce-page .product-code-output code { overflow-wrap: anywhere !important; }
+}
+
+@media (max-width: 390px) {
+  .pf-nav-inner,
+  body.product-page .site-nav .container,
+  html body.commerce-page .pf-nav-inner { width: calc(100% - 24px) !important; }
+
+  .pf-nav-links > li > a,
+  body.product-page .nav-links > li > a,
+  .pf-nav .nav-products-link,
+  body.product-page .nav-products-link,
+  html body.commerce-page .pf-nav-links > li > a { font-size: 10.5px !important; letter-spacing: .025em !important; }
+
+  body.editorial-home .editorial-product { grid-template-rows: 150px auto !important; }
+  body.editorial-home .editorial-product-preview { height: 150px !important; min-height: 150px !important; }
+  body.products-index-page .products-index-media { height: 155px !important; min-height: 155px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  body.editorial-home *, body.products-index-page *, body.product-page *, body.about-page *, body.contact-page *, body.commerce-page * {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+/* Keep the mobile layout contract last, after every legacy route override. */
+@media (max-width: 760px) {
+  html, body { max-width: 100%; overflow-x: clip !important; }
+  html { scroll-padding-top: 148px; }
+
+  html body.editorial-home { display: block !important; min-height: 100vh !important; }
+  html body.editorial-home .editorial-home-shell {
+    grid-row: auto !important;
+    grid-column: auto !important;
+    align-self: auto !important;
+    margin: 0 !important;
+  }
+
+  html body.editorial-home .pf-nav,
+  html body.about-page .pf-nav,
+  html body.contact-page .pf-nav,
+  html body.products-index-page .pf-nav,
+  html body.product-page .site-nav,
+  html body.commerce-page .pf-nav {
+    position: sticky !important;
+    inset: 0 0 auto !important;
+    top: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    z-index: 1000 !important;
+  }
+
+  html body.editorial-home .pf-nav-inner,
+  html body.about-page .pf-nav-inner,
+  html body.contact-page .pf-nav-inner,
+  html body.products-index-page .pf-nav-inner,
+  html body.product-page .site-nav .container,
+  html body.commerce-page .pf-nav-inner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: center !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+    gap: 5px !important;
+    width: min(100% - 28px, 680px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 8px 0 !important;
+  }
+
+  html body.editorial-home .pf-nav-inner > nav,
+  html body.about-page .pf-nav-inner > nav,
+  html body.contact-page .pf-nav-inner > nav,
+  html body.products-index-page .pf-nav-inner > nav,
+  html body.product-page .site-nav .container > nav { width: 100% !important; min-width: 0 !important; }
+
+  html body.editorial-home .pf-nav-links,
+  html body.about-page .pf-nav-links,
+  html body.contact-page .pf-nav-links,
+  html body.products-index-page .pf-nav-links,
+  html body.product-page .nav-links,
+  html body.commerce-page .pf-nav-links {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    gap: 2px 4px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body.editorial-home .pf-nav-links > li,
+  html body.about-page .pf-nav-links > li,
+  html body.contact-page .pf-nav-links > li,
+  html body.products-index-page .pf-nav-links > li,
+  html body.product-page .nav-links > li,
+  html body.commerce-page .pf-nav-links > li {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+  }
+
+  html body.editorial-home .pf-nav-links > li > a,
+  html body.about-page .pf-nav-links > li > a,
+  html body.contact-page .pf-nav-links > li > a,
+  html body.products-index-page .pf-nav-links > li > a,
+  html body.product-page .nav-links > li > a,
+  html body.commerce-page .pf-nav-links > li > a,
+  html body.editorial-home .pf-nav .nav-products-link,
+  html body.about-page .pf-nav .nav-products-link,
+  html body.contact-page .pf-nav .nav-products-link,
+  html body.products-index-page .pf-nav .nav-products-link,
+  html body.product-page .nav-products-link,
+  html body.commerce-page .pf-nav .nav-products-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    padding: 0 3px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    letter-spacing: .045em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  html body.editorial-home .pf-nav-links > li:last-child,
+  html body.about-page .pf-nav-links > li:last-child,
+  html body.contact-page .pf-nav-links > li:last-child,
+  html body.products-index-page .pf-nav-links > li:last-child,
+  html body.product-page .nav-links > li:last-child,
+  html body.commerce-page .pf-nav-links > li:last-child { display: flex !important; }
+
+  html body.editorial-home .pf-nav .nav-dropdown,
+  html body.about-page .pf-nav .nav-dropdown,
+  html body.contact-page .pf-nav .nav-dropdown,
+  html body.products-index-page .pf-nav .nav-dropdown,
+  html body.product-page .nav-dropdown,
+  html body.commerce-page .nav-dropdown {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 24px !important;
+    align-items: center !important;
+  }
+
+  html body.editorial-home .pf-nav .nav-dropdown > .nav-products-link,
+  html body.about-page .pf-nav .nav-dropdown > .nav-products-link,
+  html body.contact-page .pf-nav .nav-dropdown > .nav-products-link,
+  html body.products-index-page .pf-nav .nav-dropdown > .nav-products-link,
+  html body.product-page .nav-dropdown > .nav-products-link,
+  html body.commerce-page .nav-dropdown > .nav-products-link {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    padding-right: 20px !important;
+  }
+
+  html body.editorial-home .pf-nav .nav-dropdown-toggle,
+  html body.about-page .pf-nav .nav-dropdown-toggle,
+  html body.contact-page .pf-nav .nav-dropdown-toggle,
+  html body.products-index-page .pf-nav .nav-dropdown-toggle,
+  html body.product-page .nav-dropdown-toggle,
+  html body.commerce-page .pf-nav .nav-dropdown-toggle {
+    position: relative !important;
+    z-index: 2 !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body.editorial-home .nav-dropdown-menu,
+  html body.about-page .nav-dropdown-menu,
+  html body.contact-page .nav-dropdown-menu,
+  html body.products-index-page .nav-dropdown-menu,
+  html body.product-page .nav-dropdown-menu,
+  html body.commerce-page .nav-dropdown-menu {
+    position: fixed !important;
+    top: 148px !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    z-index: 1100 !important;
+  }
+
+  html body.editorial-home .editorial-ghost-number { display: none !important; }
+}
+
+@media (max-width: 390px) {
+  html body.editorial-home .pf-nav-inner,
+  html body.about-page .pf-nav-inner,
+  html body.contact-page .pf-nav-inner,
+  html body.products-index-page .pf-nav-inner,
+  html body.product-page .site-nav .container,
+  html body.commerce-page .pf-nav-inner { width: calc(100% - 24px) !important; }
+
+  html body.editorial-home .pf-nav-links > li > a,
+  html body.about-page .pf-nav-links > li > a,
+  html body.contact-page .pf-nav-links > li > a,
+  html body.products-index-page .pf-nav-links > li > a,
+  html body.product-page .nav-links > li > a,
+  html body.commerce-page .pf-nav-links > li > a,
+  html body.editorial-home .pf-nav .nav-products-link,
+  html body.about-page .pf-nav .nav-products-link,
+  html body.contact-page .pf-nav .nav-products-link,
+  html body.products-index-page .pf-nav .nav-products-link,
+  html body.product-page .nav-products-link,
+  html body.commerce-page .pf-nav .nav-products-link {
+    font-size: 10.5px !important;
+    letter-spacing: .025em !important;
+  }
+}
