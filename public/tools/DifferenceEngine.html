@@ -618,19 +618,22 @@ a { color: inherit; text-decoration: none; }
   animation: fadeUp 0.6s 0.08s ease both;
 }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-layout-polish">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-mobile-menu">
 </head>
 <body class="product-page product-difference">
 
 <!-- NAV -->
-<header class="site-nav">
+<header class="site-nav pf-responsive-nav">
   <div class="container">
     <a href="../" class="nav-brand">
       <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
       <span>Pragmatic <b>Fox</b></span>
     </a>
+    <button class="pf-mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation menu">
+      <span>Menu</span><span class="pf-mobile-menu-caret" aria-hidden="true"></span>
+    </button>
+    <nav class="pf-primary-nav" id="primary-nav" aria-label="Primary navigation">
     <ul class="nav-links">
-      <li><a href="../">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
         <a class="nav-products-link" href="../products/">Products</a>
         <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
@@ -654,6 +657,7 @@ a { color: inherit; text-decoration: none; }
       <li><a href="../about/">About</a></li>
       <li><a href="../contact/">Contact</a></li>
     </ul>
+    </nav>
   </div>
 </header>
 
@@ -888,6 +892,6 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
-<script src="../scripts/pragmatic.js"></script>
+<script src="../scripts/pragmatic.js?v=20260914-mobile-menu"></script>
 </body>
 </html>

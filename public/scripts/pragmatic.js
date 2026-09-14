@@ -1,4 +1,34 @@
 (() => {
+  const mobileMenuToggles = [...document.querySelectorAll('.pf-mobile-menu-toggle')];
+  const setMobileMenuState = (toggle, open, restoreFocus = false) => {
+    const header = toggle.closest('.pf-responsive-nav');
+    if (!header) return;
+    header.classList.toggle('pf-mobile-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    if (restoreFocus) toggle.focus();
+  };
+
+  mobileMenuToggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      setMobileMenuState(toggle, toggle.getAttribute('aria-expanded') !== 'true');
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (event.target.closest?.('.pf-primary-nav a')) {
+      mobileMenuToggles.forEach((toggle) => setMobileMenuState(toggle, false));
+      return;
+    }
+    if (event.target.closest?.('.pf-responsive-nav')) return;
+    mobileMenuToggles.forEach((toggle) => setMobileMenuState(toggle, false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    mobileMenuToggles.forEach((toggle) => setMobileMenuState(toggle, false, true));
+  });
+
   // Keep the shared product menu usable on every page, including pages that
   // only use the inline toggle handler. The delegated listener adds the
   // missing outside-click and Escape behavior without double-toggling it.

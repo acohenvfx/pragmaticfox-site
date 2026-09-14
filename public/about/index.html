@@ -18,18 +18,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-layout-polish">
+<link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-mobile-menu">
 </head>
 <body class="about-page">
-  <header class="pf-nav">
+  <header class="pf-nav pf-responsive-nav">
     <div class="pf-nav-inner">
       <a class="pf-brand" href="../" aria-label="Pragmatic Fox home">
         <img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true">
         <span>Pragmatic <strong>Fox</strong></span>
       </a>
-      <nav aria-label="Primary navigation">
+      <button class="pf-mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation menu">
+        <span>Menu</span><span class="pf-mobile-menu-caret" aria-hidden="true"></span>
+      </button>
+      <nav class="pf-primary-nav" id="primary-nav" aria-label="Primary navigation">
         <ul class="pf-nav-links">
-          <li><a href="../">Home</a></li>
           <li class="nav-dropdown" id="toolsDropdown">
             <a class="nav-products-link" href="../products/">Products</a>
             <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25-4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 1 1 .02-1.06Z" clip-rule="evenodd"/></svg></button>
@@ -72,6 +74,6 @@
   </main>
 
   <footer class="pf-footer">© 2026 Pragmatic Fox. All rights reserved.</footer>
-  <script src="../scripts/pragmatic.js"></script>
+  <script src="../scripts/pragmatic.js?v=20260914-mobile-menu"></script>
 </body>
 </html>

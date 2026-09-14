@@ -126,14 +126,17 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
 @media (max-width: 760px) { .site-nav .container { height: 58px; } .nav-links { gap: 14px; font-size: .78rem; } .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; } .hero { padding-top: 112px; } .feature-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .showcase-footer { align-items: flex-start; flex-direction: column; } .video-modal-overlay { padding: 12px; } }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-layout-polish">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260914-mobile-menu">
 </head>
 <body class="product-page product-aebridge">
-<header class="site-nav">
+<header class="site-nav pf-responsive-nav">
   <div class="container">
     <a href="../" class="nav-brand"><img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true"><span>Pragmatic <b>Fox</b></span></a>
+    <button class="pf-mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation menu">
+      <span>Menu</span><span class="pf-mobile-menu-caret" aria-hidden="true"></span>
+    </button>
+    <nav class="pf-primary-nav" id="primary-nav" aria-label="Primary navigation">
     <ul class="nav-links">
-      <li><a href="../">Home</a></li>
       <li class="nav-dropdown" id="toolsDropdown">
         <a class="nav-products-link" href="../products/">Products</a>
         <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products
@@ -148,6 +151,7 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
       <li><a href="../about/">About</a></li>
       <li><a href="../contact/">Contact</a></li>
     </ul>
+    </nav>
   </div>
 </header>
 
@@ -292,6 +296,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 </script>
-<script src="../scripts/pragmatic.js"></script>
+<script src="../scripts/pragmatic.js?v=20260914-mobile-menu"></script>
 </body>
 </html>
