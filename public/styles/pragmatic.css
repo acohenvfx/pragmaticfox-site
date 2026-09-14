@@ -49,7 +49,7 @@ body.product-page .nav-brand {
   align-items: center !important;
   gap: 8px !important;
   color: var(--pf-ink) !important;
-  font: 600 .96rem "Montserrat Medium", sans-serif !important;
+  font: 500 .96rem "Montserrat", sans-serif !important;
   letter-spacing: .18em !important;
   text-transform: uppercase !important;
 }
@@ -7345,6 +7345,22 @@ body.commerce-page .button.primary {
   border-color: var(--pf-button-ink, #1a202c) !important;
 }
 
+/* Let the product caption row grow to fit wrapped names and their descriptor.
+   The fixed 114px flex basis clipped the bottom label on laptop-sized views. */
+html body.editorial-home .editorial-product {
+  height: max-content !important;
+  max-height: none !important;
+}
+html body.editorial-home .editorial-product-copy {
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: max-content !important;
+  overflow: visible !important;
+  padding-bottom: 30px !important;
+}
+
 /* Keep the mobile layout contract last, after every legacy route override. */
 @media (max-width: 760px) {
   html, body { max-width: 100%; overflow-x: clip !important; }
@@ -7602,5 +7618,51 @@ body.commerce-page .button.primary {
     align-self: stretch !important;
     margin: 24px 0 48px !important;
     text-align: center !important;
+  }
+}
+
+/* Align the site wordmark across the home and all product-page navs. */
+html body.editorial-home .pf-brand,
+html body.product-page .nav-brand {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.12rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: .14em !important;
+}
+
+/* The original hero glow kept a fixed 700px circle while a later shared rule
+   stretched its inset to the hero. Reset its geometry so it becomes a flat
+   light wash rather than a clipped half-circle at the left edge. */
+html body.product-page.product-elemental .hero::before,
+html body.product-page.product-difference .hero::before {
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+/* Keep the company introduction prominent but easier to read in one pass. */
+html body.about-page .pf-about-origin > p {
+  font-size: clamp(1.2rem, 1.8vw, 1.75rem) !important;
+  line-height: 1.4 !important;
+}
+
+/* A restrained staggered entrance brings the contact copy and form in like
+   the other page introductions, without adding a persistent motion effect. */
+html body.contact-page .pf-contact-intro {
+  animation: editorial-enter .65s cubic-bezier(.2, .75, .2, 1) both;
+}
+html body.contact-page .pf-contact-form {
+  animation: editorial-enter .65s .12s cubic-bezier(.2, .75, .2, 1) both;
+}
+
+@media (max-width: 760px) {
+  html body.editorial-home .pf-brand,
+  html body.product-page .nav-brand {
+    font-size: .8rem !important;
+    letter-spacing: .08em !important;
+    gap: 7px !important;
   }
 }
