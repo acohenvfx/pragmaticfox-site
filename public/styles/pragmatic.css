@@ -7745,6 +7745,9 @@ html body.contact-page .pf-contact-form {
     width: min(320px, calc(100vw - 24px)) !important;
     min-width: 0 !important;
     max-width: calc(100vw - 24px) !important;
+    height: auto !important;
+    max-height: calc(100dvh - 84px) !important;
+    overflow-y: auto !important;
     margin: 0 !important;
     padding: 8px !important;
     border: 1px solid rgba(255, 250, 240, .16) !important;
@@ -7816,6 +7819,7 @@ html body.contact-page .pf-contact-form {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    height: auto !important;
   }
 
   html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown > .nav-products-link {
@@ -7850,12 +7854,12 @@ html body.contact-page .pf-contact-form {
     width: 100% !important;
     min-width: 0 !important;
     max-width: none !important;
-    margin: 0 !important;
-    padding: 4px 0 6px 12px !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    margin: 4px 0 8px !important;
+    padding: 6px !important;
+    border: 1px solid rgba(255, 250, 240, .14) !important;
+    border-radius: 10px !important;
+    background: #26211b !important;
+    box-shadow: inset 0 1px 0 rgba(255, 250, 240, .035) !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
@@ -7863,6 +7867,11 @@ html body.contact-page .pf-contact-form {
   }
 
   html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu::before { display: none !important; }
+  html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown.open {
+    height: auto !important;
+    min-height: 46px !important;
+  }
+
   html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown.open .nav-dropdown-menu { display: block !important; }
 
   html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu > a {
@@ -7873,7 +7882,20 @@ html body.contact-page .pf-contact-form {
     min-height: 44px !important;
     padding: 8px 12px !important;
     border-left: 2px solid rgba(242, 201, 76, .4) !important;
+    border-radius: 6px !important;
     color: #fffaf0 !important;
+    transition: background-color .16s ease, border-color .16s ease !important;
+  }
+
+  html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu > a + a {
+    border-top: 1px solid rgba(255, 250, 240, .08) !important;
+  }
+
+  html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu > a:hover,
+  html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu > a:focus-visible {
+    border-left-color: #f2c94c !important;
+    background: rgba(242, 201, 76, .1) !important;
+    outline: none !important;
   }
 
   html body:not(.commerce-page) .pf-responsive-nav .nav-dropdown-menu .tool-info-name { color: #fffaf0 !important; }
