@@ -11,7 +11,7 @@
 <meta property="og:title" content="BinCraft — Pragmatic Fox">
 <meta property="og:description" content="A local-first macOS utility for inspecting and safely editing Avid bin metadata in batches.">
 <meta property="og:url" content="https://pragmaticfox.com/tools/BinCraft">
-<meta property="og:image" content="https://pragmaticfox.com/slides/BinCraft/BinCraft_01-bins.png">
+<meta property="og:image" content="https://pragmaticfox.com/slides/BinCraft/BinCraft_02-bins-overview.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://pragmaticfox.com/tools/BinCraft">
 <link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
@@ -619,7 +619,7 @@ a { color: inherit; text-decoration: none; }
   animation: fadeUp 0.6s 0.08s ease both;
 }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260916-feature-card-padding2">
+<link rel="stylesheet" href="../styles/pragmatic.css?v=20260917-fluid-shell">
 </head>
 <body class="product-page product-bincraft">
 
@@ -714,18 +714,19 @@ a { color: inherit; text-decoration: none; }
       <div class="panel-frame">
         <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
         <div class="slideshow" id="slideshow">
-          <img src="../slides/BinCraft/BinCraft_01-bins.png" alt="BinCraft bins workspace" class="active" data-name="Bins workspace" decoding="async" fetchpriority="high">
-          <img src="../slides/BinCraft/BinCraft_02-markers.png" alt="BinCraft markers workspace" data-name="Markers workspace" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_05-marker-batch-edit.png" alt="BinCraft marker batch edit" data-name="Marker batch edit" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_06-clip-colors.png" alt="BinCraft clip colors workspace" data-name="Clip colors" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_03-effects.png" alt="BinCraft effects workspace" data-name="Effects report" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_08-name-filter.png" alt="BinCraft name filter" data-name="Name filter" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_04-sequence-markers.png" alt="BinCraft sequence markers" data-name="Sequence markers" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_07-clip-batch-edit.png" alt="BinCraft clip batch edit" data-name="Clip batch edit" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_01-dropzone.png" alt="BinCraft dropzone" class="active" data-name="Dropzone" decoding="async" fetchpriority="high">
+          <img src="../slides/BinCraft/BinCraft_02-bins-overview.png" alt="BinCraft bins overview" data-name="Bins overview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_03-markers.png" alt="BinCraft markers" data-name="Markers" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_04-marker-editing.png" alt="BinCraft marker editing" data-name="Marker editing" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_05-marker-editing-preview.png" alt="BinCraft marker editing preview" data-name="Marker editing preview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_06-clip-editing.png" alt="BinCraft clip editing" data-name="Clip editing" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_07-clip-editing-preview.png" alt="BinCraft clip editing preview" data-name="Clip editing preview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_08-name-filtering.png" alt="BinCraft name filtering" data-name="Name filtering" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_09-effects.png" alt="BinCraft effects" data-name="Effects" loading="lazy" decoding="async">
         </div>
         <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
       </div>
-      <div class="slide-label" id="slideLabel">Bins workspace</div>
+      <div class="slide-label" id="slideLabel">Dropzone</div>
       <div class="slideshow-controls">
         <div class="slide-dots" id="slideDots"></div>
         <button class="preview-btn" type="button" onclick="openImageModal(document.querySelector('#slideshow img.active'))">
@@ -775,6 +776,7 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <span>&copy; 2026 Pragmatic Fox. All rights reserved.</span>
     <ul class="footer-links">
+      <li><a href="../privacy/">Privacy Policy</a></li>
     </ul>
   </div>
 </footer>

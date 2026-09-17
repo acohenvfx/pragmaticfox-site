@@ -126,7 +126,7 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
 @media (max-width: 760px) { .site-nav .container { height: 58px; } .nav-links { gap: 14px; font-size: .78rem; } .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; } .hero { padding-top: 112px; } .feature-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .showcase-footer { align-items: flex-start; flex-direction: column; } .video-modal-overlay { padding: 12px; } }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260916-feature-card-padding2">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260917-fluid-shell">
 </head>
 <body class="product-page product-aebridge">
 <header class="site-nav pf-responsive-nav">
@@ -217,7 +217,7 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
   </div>
 </div>
 
-<footer>© 2026 Pragmatic Fox. All rights reserved.</footer>
+<footer class="site-footer"><div class="container"><span>&copy; 2026 Pragmatic Fox. All rights reserved.</span><ul class="footer-links"><li><a href="../privacy/">Privacy Policy</a></li></ul></div></footer>
 <div class="video-modal-overlay" id="videoModalOverlay" aria-hidden="true" onclick="handleModalClick(event)">
   <div class="video-modal" role="dialog" aria-modal="true" aria-label="AE Bridge preview">
     <video id="modalVideo" muted playsinline loop controls></video>

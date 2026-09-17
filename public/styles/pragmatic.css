@@ -8397,3 +8397,190 @@ html body.product-aebridge > main > .product-feature-section .feature-grid > .fe
 html body.product-elemental .tools-section .tools-grid > .tool-card:first-child {
   padding-left: clamp(16px, 2vw, 26px) !important;
 }
+
+/* Shared footer links: keep the policy link beside the copyright without
+   changing the compact footer rhythm on desktop or mobile. */
+.pf-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+}
+.pf-footer a,
+body.product-page .site-footer .footer-links a,
+body.product-aebridge > footer.site-footer .footer-links a {
+  color: inherit !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.pf-footer a:hover,
+.pf-footer a:focus-visible,
+body.product-page .site-footer .footer-links a:hover,
+body.product-page .site-footer .footer-links a:focus-visible,
+body.product-aebridge > footer.site-footer .footer-links a:hover,
+body.product-aebridge > footer.site-footer .footer-links a:focus-visible {
+  color: var(--pf-yellow) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+body.product-page .site-footer .footer-links,
+body.product-aebridge > footer.site-footer .footer-links {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.product-aebridge > footer.site-footer .container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+}
+
+/* Privacy page: a calm reading column inside the same charcoal system. */
+body.privacy-page {
+  min-height: 100vh;
+  background: #151311 !important;
+  color: #fffaf0 !important;
+}
+body.privacy-page .pf-privacy-main {
+  width: min(100% - 48px, 920px);
+  margin: 0 auto;
+  padding: clamp(72px, 9vw, 124px) 0 clamp(76px, 10vw, 132px);
+}
+body.privacy-page .pf-privacy-document {
+  max-width: 780px;
+  margin: 0 auto;
+}
+body.privacy-page .pf-privacy-header {
+  margin-bottom: clamp(44px, 6vw, 72px);
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(244, 237, 228, .2);
+}
+body.privacy-page .pf-privacy-label {
+  margin: 0 0 16px;
+  color: var(--pf-yellow) !important;
+  font: 600 .72rem/1.2 "JetBrains Mono", monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+body.privacy-page .pf-privacy-header h1 {
+  margin: 0;
+  color: #fffaf0 !important;
+  font: 650 clamp(3rem, 7vw, 6.2rem)/.9 "Space Grotesk", sans-serif;
+  letter-spacing: -.07em;
+}
+body.privacy-page .pf-privacy-effective {
+  margin: 20px 0 0;
+  color: rgba(255, 250, 240, .58) !important;
+  font: 500 .76rem/1.5 "JetBrains Mono", monospace;
+  letter-spacing: .04em;
+}
+body.privacy-page .pf-privacy-document h2 {
+  margin: clamp(42px, 6vw, 64px) 0 14px;
+  color: var(--pf-yellow) !important;
+  font: 600 clamp(1.35rem, 2.4vw, 1.9rem)/1.1 "Space Grotesk", sans-serif;
+  letter-spacing: -.035em;
+}
+body.privacy-page .pf-privacy-document p {
+  max-width: 72ch;
+  margin: 0 0 18px;
+  color: rgba(255, 250, 240, .78) !important;
+  font: 400 1rem/1.75 "Manrope", sans-serif;
+}
+body.privacy-page .pf-privacy-document strong {
+  color: #fffaf0 !important;
+  font-weight: 700;
+}
+body.privacy-page .pf-privacy-document a {
+  color: var(--pf-yellow) !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(242, 201, 76, .6);
+  text-underline-offset: 3px;
+}
+@media (max-width: 620px) {
+  body.privacy-page .pf-privacy-main {
+    width: min(100% - 32px, 920px);
+    padding-top: 56px;
+  }
+  body.privacy-page .pf-privacy-header h1 {
+    font-size: clamp(2.7rem, 14vw, 4.4rem);
+  }
+  body.privacy-page .pf-privacy-document p {
+    font-size: .94rem;
+    line-height: 1.7;
+  }
+}
+
+/* Fluid site frame: let the shared chrome and primary shells use the
+   available viewport while retaining deliberate breathing room at every
+   breakpoint. This keeps wide monitors from feeling boxed in and prevents
+   laptop layouts from collapsing into narrow columns. */
+html body .pf-nav-inner,
+html body.product-page .site-nav .container,
+html body.commerce-page .pf-nav-inner {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  padding-inline: clamp(20px, 4vw, 72px) !important;
+  box-sizing: border-box !important;
+}
+
+html body.editorial-home .editorial-home-shell,
+html body.products-index-page .products-index-main,
+html body.about-page .pf-about-story,
+html body.contact-page .pf-contact-main,
+html body.privacy-page .pf-privacy-main {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+html body.editorial-home .editorial-products {
+  width: min(1320px, 100%) !important;
+}
+
+html body.products-index-page .products-index-main {
+  padding-inline: clamp(24px, 6vw, 128px) !important;
+}
+
+html body.product-page .hero > .container,
+html body.product-page .hero-inner {
+  width: min(1500px, calc(100% - clamp(36px, 8vw, 160px))) !important;
+  max-width: 1500px !important;
+}
+
+html body.product-page:not(.product-aebridge) .hero > .container > .panel-showcase,
+html body.product-aebridge .panel-showcase {
+  width: min(100%, clamp(420px, 44vw, 720px)) !important;
+  max-width: 720px !important;
+}
+
+@media (max-width: 760px) {
+  html body .pf-nav-inner,
+  html body.product-page .site-nav .container,
+  html body.commerce-page .pf-nav-inner {
+    width: 100% !important;
+    padding-inline: 16px !important;
+  }
+
+  html body.editorial-home .editorial-home-shell,
+  html body.products-index-page .products-index-main,
+  html body.about-page .pf-about-story,
+  html body.contact-page .pf-contact-main,
+  html body.privacy-page .pf-privacy-main {
+    padding-inline: 20px !important;
+  }
+
+  html body.product-page .hero > .container,
+  html body.product-page .hero-inner {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+  }
+
+  html body.product-page:not(.product-aebridge) .hero > .container > .panel-showcase,
+  html body.product-aebridge .panel-showcase {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
