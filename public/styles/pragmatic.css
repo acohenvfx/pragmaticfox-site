@@ -8584,3 +8584,208 @@ html body.product-aebridge .panel-showcase {
     max-width: none !important;
   }
 }
+
+/* Final polish pass: keep footers readable, center the contact composition,
+   and give AE Bridge the same first-viewport geometry as Elemental Bender. */
+.pf-footer {
+  column-gap: 30px !important;
+}
+
+html body.product-page > .site-footer .container,
+html body.product-page > footer.site-footer .container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  column-gap: 30px !important;
+  row-gap: 10px !important;
+  width: min(100% - 40px, 1200px) !important;
+  max-width: 1200px !important;
+  margin-inline: auto !important;
+}
+
+html body.product-page > .site-footer .footer-links,
+html body.product-page > footer.site-footer .footer-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html body.privacy-page .pf-privacy-effective {
+  margin-top: 30px !important;
+}
+
+html body.contact-page .pf-contact-main {
+  width: min(1120px, calc(100% - 96px)) !important;
+  max-width: 1120px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Product index: a compact, typographic directory instead of four large
+   screenshot panels. The tool names remain the visual anchor and each row is
+   a clear, full-width link. */
+html body.products-index-page .products-name-list {
+  display: grid !important;
+  grid-auto-rows: auto !important;
+  border-top: 1px solid rgba(244, 237, 228, .3) !important;
+  border-bottom: 1px solid rgba(244, 237, 228, .3) !important;
+}
+
+html body.products-index-page .products-index-name-row {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 56px minmax(240px, 1.1fr) minmax(180px, .75fr) auto !important;
+  align-items: center !important;
+  gap: clamp(18px, 3vw, 48px) !important;
+  min-height: clamp(82px, 8vw, 118px) !important;
+  padding: 18px 0 !important;
+  border-bottom: 1px solid rgba(244, 237, 228, .2) !important;
+  color: #f4ede4 !important;
+  text-decoration: none !important;
+  transition: background-color .2s ease, padding-inline .2s ease !important;
+}
+
+html body.products-index-page .products-index-name-row:last-child {
+  border-bottom: 0 !important;
+}
+
+html body.products-index-page .products-index-name-row:hover,
+html body.products-index-page .products-index-name-row:focus-visible {
+  padding-inline: clamp(10px, 1.5vw, 22px) !important;
+  background: rgba(255, 255, 255, .035) !important;
+  outline: none !important;
+}
+
+html body.products-index-page .products-index-name-row .products-index-index {
+  position: static !important;
+  color: var(--pf-yellow) !important;
+  font: 500 .68rem/1 "JetBrains Mono", ui-monospace, monospace !important;
+  letter-spacing: .08em !important;
+}
+
+html body.products-index-page .products-index-name-row h2 {
+  margin: 0 !important;
+  color: #f7f1e9 !important;
+  font: 650 clamp(1.65rem, 3vw, 3.2rem)/1 "Space Grotesk", sans-serif !important;
+  letter-spacing: -.065em !important;
+}
+
+html body.products-index-page .products-index-name-row .products-index-summary {
+  margin: 0 !important;
+  max-width: 340px !important;
+  color: rgba(244, 237, 228, .62) !important;
+  font: 400 .78rem/1.45 "Manrope", sans-serif !important;
+  letter-spacing: -.01em !important;
+}
+
+html body.products-index-page .products-index-name-row h2 span,
+html body.products-index-page .products-index-name-row .products-index-link {
+  color: var(--pf-yellow) !important;
+}
+html body.products-index-page .products-index-name-row.editorial-de h2 span,
+html body.products-index-page .products-index-name-row.editorial-de .products-index-link { color: #d99aff !important; }
+html body.products-index-page .products-index-name-row.editorial-ae h2 span,
+html body.products-index-page .products-index-name-row.editorial-ae .products-index-link { color: #72cda0 !important; }
+html body.products-index-page .products-index-name-row.editorial-bc h2 span,
+html body.products-index-page .products-index-name-row.editorial-bc .products-index-link { color: #54c9ff !important; }
+
+html body.products-index-page .products-index-name-row .products-index-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  font: 700 .68rem/1 "Space Grotesk", sans-serif !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  transition: transform .2s ease !important;
+}
+html body.products-index-page .products-index-name-row:hover .products-index-link,
+html body.products-index-page .products-index-name-row:focus-visible .products-index-link {
+  transform: translateX(4px) !important;
+}
+
+@media (min-width: 861px) {
+  /* The panel spans the hero and tools rows, so the What It Does section can
+     begin immediately beneath the AE Bridge story instead of below the full
+     portrait preview. */
+  html body.product-aebridge > main {
+    position: relative !important;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr) !important;
+    grid-template-rows: auto auto auto !important;
+    column-gap: clamp(42px, 6vw, 92px) !important;
+    width: min(calc(100% - 96px), 1146px) !important;
+    max-width: 1146px !important;
+    margin-inline: auto !important;
+  }
+  html body.product-aebridge > main > .hero {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    padding-bottom: 0 !important;
+  }
+  html body.product-aebridge > main > .panel-showcase {
+    position: absolute !important;
+    top: 32px !important;
+    right: 0 !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    align-self: start !important;
+    justify-self: end !important;
+    width: min(100%, 460px) !important;
+    max-width: 460px !important;
+    margin: 0 !important;
+  }
+  html body.product-aebridge > main > .product-feature-section {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  html body.product-aebridge > main > .hero-cta {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    justify-self: start !important;
+    margin: 24px 0 48px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  html body.contact-page .pf-contact-main {
+    width: calc(100% - 32px) !important;
+    max-width: 560px !important;
+    padding-inline: 0 !important;
+  }
+  html body.product-page > .site-footer .container,
+  html body.product-page > footer.site-footer .container {
+    width: calc(100% - 32px) !important;
+    column-gap: 20px !important;
+  }
+  html body.products-index-page .products-index-name-row {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    min-height: 76px !important;
+    padding: 16px 0 !important;
+  }
+  html body.products-index-page .products-index-name-row .products-index-summary {
+    grid-column: 2 !important;
+    max-width: 34rem !important;
+    margin-top: -2px !important;
+    font-size: .72rem !important;
+  }
+  html body.products-index-page .products-index-name-row .products-index-link {
+    grid-column: 2 !important;
+    margin-top: 2px !important;
+  }
+  html body.products-index-page .products-index-name-row h2 {
+    font-size: clamp(1.45rem, 7vw, 2.2rem) !important;
+  }
+  html body.products-index-page .products-index-name-row:hover,
+  html body.products-index-page .products-index-name-row:focus-visible {
+    padding-inline: 8px !important;
+  }
+}
