@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Difference Engine — Pragmatic Fox</title>
-<meta name="description" content="Compare source and record sequences in Avid Media Composer. Detect moved objects, scaling, repositioning, rotation, color changes, and more.">
+<title>BinCraft — Pragmatic Fox</title>
+<meta name="description" content="Inspect Avid .avb bins, batch-edit markers and clip colors, and export effects reports without changing the originals.">
 <meta name="theme-color" content="#f2c94c">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pragmatic Fox">
-<meta property="og:title" content="Difference Engine — Pragmatic Fox">
-<meta property="og:description" content="Compare source and record sequences in Avid Media Composer and see changes before they become problems.">
-<meta property="og:url" content="https://pragmaticfox.com/tools/DifferenceEngine">
-<meta property="og:image" content="https://pragmaticfox.com/slides/DifferenceEngine/DifferenceEngine_01.png">
+<meta property="og:title" content="BinCraft — Pragmatic Fox">
+<meta property="og:description" content="A local-first macOS utility for inspecting and safely editing Avid bin metadata in batches.">
+<meta property="og:url" content="https://pragmaticfox.com/tools/BinCraft">
+<meta property="og:image" content="https://pragmaticfox.com/slides/BinCraft/BinCraft_01-bins.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://pragmaticfox.com/tools/DifferenceEngine">
+<link rel="canonical" href="https://pragmaticfox.com/tools/BinCraft">
 <link rel="icon" type="image/png" href="../assets/pf-mark-nav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,6 +188,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%;
   background: radial-gradient(circle, oklch(0.50 0.12 200 / 0.12), transparent 65%);
   pointer-events: none;
+  display: none;
 }
 
 .hero-badge {
@@ -620,7 +621,7 @@ a { color: inherit; text-decoration: none; }
 </style>
   <link rel="stylesheet" href="../styles/pragmatic.css?v=20260916-feature-card-padding2">
 </head>
-<body class="product-page product-difference">
+<body class="product-page product-bincraft">
 
 <!-- NAV -->
 <header class="site-nav pf-responsive-nav">
@@ -652,7 +653,7 @@ a { color: inherit; text-decoration: none; }
             <span class="tool-dot ae"></span>
             <span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span>
           </a>
-          <a href="BinCraft">
+          <a href="BinCraft" aria-current="page">
             <span class="tool-dot bc"></span>
             <span class="tool-info"><span class="tool-info-name">BinCraft</span><span class="tool-info-desc">Avid bin inspection and batch edits</span></span>
           </a>
@@ -668,44 +669,44 @@ a { color: inherit; text-decoration: none; }
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <p class="hero-product-name">Source + record comparison</p>
+    <p class="hero-product-name">Avid bin workflow</p>
     <h1>
-      Difference <span class="accent">Engine.</span>
+      Bin<span class="accent">Craft.</span>
     </h1>
-    <p class="hero-statement">Spot every <span class="accent">change.</span></p>
+    <p class="hero-statement">Batch work, <span class="accent">without the guesswork.</span></p>
     <p class="hero-sub">
-      Compares your source and record streams frame by frame — or sweeps entire sequences at once. Detects moved or missing objects, effects, scaling, repositioning, rotation, and color changes so nothing slips through.
+      Batch-edit markers and clips, see what effects are on a sequence—all locally, with validated copies that leave the original bins unchanged.
     </p>
-    <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later</p>
+    <p class="version-req">Works with <strong>Avid Media Composer .avb bins</strong></p>
     <div class="hero-badge">
       <span class="dot"></span>
-      Avid Media Composer Extension
+      Standalone macOS app
     </div>
 
     <!-- TOOLS -->
     <div class="product-feature-heading">
       <div class="section-label"><span>// Tools</span></div>
       <h2 class="section-title">What It Does</h2>
-      <p class="section-desc">See where each comparison mode fits into the edit.</p>
+      <p class="section-desc">Open a bin, find the work, and make safe changes in a focused pass.</p>
     </div>
 
     <div class="features">
       <div class="feature-card">
-        <div class="feature-name">4 Difference Modes</div>
-        <div class="feature-desc">Full Color, White Matte, Red Overlay, or Blue Overlay — pick the view that makes changes jump out.</div>
+        <div class="feature-name">Inspect the whole bin</div>
+        <div class="feature-desc">See sequences, master clips, markers, clip colors, and effects in one readable view.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-name">Match Confidence</div>
-        <div class="feature-desc">Pixel Difference and Match Confidence gauges tell you instantly whether two shots actually match.</div>
+        <div class="feature-name">Batch-edit with guardrails</div>
+        <div class="feature-desc">Find and replace marker text, change colors, or update clip names while previewing the exact scope first.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-name">Sequence Sweep</div>
-        <div class="feature-desc">Compare two entire sequences at once and get a shot-by-shot change report, exportable as CSV or PDF.</div>
+        <div class="feature-name">Report what matters</div>
+        <div class="feature-desc">Export marker, clip, and effects reports—including speed and keyframe details—as CSV or PDF.</div>
       </div>
     </div>
 
     <div class="hero-cta">
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=Difference%20Engine%20Beta%20Access" class="hero-btn">Request beta access</a>
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=BinCraft%20Beta%20Access" class="hero-btn">Request beta access</a>
     </div>
 
     <!-- Slideshow -->
@@ -713,23 +714,23 @@ a { color: inherit; text-decoration: none; }
       <div class="panel-frame">
         <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
         <div class="slideshow" id="slideshow">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_01.png" alt="Capture" class="active" data-name="Capture" decoding="async" fetchpriority="high">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_02.png" alt="Full Color Result" data-name="Full Color Result" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_03.png" alt="White Matte" data-name="White Matte" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_04.png" alt="Red Overlay" data-name="Red Overlay" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_05.png" alt="Blue Overlay" data-name="Blue Overlay" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_06.png" alt="Analysis" data-name="Analysis" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_07.png" alt="Sequence Sweep" data-name="Sequence Sweep" loading="lazy" decoding="async">
-          <img src="../slides/DifferenceEngine/DifferenceEngine_09.png" alt="Sweep Results" data-name="Sweep Results" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_01-bins.png" alt="BinCraft bins workspace" class="active" data-name="Bins workspace" decoding="async" fetchpriority="high">
+          <img src="../slides/BinCraft/BinCraft_02-markers.png" alt="BinCraft markers workspace" data-name="Markers workspace" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_05-marker-batch-edit.png" alt="BinCraft marker batch edit" data-name="Marker batch edit" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_06-clip-colors.png" alt="BinCraft clip colors workspace" data-name="Clip colors" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_03-effects.png" alt="BinCraft effects workspace" data-name="Effects report" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_08-name-filter.png" alt="BinCraft name filter" data-name="Name filter" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_04-sequence-markers.png" alt="BinCraft sequence markers" data-name="Sequence markers" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_07-clip-batch-edit.png" alt="BinCraft clip batch edit" data-name="Clip batch edit" loading="lazy" decoding="async">
         </div>
         <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
       </div>
-      <div class="slide-label" id="slideLabel">Capture</div>
+      <div class="slide-label" id="slideLabel">Bins workspace</div>
       <div class="slideshow-controls">
         <div class="slide-dots" id="slideDots"></div>
-        <button class="preview-btn" type="button" onclick="openVideoModal()">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z"/></svg>
-          Preview
+        <button class="preview-btn" type="button" onclick="openImageModal(document.querySelector('#slideshow img.active'))">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4.75A2.75 2.75 0 0 1 6.75 2h6.5A2.75 2.75 0 0 1 16 4.75v10.5A2.75 2.75 0 0 1 13.25 18h-6.5A2.75 2.75 0 0 1 4 15.25V4.75Zm2.75-1.25c-.69 0-1.25.56-1.25 1.25v7.12l2.26-2.26a1 1 0 0 1 1.42 0l1.55 1.55 2.12-2.12a1 1 0 0 1 1.42 0l.73.73V4.75c0-.69-.56-1.25-1.25-1.25h-6.5ZM14.5 13.3l-1.14-1.14-2.12 2.12a1 1 0 0 1-1.42 0l-1.55-1.55-2.77 2.77v-.25c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V13.3Z"/></svg>
+          Browse screenshots
         </button>
       </div>
     </div>
@@ -760,7 +761,7 @@ a { color: inherit; text-decoration: none; }
   <div class="video-modal">
     <video id="modalVideo" muted playsinline loop controls></video>
     <div class="video-modal-footer">
-      <span class="video-modal-title">Difference Engine — Preview</span>
+      <span class="video-modal-title">BinCraft — Preview</span>
       <button class="video-modal-close" type="button" onclick="closeVideoModal()">
         <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
         Close
@@ -848,9 +849,7 @@ const modalOverlay = document.getElementById('videoModalOverlay');
 const modalVideo   = document.getElementById('modalVideo');
 
 function openVideoModal() {
-  modalVideo.src = 'https://media.pragmaticfox.com/slides/DifferenceEngine/Demo/DifferenceEngine_Demo_260723.mp4';
-  modalOverlay.classList.add('open');
-  modalVideo.play().catch(() => {});
+  return;
 }
 
 function closeVideoModal() {
