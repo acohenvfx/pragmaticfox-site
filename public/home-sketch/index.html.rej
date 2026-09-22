@@ -1,0 +1,11 @@
+@@ -38,9 +38,9 @@
+             <span class="tool-info"><strong>AE Bridge</strong><small>Avid and After Effects round-trip</small></span>
+           </a>
+         </div>
+-        <a class="contact-button" href="mailto:andrewcoheneditor@gmail.com">Contact</a>
+       </div>
+ 
+       <nav class="sketch-links" aria-label="Secondary navigation">
+         <a href="../about/">About</a>
++        <a class="contact-button" href="mailto:andrewcoheneditor@gmail.com">Contact</a>
+       </nav>

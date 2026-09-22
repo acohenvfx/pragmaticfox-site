@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pragmatic Fox — Home</title>
+  <meta name="description" content="Pragmatic Fox makes clever, practical workflow tools for editors and VFX teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/pragmatic.css?v=20260831-product-notes25">
+</head>
+<body class="editorial-home">
+  <header class="pf-nav">
+    <div class="pf-nav-inner">
+      <a class="pf-brand" href="./" aria-label="Pragmatic Fox home">
+        <span class="pf-brand-mark" aria-hidden="true"></span>
+        Pragmatic <strong>Fox</strong>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="pf-nav-links">
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li class="nav-dropdown" id="toolsDropdown">
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-label="Open products menu" onclick="const dropdown=this.closest('.nav-dropdown'); dropdown.classList.toggle('open'); this.setAttribute('aria-expanded', dropdown.classList.contains('open'))">Products <span aria-hidden="true">⌄</span></button>
+            <div class="nav-dropdown-menu">
+              <a href="tools/ElementalBender.html"><span class="tool-dot eb"></span><span class="tool-info"><span class="tool-info-name">Elemental Bender</span><span class="tool-info-desc">Editorial &amp; VFX suite</span></span></a>
+              <a href="tools/DifferenceEngine.html"><span class="tool-dot de"></span><span class="tool-info"><span class="tool-info-name">Difference Engine</span><span class="tool-info-desc">Source vs. record comparison</span></span></a>
+              <a href="tools/aebridge.html"><span class="tool-dot ae"></span><span class="tool-info"><span class="tool-info-name">AE Bridge</span><span class="tool-info-desc">Avid and After Effects round-trip</span></span></a>
+            </div>
+          </li>
+          <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="editorial-home-shell">
+    <div class="editorial-ghost-number" aria-hidden="true">PF</div>
+
+    <section class="editorial-brand-panel" aria-labelledby="brand-title">
+      <p class="editorial-brand-kicker">// Workflow tools for editors</p>
+      <h1 class="editorial-brand-name" id="brand-title">Pragmatic <span>Fox</span></h1>
+      <p class="editorial-brand-title">Small tools.<strong> Big results.</strong></p>
+      <div class="editorial-brand-rule" aria-hidden="true"></div>
+      <p class="editorial-brand-copy">Tools for the work behind the picture. Less time on repetitive tasks, more time for the work itself.</p>
+    </section>
+
+    <section class="editorial-products" id="products" aria-labelledby="products-title">
+      <header class="editorial-products-head">
+        <p id="products-title">// Products / 03</p>
+      </header>
+
+      <div class="editorial-list">
+        <a class="editorial-product editorial-eb" href="tools/ElementalBender.html">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">01</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>Elemental<br>Bender</h2>
+            <p>Editorial + VFX suite</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/ElementalBender/ElementalBender_01.png" alt="">
+          </div>
+        </a>
+
+        <a class="editorial-product editorial-de" href="tools/DifferenceEngine.html">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">02</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>Difference<br>Engine</h2>
+            <p>Source vs. record comparison</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/DifferenceEngine/DifferenceEngine_01.png" alt="">
+          </div>
+        </a>
+
+        <a class="editorial-product editorial-ae" href="tools/aebridge.html">
+          <div class="editorial-product-copy">
+            <span class="editorial-index">03</span>
+            <span class="editorial-mark" aria-hidden="true"></span>
+            <h2>AE<br>Bridge</h2>
+            <p>Avid + After Effects round-trip</p>
+          </div>
+          <div class="editorial-product-preview" aria-hidden="true">
+            <img src="slides/AeBridge/AEBridge_01.png" alt="">
+          </div>
+        </a>
+      </div>
+
+      <p class="editorial-footer">Avid Media Composer tools for the edit room.</p>
+    </section>
+
+  </main>
+  <section class="pf-final" aria-labelledby="homepage-contact-title">
+    <h2 id="homepage-contact-title">Have a workflow<br><span>worth improving?</span></h2>
+    <a href="mailto:andrewcoheneditor@gmail.com?subject=Pragmatic%20Fox">Get in touch</a>
+  </section>
+</body>
+</html>

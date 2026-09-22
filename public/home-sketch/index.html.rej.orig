@@ -1,0 +1,5 @@
+@@ -15,3 +15,2 @@
+     <section class="sketch-lockup" aria-labelledby="sketch-title">
+-      <h1 class="visually-hidden" id="sketch-title">Pragmatic Fox</h1>
+-      <img class="sketch-logo" src="../assets/logo-fox-no-bg.png" alt="Pragmatic Fox">
++      <h1 class="sketch-name" id="sketch-title">Pragmatic <span>Fox</span></h1>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Pragmatic Fox</title>
+  <meta name="description" content="The story behind Pragmatic Fox and its practical workflow tools for editors and VFX teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/pragmatic.css">
+</head>
+<body class="about-page">
+  <header class="pf-nav">
+    <div class="pf-nav-inner">
+      <a class="pf-brand" href="../" aria-label="Pragmatic Fox home">
+        <span class="pf-brand-mark" aria-hidden="true"></span>
+        Pragmatic <strong>Fox</strong>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="pf-nav-links">
+          <li class="nav-dropdown">
+            <a href="../#products">Products <span aria-hidden="true">⌄</span></a>
+            <div class="nav-dropdown-menu">
+              <a href="../tools/ElementalBender.html"><strong>Elemental Bender</strong><small>Editorial &amp; VFX suite</small></a>
+              <a href="../tools/DifferenceEngine.html"><strong>Difference Engine</strong><small>Source vs. record comparison</small></a>
+              <a href="../tools/aebridge.html"><strong>AE Bridge</strong><small>Avid and After Effects round-trip</small></a>
+            </div>
+          </li>
+          <li><a href="./" aria-current="page">About</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pf-about-story pf-reveal">
+      <div class="pf-about-story-label">// About Pragmatic Fox</div>
+      <div class="pf-about-story-copy">
+        <div class="pf-about-origin">
+          <p>Pragmatic Fox was founded on a simple idea: efficiency, speed, and the reduction of human error belong at the heart of every project. In complex production environments, small inefficiencies can quickly add up—slowing teams down, creating unnecessary repetition, and leaving more room for mistakes. A thoughtful improvement to a workflow, however small, can make a meaningful difference by saving time, improving consistency, and helping people focus on the work that matters most.</p>
+          <p>Pragmatic Fox creates practical tools that streamline everyday tasks, remove friction, and make demanding workflows easier to manage. The goal is not to add complexity, but to build solutions that feel intuitive, dependable, and genuinely useful—tools that fit naturally into the way creative teams already work.</p>
+        </div>
+        <div class="pf-about-founder">
+          <div>
+            <h2>Andrew Cohen,<span>Founder and VFX Editor</span></h2>
+          </div>
+          <div class="pf-about-founder-copy">
+            <p>Andrew has been experimenting with technology since childhood. Whether taking apart software, finding more efficient ways to complete a task, or building something to solve a problem, he has always been curious about how things work—and how they could work better.</p>
+            <p>As a VFX Editor on productions including <em>Avatar: The Last Airbender</em>, <em>Gen V</em>, and <em>Obi-Wan Kenobi</em>, Andrew has worked in fast-paced environments where organization, accuracy, and clear communication are essential. His experience has given him a firsthand understanding of the challenges creative teams face every day, from managing large amounts of information to coordinating complex processes under tight deadlines.</p>
+            <p>Pragmatic Fox gives Andrew a platform to turn that experience and curiosity into practical tools for the screen industries. Each product is built with a focus on real-world use: reducing repetitive work, improving reliability, and helping teams spend less time fighting their workflows and more time doing their best work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pf-final pf-reveal">
+      <h2>Have a workflow<br><span>worth improving?</span></h2>
+      <a href="mailto:andrewcoheneditor@gmail.com?subject=Pragmatic%20Fox">Get in touch</a>
+    </section>
+  </main>
+
+  <footer class="pf-footer">© 2026 Pragmatic Fox. Clever tools. Practical solutions.</footer>
+  <script src="../scripts/pragmatic.js"></script>
+</body>
+</html>
