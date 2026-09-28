@@ -2541,7 +2541,7 @@ body.product-page .image-modal-overlay.open {
 }
 body.product-page .image-modal {
   position: relative;
-  width: min(1280px, 94vw);
+  width: min(1800px, calc(100vw - 64px));
   max-height: 92vh;
   overflow: hidden;
   border: 1px solid rgba(238, 245, 251, .28);
@@ -2592,7 +2592,7 @@ body.product-page .image-modal-close:focus-visible {
 }
 @media (max-width: 600px) {
   body.product-page .image-modal-overlay { padding: 12px; }
-  body.product-page .image-modal { border-radius: 16px; }
+  body.product-page .image-modal { width: calc(100vw - 24px); border-radius: 16px; }
   body.product-page .image-modal > img { max-height: calc(92vh - 54px); }
 }
 

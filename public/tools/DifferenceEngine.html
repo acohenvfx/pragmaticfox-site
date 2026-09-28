@@ -617,8 +617,18 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 14px;
   animation: fadeUp 0.6s 0.08s ease both;
 }
+
+/* Scale the screenshot gallery with desktop viewport width while keeping
+   the existing mobile composition intact. */
+@media (min-width: 1100px) {
+  .product-difference .hero > .container,
+  .product-difference .panel-showcase {
+    width: min(1600px, calc(100vw - 48px));
+    max-width: none;
+  }
+}
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260917-final2">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260925-gallery-scale">
 </head>
 <body class="product-page product-difference">
 
