@@ -132,9 +132,10 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
   }
 }
 </style>
-  <link rel="stylesheet" href="../styles/pragmatic.css?v=20260925-gallery-scale">
+  <link rel="stylesheet" href="../styles/pragmatic.css?v=20261005-cart-circle1">
+  <link rel="stylesheet" href="../styles/product-story.css?v=20261005-product-story5">
 </head>
-<body class="product-page product-aebridge">
+<body class="product-page product-aebridge product-story">
 <header class="site-nav pf-responsive-nav">
   <div class="container">
     <a href="../" class="nav-brand"><img class="pf-nav-mark" src="../assets/pf-mark-nav.png" alt="" aria-hidden="true"><span>Pragmatic <b>Fox</b></span></a>
@@ -157,24 +158,35 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
       </li>
       <li><a href="../about/">About</a></li>
       <li><a href="../contact/">Contact</a></li>
+      <li data-cart-link><a href="../cart/">Cart <span data-cart-count class="cart-count" hidden></span></a></li>
+      <li><a href="../account/">Account</a></li>
     </ul>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="hero">
+<main id="product-story" class="product-story-main">
+<section class="hero">
     <div class="hero-inner">
       <p class="eyebrow">Avid ↔ After Effects workflow</p>
-      <h1>AE<br><span>Bridge.</span></h1>
+      <h1>AE <span>Bridge.</span></h1>
       <p class="hero-statement">Round trip, <span>without the mess.</span></p>
-      <p class="lead">One-click round-trip plate creation and distribution between Avid Media Composer and After Effects for comps. Keep the edit moving while the finishing work stays focused.</p>
+      <p class="lead">Create and distribute plates between Avid Media Composer and After Effects, then bring finished elements back through a focused, repeatable handoff.</p>
       <p class="version-req">Requires <strong>Avid Media Composer 2024.12.3</strong> or later and <strong>Adobe After Effects</strong></p>
       <span class="badge"><i></i>Avid Media Composer Extension</span>
+      <div class="hero-cta">
+    <a href="mailto:andrewcoheneditor@gmail.com?subject=AE%20Bridge%20Beta%20Access" class="hero-btn">Request beta access</a>
+  </div>
+      <ul class="product-frictions" aria-label="Less repetitive work">
+        <li>Rebuilding comp timing by hand</li>
+        <li>Sorting plate handoffs manually</li>
+        <li>Hunting for the right After Effects job</li>
+        <li>Managing the return to editorial</li>
+      </ul>
     </div>
   </section>
-
-  <section class="panel-showcase" aria-label="AE Bridge panel preview">
+  <section class="product-demo pf-reveal" aria-label="Product screenshot and demo">
+<section class="panel-showcase" aria-label="AE Bridge panel preview">
     <div class="panel-frame">
       <img src="../slides/AeBridge/AEBridge_01.png" alt="AE Bridge panel showing current shot, plate stack, renaming, settings, and shots" data-name="AE Bridge panel" tabindex="0" role="button" aria-label="Open AE Bridge panel image" decoding="async" fetchpriority="high">
     </div>
@@ -186,9 +198,10 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
       </button>
     </div>
   </section>
-
-
-  <section class="product-feature-section" aria-label="AE Bridge tools">
+    <p class="product-demo-hint">Click the screenshot to explore it at full size.</p>
+  </section>
+  <section class="product-details pf-reveal" aria-label="Product features">
+<section class="product-feature-section" aria-label="AE Bridge tools">
     <div class="product-feature-heading">
       <div class="section-label"><span>// Tools</span></div>
       <h2 class="section-title">What It Does</h2>
@@ -200,17 +213,18 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
       <article class="feature"><h2>Bring it back cleanly</h2><p>Return the finished element to the edit with a clear, repeatable handoff for editorial and VFX teams.</p></article>
     </div>
   </section>
-
-  <div class="hero-cta">
+    <div class="product-purchase-repeat">
+      <p>Make your next handoff simpler.</p>
+<div class="hero-cta">
     <a href="mailto:andrewcoheneditor@gmail.com?subject=AE%20Bridge%20Beta%20Access" class="hero-btn">Request beta access</a>
   </div>
-
-
-  <section class="pf-final product-final" aria-labelledby="aebridge-contact-title">
+    </div>
+  </section>
+</main>
+<section class="pf-final product-final" aria-labelledby="aebridge-contact-title">
     <h2 id="aebridge-contact-title">Have a question about a product<br><span>or a custom tool in mind?</span></h2>
     <a href="../contact/">Get in touch</a>
   </section>
-</main>
 
 <!-- IMAGE MODAL -->
 <div class="image-modal-overlay" id="imageModalOverlay" aria-hidden="true" onclick="handleImageModalClick(event)">
@@ -223,7 +237,7 @@ footer { color: var(--faint); font-size: .76rem; text-align: center; padding: 28
   </div>
 </div>
 
-<footer class="site-footer"><div class="container"><span>&copy; 2026 Pragmatic Fox. All rights reserved.</span><ul class="footer-links"><li><a href="../privacy/">Privacy Policy</a></li></ul></div></footer>
+<footer class="site-footer"><div class="container"><span>&copy; 2026 Pragmatic Fox. All rights reserved.</span><ul class="footer-links"><li><a href="../privacy/">Privacy Policy</a></li><li><a href="../eula/">EULA</a></li></ul></div></footer>
 <div class="video-modal-overlay" id="videoModalOverlay" aria-hidden="true" onclick="handleModalClick(event)">
   <div class="video-modal" role="dialog" aria-modal="true" aria-label="AE Bridge preview">
     <video id="modalVideo" muted playsinline loop controls></video>

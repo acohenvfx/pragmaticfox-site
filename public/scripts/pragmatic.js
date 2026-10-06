@@ -1,3 +1,53 @@
+/* Commerce navigation is injected from one shared source so the marketing,
+   product, and account templates cannot drift as storefront features evolve. */
+(() => {
+  const path = window.location.pathname.replace(/index\.html$/, '');
+  document.querySelectorAll('.pf-nav-links, body.product-page .nav-links').forEach((list) => {
+    [...list.querySelectorAll(':scope > li')].forEach((item) => {
+      const link = item.querySelector(':scope > a');
+      if (link && /^\.\.\/\/?$|^\/$/.test(link.getAttribute('href') || '') && /^home$/i.test(link.textContent.trim())) item.remove();
+    });
+
+    const menu = list.querySelector('.nav-dropdown-menu');
+    if (menu && !menu.querySelector('[href*="BinCraft"]')) {
+      const item = document.createElement('a');
+      item.href = '/tools/BinCraft';
+      item.innerHTML = '<span class="tool-dot bc"></span><span class="tool-info"><span class="tool-info-name">BinCraft</span><span class="tool-info-desc">Avid bin inspection and batch edits</span></span>';
+      menu.append(item);
+    }
+
+    if (!list.querySelector('[data-cart-link]')) {
+      const cart = document.createElement('li');
+      cart.dataset.cartLink = '';
+      cart.innerHTML = '<a href="/cart/">Cart <span data-cart-count class="cart-count" hidden></span></a>';
+      list.append(cart);
+    }
+    const hasAccountLink = [...list.querySelectorAll('a')].some((link) => {
+      const target = new URL(link.href, window.location.href).pathname.replace(/index\.html$/, '');
+      return target === '/account/' || target === '/account';
+    });
+    if (!hasAccountLink) {
+      const account = document.createElement('li');
+      account.innerHTML = '<a href="/account/">Account</a>';
+      list.append(account);
+    }
+    list.querySelectorAll('a').forEach((link) => {
+      const target = new URL(link.href, window.location.href).pathname.replace(/index\.html$/, '');
+      if (target === path) link.setAttribute('aria-current', 'page');
+    });
+  });
+
+  let cartCount = 0;
+  try {
+    const cart = JSON.parse(localStorage.getItem('pragmaticfox.cart.v2') || '[]');
+    cartCount = Array.isArray(cart) ? cart.length : 0;
+  } catch (_error) {}
+  document.querySelectorAll('[data-cart-count]').forEach((badge) => {
+    badge.textContent = String(cartCount);
+    badge.hidden = cartCount < 1;
+  });
+})();
+
 (() => {
   const mobileMenuToggles = [...document.querySelectorAll('.pf-mobile-menu-toggle')];
   const setMobileMenuState = (toggle, open, restoreFocus = false) => {

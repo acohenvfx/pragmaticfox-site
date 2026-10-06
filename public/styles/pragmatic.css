@@ -1,3 +1,36 @@
+/* Shared frosted header: opaque yellow remains the fallback where blur is unavailable. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html:root body .pf-nav,
+  html:root body.product-page .site-nav,
+  html:root body.commerce-page .pf-nav {
+    background: rgba(243, 206, 73, .84) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(115%) !important;
+    backdrop-filter: blur(18px) saturate(115%) !important;
+  }
+}
+
+/* One cart badge across marketing and commerce templates. */
+html body .pf-nav .cart-count,
+html body .site-nav .cart-count {
+  display: inline-grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  width: 22px !important;
+  min-width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  margin-left: 4px !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #f3ce49 !important;
+  color: #000 !important;
+  font: 700 11px/1 "Manrope", sans-serif !important;
+  letter-spacing: 0 !important;
+  vertical-align: middle !important;
+}
+html body .pf-nav .cart-count[hidden],
+html body .site-nav .cart-count[hidden] { display: none !important; }
+
 :root {
   --pf-paper: #f4efe5;
   --pf-paper-2: #fffaf0;
@@ -8556,6 +8589,111 @@ html body.product-aebridge .panel-showcase {
   max-width: 720px !important;
 }
 
+/* Shared navigation contract: keep the brand and every menu item at the same
+   scale and in the same positions across marketing, product, and commerce pages. */
+html body .pf-nav-inner,
+html body.product-page .site-nav .container,
+html body.commerce-page .pf-nav-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+html body .pf-brand,
+html body.product-page .nav-brand,
+html body.commerce-page .pf-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  gap: 8px !important;
+  color: #171310 !important;
+  font: 500 1.12rem/1 "Montserrat", sans-serif !important;
+  letter-spacing: .14em !important;
+  white-space: nowrap !important;
+}
+html body .pf-brand strong,
+html body.product-page .nav-brand b,
+html body.commerce-page .pf-brand strong {
+  color: #171310 !important;
+  font: inherit !important;
+}
+html body .pf-nav-mark,
+html body.product-page .nav-brand .pf-nav-mark {
+  display: block !important;
+  width: 18px !important;
+  height: 23px !important;
+  flex: 0 0 18px !important;
+  object-fit: contain !important;
+}
+html body .pf-primary-nav { margin-left: auto !important; }
+html body .pf-nav-links,
+html body.product-page .nav-links,
+html body.commerce-page .pf-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 28px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body .pf-nav-links > li,
+html body.product-page .nav-links > li,
+html body.commerce-page .pf-nav-links > li { flex: 0 0 auto !important; }
+html body .pf-nav-links > li > a,
+html body .pf-nav .nav-products-link,
+html body .pf-nav .nav-dropdown-toggle,
+html body.product-page .nav-links > li > a,
+html body.product-page .nav-products-link,
+html body.product-page .nav-dropdown-toggle,
+html body.commerce-page .pf-nav-links > li > a,
+html body.commerce-page .pf-nav .nav-products-link,
+html body.commerce-page .pf-nav .nav-dropdown-toggle,
+html body.commerce-page .pf-nav-links > li > a {
+  color: #171310 !important;
+  font: 700 .78rem/20px "Space Grotesk", sans-serif !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+html body.product-aebridge > main {
+  width: min(1500px, calc(100% - clamp(36px, 8vw, 160px))) !important;
+  max-width: 1500px !important;
+}
+@media (max-width: 760px) {
+  html body.product-aebridge > main {
+    width: calc(100% - 32px) !important;
+    max-width: 720px !important;
+  }
+  html body .pf-brand,
+  html body.product-page .nav-brand,
+  html body.commerce-page .pf-brand {
+    gap: 7px !important;
+    font-size: .8rem !important;
+    letter-spacing: .08em !important;
+  }
+  html body .pf-nav-mark,
+  html body.product-page .nav-brand .pf-nav-mark {
+    width: 15px !important;
+    height: 19px !important;
+    flex-basis: 15px !important;
+  }
+  html body .pf-nav-links,
+  html body.product-page .nav-links,
+  html body.commerce-page .pf-nav-links { gap: 4px 12px !important; }
+  html body .pf-nav-links > li > a,
+  html body .pf-nav .nav-products-link,
+  html body .pf-nav .nav-dropdown-toggle,
+  html body.product-page .nav-links > li > a,
+  html body.product-page .nav-products-link,
+  html body.product-page .nav-dropdown-toggle,
+  html body.commerce-page .pf-nav-links > li > a,
+  html body.commerce-page .pf-nav .nav-products-link,
+  html body.commerce-page .pf-nav .nav-dropdown-toggle,
+  html body.commerce-page .pf-nav-links > li > a {
+    font-size: 11px !important;
+    letter-spacing: .045em !important;
+  }
+}
+
 @media (max-width: 760px) {
   html body .pf-nav-inner,
   html body.product-page .site-nav .container,
@@ -8787,5 +8925,145 @@ html body.products-index-page .products-index-name-row:focus-visible .products-i
   html body.products-index-page .products-index-name-row:hover,
   html body.products-index-page .products-index-name-row:focus-visible {
     padding-inline: 8px !important;
+  }
+}
+
+/* Keep the subscription choices above the following CTA/footer section. The
+   product hero is otherwise clipped at its lower edge, which cuts off the
+   second billing option when the control sits near the bottom of the page. */
+html body.product-page .hero {
+  overflow: visible !important;
+  z-index: 2 !important;
+}
+html body.product-page .hero .hero-cta {
+  position: relative !important;
+  z-index: 20 !important;
+}
+html body.product-page .hero .subscription-dropdown-menu {
+  z-index: 200 !important;
+}
+
+/* Keep the billing dropdown indicator consistent with the site's dark ink and
+   yellow accent, rather than the previous pale circle/dark-chevron treatment. */
+html body.product-page .subscription-dropdown-caret {
+  background: #171310 !important;
+}
+html body.product-page .subscription-dropdown-caret::after {
+  border-right-color: #f2c94c !important;
+  border-bottom-color: #f2c94c !important;
+}
+
+/* The Products destination link supplies the label; the adjacent button is
+   only the dropdown affordance. Hide its duplicated text on every template. */
+html body .pf-nav .nav-dropdown-toggle,
+html body.product-page .site-nav .nav-dropdown-toggle,
+html body.commerce-page .pf-nav .nav-dropdown-toggle {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: #171310 !important;
+}
+html body .pf-nav .nav-dropdown-toggle svg,
+html body.product-page .site-nav .nav-dropdown-toggle svg,
+html body.commerce-page .pf-nav .nav-dropdown-toggle svg {
+  display: none !important;
+}
+
+/* Match the same 1500px responsive content rail used by Elemental Bender;
+   the earlier compact AE-specific cap was leaving much wider side margins. */
+@media (min-width: 861px) {
+  html body.product-aebridge > main {
+    width: min(1500px, calc(100% - clamp(36px, 8vw, 160px))) !important;
+    max-width: 1500px !important;
+    margin-inline: auto !important;
+  }
+}
+@media (max-width: 860px) {
+  html body.product-aebridge > main {
+    width: calc(100% - 32px) !important;
+    max-width: 720px !important;
+  }
+}
+
+/* One wordmark contract for every template. Older page-local declarations
+   assigned different font metrics to the same navigation brand. */
+html body .pf-nav .pf-brand,
+html body.product-page .site-nav .nav-brand,
+html body.commerce-page .pf-nav .pf-brand {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  gap: 8px !important;
+  min-height: 23px !important;
+  color: #171310 !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: .12em !important;
+  white-space: nowrap !important;
+}
+html body .pf-nav .pf-brand > span,
+html body.product-page .site-nav .nav-brand > span,
+html body.commerce-page .pf-nav .pf-brand > span,
+html body .pf-nav .pf-brand strong,
+html body.product-page .site-nav .nav-brand b,
+html body.commerce-page .pf-nav .pf-brand strong {
+  color: #171310 !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+}
+html body .pf-nav .pf-nav-mark,
+html body.product-page .site-nav .nav-brand .pf-nav-mark,
+html body.commerce-page .pf-nav .pf-nav-mark {
+  display: block !important;
+  width: 18px !important;
+  height: 23px !important;
+  flex: 0 0 18px !important;
+  object-fit: contain !important;
+}
+
+/* Short laptop-height rules had reduced the homepage's top inset to zero,
+   letting the first brand line sit flush against the sticky yellow header. */
+@media (min-width: 761px) {
+  html body.editorial-home .editorial-home-shell {
+    padding-top: clamp(18px, 2.5vh, 28px) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  html body .pf-nav .pf-brand,
+  html body.product-page .site-nav .nav-brand,
+  html body.commerce-page .pf-nav .pf-brand {
+    gap: 6px !important;
+    font-size: 12px !important;
+    letter-spacing: .07em !important;
+  }
+  html body .pf-nav .pf-nav-mark,
+  html body.product-page .site-nav .nav-brand .pf-nav-mark,
+  html body.commerce-page .pf-nav .pf-nav-mark {
+    width: 15px !important;
+    height: 19px !important;
+    flex-basis: 15px !important;
+  }
+}
+
+/* Keep navigation label sizing independent of each template's root rem size.
+   Commerce carries its matching rule in commerce.css, which loads afterward. */
+html body .pf-nav .pf-nav-links > li > a,
+html body .pf-nav .nav-products-link,
+html body.product-page .site-nav .nav-links > li > a,
+html body.product-page .site-nav .nav-products-link {
+  font-size: 14.08px !important;
+  line-height: 20px !important;
+}
+
+@media (max-width: 760px) {
+  html body .pf-nav .pf-nav-links > li > a,
+  html body .pf-nav .nav-products-link,
+  html body.product-page .site-nav .nav-links > li > a,
+  html body.product-page .site-nav .nav-products-link {
+    font-size: 11px !important;
+    line-height: 20px !important;
   }
 }

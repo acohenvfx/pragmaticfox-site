@@ -1,0 +1,308 @@
+/* Product story: introduce, demonstrate, explain, then invite action.
+   Scoped to the four product templates so navigation and other pages stay shared. */
+html body.product-page.product-story > main#product-story.product-story-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+html body.product-story #product-story .hero {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: clamp(44px, 6vw, 88px) 24px 40px !important;
+  background: transparent !important;
+  border: 0 !important;
+  text-align: center !important;
+}
+html body.product-story #product-story .hero::before,
+html body.product-story #product-story .hero::after { display: none !important; }
+html body.product-story #product-story .hero > .container,
+html body.product-story #product-story .hero > .hero-inner {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+  background: transparent !important;
+}
+html body.product-story #product-story .hero-product-name,
+html body.product-story #product-story .eyebrow {
+  text-align: center !important;
+  margin: 0 0 20px !important;
+  color: #f3ce49 !important;
+  font-size: 12px !important;
+  letter-spacing: .15em !important;
+}
+html body.product-story #product-story .hero h1 {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 20px !important;
+  font-size: clamp(42px, 6.8vw, 92px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.055em !important;
+  white-space: normal !important;
+  text-align: center !important;
+  color: #f6f2eb !important;
+}
+html body.product-story #product-story .hero h1 span {
+  display: inline !important;
+  color: #f3ce49 !important;
+  background: none !important;
+  -webkit-text-fill-color: #f3ce49 !important;
+}
+html body.product-story #product-story .hero-statement {
+  text-align: center !important;
+  margin: 0 auto 18px !important;
+  max-width: 900px !important;
+  font-size: clamp(24px, 3vw, 38px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.035em !important;
+}
+html body.product-story #product-story .hero-sub,
+html body.product-story #product-story .lead {
+  text-align: center !important;
+  margin: 0 auto 20px !important;
+  max-width: 690px !important;
+  font-size: clamp(16px, 1.4vw, 19px) !important;
+  line-height: 1.65 !important;
+  color: #c7c2b9 !important;
+}
+html body.product-story #product-story .version-req {
+  margin: 0 auto 14px !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+}
+html body.product-story #product-story .hero-badge,
+html body.product-story #product-story .badge {
+  display: inline-flex !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  font-size: 10px !important;
+}
+html body.product-story #product-story .hero-cta {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 26px auto 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 5;
+}
+html body.product-story #product-story .hero-btn {
+  min-height: 52px !important;
+  max-width: 100% !important;
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+  padding: 14px 22px !important;
+  color: #171310 !important;
+}
+html body.product-story #product-story .subscription-dropdown { width: auto !important; max-width: 100% !important; }
+html body.product-story #product-story .subscription-dropdown-trigger { width: auto !important; white-space: nowrap !important; gap: 24px !important; }
+html body.product-story #product-story .product-frictions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+  margin: 36px auto 0;
+  padding: 0;
+  list-style: none;
+  color: #bdb7ac;
+  font-size: 13px;
+  line-height: 1.5;
+}
+html body.product-story #product-story .product-frictions li { display: flex; align-items: baseline; gap: 9px; }
+html body.product-story #product-story .product-frictions li::before { content: '−'; color: #f3ce49; font-weight: 700; }
+html body.product-story #product-story .product-demo {
+  display: block !important;
+  width: min(1600px, calc(100% - 64px)) !important;
+  margin: 0 auto !important;
+  padding: 12px 0 0 !important;
+}
+html body.product-story #product-story .product-demo .panel-showcase {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+html body.product-story #product-story .panel-frame {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #0b111a !important;
+  border: 1px solid #514c40 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 18px 60px #0004 !important;
+  transform: none !important;
+}
+html body.product-story #product-story .panel-frame::before,
+html body.product-story #product-story .panel-frame::after { display: none !important; }
+html body.product-story #product-story .slideshow {
+  position: relative !important;
+  width: 100% !important;
+  height: clamp(420px, 60vw, 960px) !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+}
+html body.product-story #product-story .slideshow img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+/* BinCraft screenshots are a wide application workspace. Keep its frame at the
+   source proportion so the inline gallery shows the complete interface. */
+html body.product-story.product-bincraft #product-story .product-demo {
+  width: min(1680px, calc(100% - 32px)) !important;
+}
+html body.product-story.product-bincraft #product-story .slideshow {
+  height: auto !important;
+  aspect-ratio: 3430 / 1411 !important;
+}
+html body.product-story.product-bincraft #product-story .slideshow img {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+/* Match the expanded viewer to the wide BinCraft workspace as well. */
+html body.product-bincraft .image-modal {
+  width: min(96vw, 2100px) !important;
+}
+html body.product-bincraft .image-modal > img {
+  aspect-ratio: 3430 / 1411;
+  object-fit: contain;
+}
+html body.product-story.product-aebridge .panel-frame > img {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(520px, 65vw, 1040px) !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  cursor: zoom-in;
+}
+html body.product-story #product-story .panel-frame .slide-label {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 16px !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  max-width: calc(100% - 32px) !important;
+}
+html body.product-story #product-story .slide-dots { flex-wrap: wrap !important; justify-content: center !important; }
+html body.product-story #product-story .product-demo-hint {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa498;
+}
+html body.product-story #product-story .product-details {
+  width: min(1240px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(60px, 7vw, 104px) 0 72px;
+}
+html body.product-story #product-story .tools-section,
+html body.product-story #product-story .tools-section > .container,
+html body.product-story #product-story .product-feature-section {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+html body.product-story #product-story .product-feature-heading,
+html body.product-story #product-story .tools-section > .container > .section-label,
+html body.product-story #product-story .section-title,
+html body.product-story #product-story .section-desc { text-align: center !important; }
+html body.product-story #product-story .product-feature-heading { margin: 0 0 40px !important; }
+html body.product-story #product-story .section-title { font-size: clamp(34px, 4vw, 52px) !important; margin: 10px 0 16px !important; }
+html body.product-story #product-story .section-desc { max-width: 680px !important; margin: 0 auto 32px !important; font-size: 17px !important; line-height: 1.6 !important; }
+html body.product-story #product-story .group-tabs { justify-content: center !important; margin: 28px 0 36px !important; }
+html body.product-story #product-story .features,
+html body.product-story #product-story .feature-grid,
+html body.product-story #product-story .tools-grid {
+  display: grid !important;
+  padding: 0 !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 28px !important;
+}
+html body.product-story #product-story .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+html body.product-story #product-story .tools-grid.tools-group:not(.active) { display: none !important; }
+html body.product-story #product-story .feature-card,
+html body.product-story #product-story .feature,
+html body.product-story #product-story .tool-card {
+  width: auto !important;
+  padding: 26px 20px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid #514c40 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: background .2s ease, border-color .2s ease !important;
+}
+html body.product-story #product-story .feature-card:hover,
+html body.product-story #product-story .feature:hover,
+html body.product-story #product-story .tool-card:hover { background: #f3ce4908 !important; border-color: #f3ce49 !important; }
+html body.product-story #product-story .feature-name,
+html body.product-story #product-story .feature h2,
+html body.product-story #product-story .tool-name { font-size: 20px !important; line-height: 1.3 !important; margin-bottom: 14px !important; }
+html body.product-story #product-story .feature-desc,
+html body.product-story #product-story .feature p,
+html body.product-story #product-story .tool-blurb { font-size: 16px !important; line-height: 1.7 !important; color: #c7c2b9 !important; }
+html body.product-story #product-story .product-purchase-repeat { margin: 56px auto 0; text-align: center; }
+html body.product-story #product-story .product-purchase-repeat > p { font-size: 20px; color: #f6f2eb; margin: 0; }
+html body.product-story #product-story .product-purchase-repeat .hero-cta { margin-top: 22px !important; }
+html body.product-story #product-story .hero .container,
+html body.product-story #product-story .hero .hero-inner { animation: product-intro .65s ease both; }
+html body.product-story #product-story .hero .container > *,
+html body.product-story #product-story .hero .hero-inner > * { animation: none !important; }
+@keyframes product-intro { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  html body.product-story #product-story .hero { padding: 40px 20px 30px !important; }
+  html body.product-story #product-story .hero h1 { font-size: clamp(40px, 9vw, 64px) !important; }
+  html body.product-story #product-story .product-frictions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; text-align: left; font-size: 12px; }
+  html body.product-story #product-story .product-demo { width: calc(100% - 32px) !important; }
+  html body.product-story #product-story .slideshow { height: clamp(240px, 65vw, 460px) !important; }
+  html body.product-story.product-bincraft #product-story .slideshow {
+    height: auto !important;
+    aspect-ratio: 3430 / 1411 !important;
+  }
+  html body.product-story.product-aebridge .panel-frame > img { height: clamp(340px, 100vw, 580px) !important; }
+  html body.product-story #product-story .product-details { width: calc(100% - 32px); padding: 52px 0; }
+  html body.product-story #product-story .features,
+  html body.product-story #product-story .feature-grid,
+  html body.product-story #product-story .tools-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  html body.product-story #product-story .group-tabs { gap: 8px !important; flex-wrap: nowrap !important; }
+  html body.product-story #product-story .group-tab { padding: 10px 12px !important; font-size: 13px !important; }
+  html body.product-story #product-story .feature-card,
+  html body.product-story #product-story .feature,
+  html body.product-story #product-story .tool-card { padding: 22px 16px !important; }
+  html body.product-story #product-story .hero-btn { font-size: 11px !important; padding: 12px 16px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body.product-story #product-story .hero .container,
+  html body.product-story #product-story .hero .hero-inner { animation: none !important; }
+}

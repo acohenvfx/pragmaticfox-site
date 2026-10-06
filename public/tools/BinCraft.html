@@ -629,9 +629,10 @@ a { color: inherit; text-decoration: none; }
   }
 }
 </style>
-<link rel="stylesheet" href="../styles/pragmatic.css?v=20260925-gallery-scale">
+<link rel="stylesheet" href="../styles/pragmatic.css?v=20261005-cart-circle1">
+<link rel="stylesheet" href="../styles/product-story.css?v=20261005-product-story6">
 </head>
-<body class="product-page product-bincraft">
+<body class="product-page product-bincraft product-story">
 
 <!-- NAV -->
 <header class="site-nav pf-responsive-nav">
@@ -671,28 +672,71 @@ a { color: inherit; text-decoration: none; }
       </li>
       <li><a href="../about/">About</a></li>
       <li><a href="../contact/">Contact</a></li>
+      <li data-cart-link><a href="../cart/">Cart <span data-cart-count class="cart-count" hidden></span></a></li>
+      <li><a href="../account/">Account</a></li>
     </ul>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container">
+<main id="product-story" class="product-story-main">
+  <section class="hero" aria-label="Product introduction">
+    <div class="container">
     <p class="hero-product-name">Avid bin workflow</p>
     <h1>
       Bin<span class="accent">Craft.</span>
     </h1>
     <p class="hero-statement">Batch work, <span class="accent">without the guesswork.</span></p>
     <p class="hero-sub">
-      Batch-edit markers and clips, see what effects are on a sequence—all locally, with validated copies that leave the original bins unchanged.
+      Batch-edit markers and clips, inspect sequence effects, and export reports—all locally, with validated copies that leave your original bins unchanged.
     </p>
     <p class="version-req">Works with <strong>Avid Media Composer .avb bins</strong></p>
     <div class="hero-badge">
       <span class="dot"></span>
       Standalone macOS app
     </div>
-
+    <div class="hero-cta">
+      <a href="../cart/" class="hero-btn" data-add-to-cart="bincraft" data-billing-interval="once">Buy BinCraft — $20</a>
+    </div>
+    <ul class="product-frictions" aria-label="Less repetitive work">
+      <li>Renaming clips individually</li>
+      <li>Repeating the same marker edits</li>
+      <li>Hunting for effects in a sequence</li>
+      <li>Changing bins without a safe copy</li>
+    </ul>
+    </div>
+  </section>
+  <section class="product-demo pf-reveal" aria-label="Product screenshots and demos">
+    <!-- Slideshow -->
+    <div class="panel-showcase">
+      <div class="panel-frame">
+        <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
+        <div class="slideshow" id="slideshow">
+          <img src="../slides/BinCraft/BinCraft_01-dropzone.png?v=20261005-resized" alt="BinCraft dropzone" class="active" data-name="Dropzone" decoding="async" fetchpriority="high">
+          <img src="../slides/BinCraft/BinCraft_02-bins-overview.png?v=20261005-resized" alt="BinCraft bins overview" data-name="Bins overview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_03-markers.png?v=20261005-resized" alt="BinCraft markers" data-name="Markers" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_04-marker-editing.png?v=20261005-resized" alt="BinCraft marker editing" data-name="Marker editing" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_05-marker-editing-preview.png?v=20261005-resized" alt="BinCraft marker editing preview" data-name="Marker editing preview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_06-clip-editing.png?v=20261005-resized" alt="BinCraft clip editing" data-name="Clip editing" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_07-clip-editing-preview.png?v=20261005-resized" alt="BinCraft clip editing preview" data-name="Clip editing preview" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_08-name-filtering.png?v=20261005-resized" alt="BinCraft name filtering" data-name="Name filtering" loading="lazy" decoding="async">
+          <img src="../slides/BinCraft/BinCraft_09-effects.png?v=20261005-resized" alt="BinCraft effects" data-name="Effects" loading="lazy" decoding="async">
+        </div>
+        <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
+      </div>
+      <div class="slide-label" id="slideLabel">Dropzone</div>
+      <div class="slideshow-controls">
+        <div class="slide-dots" id="slideDots"></div>
+        <button class="preview-btn" type="button" onclick="openImageModal(document.querySelector('#slideshow img.active'))">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4.75A2.75 2.75 0 0 1 6.75 2h6.5A2.75 2.75 0 0 1 16 4.75v10.5A2.75 2.75 0 0 1 13.25 18h-6.5A2.75 2.75 0 0 1 4 15.25V4.75Zm2.75-1.25c-.69 0-1.25.56-1.25 1.25v7.12l2.26-2.26a1 1 0 0 1 1.42 0l1.55 1.55 2.12-2.12a1 1 0 0 1 1.42 0l.73.73V4.75c0-.69-.56-1.25-1.25-1.25h-6.5ZM14.5 13.3l-1.14-1.14-2.12 2.12a1 1 0 0 1-1.42 0l-1.55-1.55-2.77 2.77v-.25c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V13.3Z"/></svg>
+          Browse screenshots
+        </button>
+      </div>
+    </div>
+    <p class="product-demo-hint">Click a screenshot to explore it at full size.</p>
+  </section>
+  <section class="product-details pf-reveal" aria-label="Product features">
     <!-- TOOLS -->
     <div class="product-feature-heading">
       <div class="section-label"><span>// Tools</span></div>
@@ -714,41 +758,14 @@ a { color: inherit; text-decoration: none; }
         <div class="feature-desc">Export marker, clip, and effects reports—including speed and keyframe details—as CSV or PDF.</div>
       </div>
     </div>
-
-    <div class="hero-cta">
-      <a href="mailto:andrewcoheneditor@gmail.com?subject=BinCraft%20Beta%20Access" class="hero-btn">Request beta access</a>
+    <div class="product-purchase-repeat">
+      <p>Put it to work in your next edit.</p>
+      <div class="hero-cta">
+      <a href="../cart/" class="hero-btn" data-add-to-cart="bincraft" data-billing-interval="once">Buy BinCraft — $20</a>
     </div>
-
-    <!-- Slideshow -->
-    <div class="panel-showcase">
-      <div class="panel-frame">
-        <button class="slideshow-arrow slide-arrow-prev" type="button" aria-label="Previous slide" aria-controls="slideshow">←</button>
-        <div class="slideshow" id="slideshow">
-          <img src="../slides/BinCraft/BinCraft_01-dropzone.png" alt="BinCraft dropzone" class="active" data-name="Dropzone" decoding="async" fetchpriority="high">
-          <img src="../slides/BinCraft/BinCraft_02-bins-overview.png" alt="BinCraft bins overview" data-name="Bins overview" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_03-markers.png" alt="BinCraft markers" data-name="Markers" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_04-marker-editing.png" alt="BinCraft marker editing" data-name="Marker editing" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_05-marker-editing-preview.png" alt="BinCraft marker editing preview" data-name="Marker editing preview" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_06-clip-editing.png" alt="BinCraft clip editing" data-name="Clip editing" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_07-clip-editing-preview.png" alt="BinCraft clip editing preview" data-name="Clip editing preview" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_08-name-filtering.png" alt="BinCraft name filtering" data-name="Name filtering" loading="lazy" decoding="async">
-          <img src="../slides/BinCraft/BinCraft_09-effects.png" alt="BinCraft effects" data-name="Effects" loading="lazy" decoding="async">
-        </div>
-        <button class="slideshow-arrow slide-arrow-next" type="button" aria-label="Next slide" aria-controls="slideshow">→</button>
-      </div>
-      <div class="slide-label" id="slideLabel">Dropzone</div>
-      <div class="slideshow-controls">
-        <div class="slide-dots" id="slideDots"></div>
-        <button class="preview-btn" type="button" onclick="openImageModal(document.querySelector('#slideshow img.active'))">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4.75A2.75 2.75 0 0 1 6.75 2h6.5A2.75 2.75 0 0 1 16 4.75v10.5A2.75 2.75 0 0 1 13.25 18h-6.5A2.75 2.75 0 0 1 4 15.25V4.75Zm2.75-1.25c-.69 0-1.25.56-1.25 1.25v7.12l2.26-2.26a1 1 0 0 1 1.42 0l1.55 1.55 2.12-2.12a1 1 0 0 1 1.42 0l.73.73V4.75c0-.69-.56-1.25-1.25-1.25h-6.5ZM14.5 13.3l-1.14-1.14-2.12 2.12a1 1 0 0 1-1.42 0l-1.55-1.55-2.77 2.77v-.25c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V13.3Z"/></svg>
-          Browse screenshots
-        </button>
-      </div>
     </div>
-
-
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- WORKFLOW CTA -->
 <section class="pf-final product-final" aria-labelledby="difference-contact-title">
@@ -786,7 +803,7 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <span>&copy; 2026 Pragmatic Fox. All rights reserved.</span>
     <ul class="footer-links">
-      <li><a href="../privacy/">Privacy Policy</a></li>
+      <li><a href="../privacy/">Privacy Policy</a></li><li><a href="../eula/">EULA</a></li>
     </ul>
   </div>
 </footer>
@@ -820,6 +837,11 @@ a { color: inherit; text-decoration: none; }
   const dots = dotsContainer.querySelectorAll('.slide-dot');
   const previousButton = document.querySelector('.slide-arrow-prev');
   const nextButton = document.querySelector('.slide-arrow-next');
+  const showcase = document.querySelector('.panel-showcase');
+  const shouldAdvance = () => !document.hidden
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    && !showcase.matches(':hover, :focus-within')
+    && !document.querySelector('.image-modal-overlay.open, .video-modal-overlay.open');
 
   function goTo(index) {
     slides[current].tabIndex = -1;
@@ -832,22 +854,22 @@ a { color: inherit; text-decoration: none; }
     label.textContent = slides[current].dataset.name;
   }
 
-  let timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+  let timer = setInterval(() => { if (shouldAdvance()) goTo((current + 1) % slides.length); }, 7500);
 
   previousButton.addEventListener('click', () => {
     goTo((current - 1 + slides.length) % slides.length);
     clearInterval(timer);
-    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+    timer = setInterval(() => { if (shouldAdvance()) goTo((current + 1) % slides.length); }, 7500);
   });
   nextButton.addEventListener('click', () => {
     goTo((current + 1) % slides.length);
     clearInterval(timer);
-    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+    timer = setInterval(() => { if (shouldAdvance()) goTo((current + 1) % slides.length); }, 7500);
   });
 
   dotsContainer.addEventListener('click', () => {
     clearInterval(timer);
-    timer = setInterval(() => goTo((current + 1) % slides.length), 7500);
+    timer = setInterval(() => { if (shouldAdvance()) goTo((current + 1) % slides.length); }, 7500);
   });
 
 })();
@@ -908,6 +930,7 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
-<script src="../scripts/pragmatic.js?v=20260914-mobile-menu"></script>
+<script src="../cart.js"></script>
+<script src="../scripts/pragmatic.js?v=20260928-commerce"></script>
 </body>
 </html>
